@@ -3,8 +3,7 @@ package com.bilibili.ui.main;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.internal.NavigationMenuView;
-import android.support.design.widget.NavigationView;
+import android.support.design.widget.BottomNavigationView;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
@@ -13,6 +12,7 @@ import com.bilibili.R;
 import com.bilibili.model.event.TabSelectedEvent;
 import com.bilibili.model.event.ToggleDrawerEvent;
 import com.bilibili.ui.region.RegionFragment;
+import com.bilibili.util.BottomNavigationViewHelper;
 import com.bilibili.widget.bottombar.TabEntity;
 import com.bilibili.ui.test.fragment.PlaceHolderFragment;
 import com.bilibili.widget.bottombar.BottomBar;
@@ -46,7 +46,7 @@ public class MainActivity extends BaseActivity implements IBaseMvpActivity<MainP
     @Inject
     RegionFragment regionFragment;
     @BindView(R.id.entrance_bar)
-    BottomBar mBottomBar;
+    BottomNavigationView bottomNavigationView;
     @BindView(R.id.main_container)
     FrameLayout mFrameLayout;
 
@@ -79,7 +79,7 @@ public class MainActivity extends BaseActivity implements IBaseMvpActivity<MainP
     public void initViewAndEvent() {
         StatusBarUtil.setColorForDrawerLayout(this, getResources().getColor(R.color.theme_color_primary), mFrameLayout);
 
-        mTitles = getResources().getStringArray(R.array.main_sections);
+/*        mTitles = getResources().getStringArray(R.array.main_sections);
         for (int i = 0; i < mTitles.length; i++) {
             mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));
         }
@@ -101,6 +101,31 @@ public class MainActivity extends BaseActivity implements IBaseMvpActivity<MainP
             @Override
             public void onTabReselected(int position) {
 
+            }
+        });*/
+
+        bottomNavigationView.setItemIconTintList(null);
+
+        BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView
+                .OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.menu_item_home:
+                        showHideFragment(mFragments[FIRST]);
+                        break;
+                    case R.id.menu_item_category:
+                        showHideFragment(mFragments[SECOND]);
+                        break;
+                    case R.id.menu_item_history:
+                        showHideFragment(mFragments[THIRD]);
+                        break;
+                    case R.id.menu_item_mine:
+                        showHideFragment(mFragments[FOURTH]);
+                        break;
+                }
+                return true;
             }
         });
     }
@@ -133,12 +158,11 @@ public class MainActivity extends BaseActivity implements IBaseMvpActivity<MainP
 
     @Override
     public void onBackPressedSupport() {
-            if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
-                pop();
-            } else {
-                finish();
-            }
-
+        if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
+            pop();
+        } else {
+            finish();
+        }
     }
 
     /**
