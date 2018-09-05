@@ -8,7 +8,6 @@ import com.weizhan.superlook.model.api.RegionApis;
 import com.weizhan.superlook.model.bean.DataListResponse;
 import com.weizhan.superlook.model.bean.region.AppRegionShow;
 import com.weizhan.superlook.ui.region.viewbinder.RegionFooterItemViewBinder;
-import com.weizhan.superlook.util.ResourceManager;
 import com.common.base.AbsBasePresenter;
 import com.common.util.DateUtil;
 
@@ -97,7 +96,7 @@ public class RegionPresenter extends AbsBasePresenter<RegionContract.View> {
             AppRegionShow.Partition p = appRegionShow.new Partition();
             p.setTitle(appRegionShow.getTitle());
 //            p.setLogo(ResourceManager.getRegionIconByTitle(appRegionShow.getTitle()));
-            p.setLogo(ResourceManager.getRegionIconByParam(appRegionShow.getParam()));
+//            p.setLogo(ResourceManager.getRegionIconByParam(appRegionShow.getParam()));
             appRegionShow.setPartition(p);
             items.add(p);
 
