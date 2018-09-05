@@ -4,8 +4,6 @@ import com.weizhan.superlook.di.module.ActivityModule;
 import com.weizhan.superlook.di.module.PageModule;
 import com.weizhan.superlook.di.scope.PerActivity;
 import com.weizhan.superlook.ui.main.MainActivity;
-import com.weizhan.superlook.ui.test.activity.ScrollGradientActivity;
-import com.weizhan.superlook.ui.test.activity.StatusWithPictureActivity;
 
 import dagger.Component;
 
@@ -20,7 +18,5 @@ public interface ActivityComponent {
     void inject(MainActivity mainActivity);
 
     //Test
-    void inject(StatusWithPictureActivity statusWithPictureActivity);
-    void inject(ScrollGradientActivity scrollGradientActivity);
 
 }

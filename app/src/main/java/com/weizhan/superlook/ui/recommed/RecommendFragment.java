@@ -139,14 +139,4 @@ public class RecommendFragment extends BaseMvpFragment<RecommendPresenter> imple
         mAdapter.showLoadFailed();
     }
 
-    @OnClick(R.id.load_more_tv)
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.load_more_tv:
-                mRefreshLayout.setRefreshing(true);
-                pullToRefresh();
-                break;
-        }
-    }
-
 }

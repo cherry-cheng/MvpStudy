@@ -20,16 +20,8 @@
         <!-- Toolbar随页面滑动收展 -->
 
         <!-- StatusBar同Toolbar同背景 -->
-        <activity
-            android:name="com.weizhan.superlook.ui.test.activity.StatusWithPictureActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" />
 
         <!-- StatusBar同Toolbar同背景,滑动ToolBar放大缩小渐变 -->
-        <activity
-            android:name="com.weizhan.superlook.ui.test.activity.ScrollGradientActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" />
 
         <!-- 测试api -->
 
