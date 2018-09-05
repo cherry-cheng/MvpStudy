@@ -1,10 +1,11 @@
 package com.weizhan.superlook.ui.main;
 
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+
+import com.androidkun.xtablayout.XTabLayout;
 import com.weizhan.superlook.App;
 import com.weizhan.superlook.R;
 import com.weizhan.superlook.model.event.TabSelectedEvent;
@@ -32,7 +33,7 @@ import butterknife.BindView;
 public class MainFragment extends BaseFragment {
 
     @BindView(R.id.tab_layout)
-    TabLayout tabLayout;
+    XTabLayout tabLayout;
     @BindView(R.id.viewpager)
     ViewPager viewPager;
 

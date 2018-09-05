@@ -23,11 +23,11 @@
     <string name="menu_top_download_tips">离线列表</string>
     <string name="menu_top_search_tips">搜索</string>
     <string name="nav_offline_manager">离线缓存</string>
-    <string name="section_bangumi">追番</string>
+    <string name="section_bangumi">电视剧</string>
     <string name="section_discover">发现</string>
     <string name="section_live">直播</string>
-    <string name="section_movie">影视</string>
-    <string name="section_special_column">专栏</string>
+    <string name="section_movie">电影</string>
+    <string name="section_special_column">综艺</string>
     <string name="section_recommend">推荐</string>
     <string name="title_game">游戏中心</string>
 
