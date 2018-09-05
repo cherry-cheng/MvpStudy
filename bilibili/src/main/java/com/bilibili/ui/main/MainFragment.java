@@ -5,15 +5,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-
 import com.bilibili.App;
 import com.bilibili.R;
 import com.bilibili.model.event.TabSelectedEvent;
 import com.bilibili.ui.bangumi.BangumiFragment;
-import com.bilibili.ui.live.LiveFragment;
 import com.bilibili.ui.recommed.RecommendFragment;
 import com.bilibili.ui.test.fragment.PlaceHolderFragment;
 import com.common.base.BaseFragment;

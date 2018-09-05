@@ -54,7 +54,7 @@ public class BangumiFragment extends BaseMvpFragment<BangumiPresenter> implement
 
     @Override
     protected void initViewAndEvent() {
-        mRefreshLayout.setColorSchemeResources(R.color.theme_color_primary);
+        mRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
         mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {

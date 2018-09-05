@@ -62,7 +62,7 @@
                     android:background="@drawable/bg_transparent_corner_pink"
                     android:paddingLeft="@dimen/padding_4"
                     android:paddingRight="@dimen/padding_4"
-                    android:textColor="@color/theme_color_pink"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/text_size_13" />
 
                 <TextView
@@ -71,7 +71,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/margin_tiny"
                     android:maxLines="1"
-                    android:textColor="@color/theme_color_pink"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/text_size_13" />
 
             </LinearLayout>
@@ -112,7 +112,7 @@
                     android:background="@drawable/bg_btn_attention"
                     android:gravity="center"
                     android:text="@string/live_play_add_attention"
-                    android:textColor="@color/theme_color_primary"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/text_size_13" />
 
             </LinearLayout>
@@ -125,9 +125,9 @@
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/tab_layout_height"
-        app:tabIndicatorColor="@color/theme_color_primary"
+        app:tabIndicatorColor="@color/colorPrimary"
         app:tabMode="fixed"
-        app:tabSelectedTextColor="@color/theme_color_primary"
+        app:tabSelectedTextColor="@color/colorPrimary"
         app:tabTextColor="@color/TextColorBlack" />
 
 

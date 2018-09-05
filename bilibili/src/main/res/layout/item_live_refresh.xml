@@ -20,7 +20,7 @@
                 style="@style/text_style_live_common"
                 android:layout_gravity="center_vertical"
                 android:text="@string/live_click_refresh"
-                android:textColor="@color/theme_color_primary" />
+                android:textColor="@color/colorPrimary" />
 
             <ImageView
                 android:id="@+id/iv_refresh"

@@ -18,8 +18,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.bilibili.R;
-import com.bilibili.ui.live.liveplay.LiveDanMuMsgCallback;
-import com.bilibili.util.CommonConsumer;
 import com.bilibili.util.ITask;
 import com.bilibili.util.RxJavaUtil;
 import com.bilibili.widget.danmu.live.LiveDanMuReceiver;
@@ -296,28 +294,8 @@ public class LiveVideoPlayer extends DXBaseVideoPlayer {
                 return new Danmakus();
             }
         }, danmakuContext);
-        registerDanmuCallback();
     }
 
-    /**
-     * 注册直播弹幕监听
-     */
-    private void registerDanmuCallback() {
-        LiveDanMuReceiver.getInstance()
-                .setPrintDebugInfo(true)
-                .addCallback(new LiveDanMuMsgCallback() {
-                    @Override
-                    public void onDanMuMSGPackage(final DanMuMSGEntity danMuMSGEntity) {
-                        super.onDanMuMSGPackage(danMuMSGEntity);
-                        RxJavaUtil.runOnUiThread(new ITask() {
-                            @Override
-                            public void execute() throws Exception {
-                                addDanmu(danMuMSGEntity);
-                            }
-                        });
-                    }
-                });
-    }
 
     /**
      * 添加弹幕

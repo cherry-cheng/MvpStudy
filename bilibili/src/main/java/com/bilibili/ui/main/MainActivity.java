@@ -62,7 +62,7 @@ public class MainActivity extends BaseActivity implements IBaseMvpActivity<MainP
 
     @Override
     public void initViewAndEvent() {
-        StatusBarUtil.setColorForDrawerLayout(this, getResources().getColor(R.color.theme_color_primary), mFrameLayout);
+//        StatusBarUtil.setColorForDrawerLayout(this, getResources().getColor(R.color.colorPrimary), mFrameLayout);
         bottomNavigationView.setItemIconTintList(null);
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView

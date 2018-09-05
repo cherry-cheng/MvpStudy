@@ -17,7 +17,7 @@
             android:layout_width="@dimen/width_16"
             android:layout_height="@dimen/width_16"
             android:layout_gravity="center_vertical"
-            app:ring_color="@color/_progress__pink"
+            app:ring_color="@color/colorPrimary"
             app:style="Large" />
 
         <TextView

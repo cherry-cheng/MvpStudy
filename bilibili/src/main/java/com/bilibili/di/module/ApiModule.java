@@ -2,10 +2,8 @@ package com.bilibili.di.module;
 
 import com.bilibili.di.scope.GlobalApis;
 import com.bilibili.model.api.ApiHelper;
-import com.bilibili.model.api.ApiLiveApis;
 import com.bilibili.model.api.AppApis;
 import com.bilibili.model.api.BangumiApis;
-import com.bilibili.model.api.LiveApis;
 import com.bilibili.model.api.RecommendApis;
 import com.bilibili.model.api.RegionApis;
 import com.bilibili.model.api.WeChatApis;
@@ -34,13 +32,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @Module
 public class ApiModule {
 
-    //Create Api
-    @GlobalApis
-    @Provides
-    LiveApis provideLiveService(@Named("LiveApis") Retrofit retrofit) {
-        return retrofit.create(LiveApis.class);
-    }
-
     @GlobalApis
     @Provides
     RecommendApis provideRecommendService(@Named("RecommendApi") Retrofit retrofit) {
@@ -65,12 +56,6 @@ public class ApiModule {
         return retrofit.create(RegionApis.class);
     }
 
-    @GlobalApis
-    @Provides
-    ApiLiveApis provideApiLiveService(@Named("ApiLiveApi") Retrofit retrofit) {
-        return retrofit.create(ApiLiveApis.class);
-    }
-
     //Test Api
     @GlobalApis
     @Provides
@@ -84,13 +69,6 @@ public class ApiModule {
         return retrofit.create(WeChatApis.class);
     }
 
-    //Create Retrofit
-    @GlobalApis
-    @Provides
-    @Named("LiveApis")
-    Retrofit provideLiveRetrofit(Retrofit.Builder builder, OkHttpClient client) {
-        return createRetrofit(builder, client, LiveApis.HOST);
-    }
 
     @GlobalApis
     @Provides
@@ -118,13 +96,6 @@ public class ApiModule {
     @Named("RegionApi")
     Retrofit provideRegionRetrofit(Retrofit.Builder builder, OkHttpClient client) {
         return createRetrofit(builder, client, RegionApis.HOST);
-    }
-
-    @GlobalApis
-    @Provides
-    @Named("ApiLiveApi")
-    Retrofit provideApiLiveRetrofit(Retrofit.Builder builder, OkHttpClient client) {
-        return createRetrofit(builder, client, ApiLiveApis.HOST);
     }
 
     //Test Api

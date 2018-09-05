@@ -3,14 +3,9 @@ package com.bilibili.di.component;
 import com.bilibili.di.module.ActivityModule;
 import com.bilibili.di.module.PageModule;
 import com.bilibili.di.scope.PerActivity;
-import com.bilibili.ui.live.liveplay.LivePlayActivity;
 import com.bilibili.ui.main.MainActivity;
-import com.bilibili.ui.test.activity.NewsActivity;
 import com.bilibili.ui.test.activity.ScrollGradientActivity;
 import com.bilibili.ui.test.activity.StatusWithPictureActivity;
-import com.bilibili.ui.test.activity.TestApiActivity;
-import com.bilibili.ui.test.activity.TestNoBaseActivity;
-import com.bilibili.ui.test.activity.TestNoBaseMvpActivity;
 
 import dagger.Component;
 
@@ -23,15 +18,9 @@ import dagger.Component;
 public interface ActivityComponent {
     //Bilibili
     void inject(MainActivity mainActivity);
-    void inject(LivePlayActivity livePlayActivity);
 
     //Test
-    void inject(NewsActivity newsActivity);
     void inject(StatusWithPictureActivity statusWithPictureActivity);
     void inject(ScrollGradientActivity scrollGradientActivity);
-    void inject(TestApiActivity testApiActivity);
-    void inject(TestNoBaseActivity testNoBaseActivity);
-    void inject(TestNoBaseMvpActivity testNoBaseMvpActivity);
-
 
 }

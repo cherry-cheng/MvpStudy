@@ -3,7 +3,6 @@ package com.bilibili.di.module;
 import com.bilibili.di.scope.PerActivity;
 import com.bilibili.di.scope.PerFragment;
 import com.bilibili.ui.bangumi.BangumiFragment;
-import com.bilibili.ui.live.LiveFragment;
 import com.bilibili.ui.main.MainFragment;
 import com.bilibili.ui.recommed.RecommendFragment;
 import com.bilibili.ui.region.RegionFragment;
@@ -31,12 +30,6 @@ public class PageModule {
     @PerActivity
     MainFragment provideMainFragment() {
         return new MainFragment();
-    }
-
-    @Provides
-    @PerFragment
-    LiveFragment provideLiveFragment() {
-        return new LiveFragment();
     }
 
     @Provides

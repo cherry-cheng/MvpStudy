@@ -83,7 +83,7 @@ class BottomBarTab extends FrameLayout {
         super.setSelected(selected);
         if (selected) {
             mIvIcon.setImageResource(mEntity.getTabSelectedIcon());
-            mTvTitle.setTextColor(ContextCompat.getColor(mContext, R.color.theme_color_primary));
+            mTvTitle.setTextColor(ContextCompat.getColor(mContext, R.color.colorPrimary));
         } else {
             mIvIcon.setImageResource(mEntity.getTabUnselectedIcon());
             mTvTitle.setTextColor(ContextCompat.getColor(mContext, R.color.text_gray));

@@ -32,7 +32,7 @@
             android:paddingLeft="@dimen/margin_small"
             android:paddingRight="@dimen/margin_medium"
             android:src="@drawable/ic_index_attention"
-            android:tint="@color/theme_color_primary" />
+            android:tint="@color/colorPrimary" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -42,7 +42,7 @@
             android:paddingLeft="@dimen/margin_medium"
             android:paddingRight="@dimen/margin_small"
             android:src="@drawable/ic_index_rank"
-            android:tint="@color/theme_color_primary" />
+            android:tint="@color/colorPrimary" />
 
         <View
             android:layout_width="match_parent"

@@ -16,11 +16,6 @@
 
         <!-- 测试mvp结构 -->
         <!-- 测试Fragment TabLayout DrawerLayout 沉浸式布局 -->
-        <activity
-            android:name=".ui.test.activity.NewsActivity"
-            android:label="@string/title_activity_news"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" />
 
         <!-- Toolbar随页面滑动收展 -->
 
@@ -37,22 +32,10 @@
             android:theme="@style/AppTheme" />
 
         <!-- 测试api -->
-        <activity
-            android:name=".ui.test.activity.TestApiActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" />
 
         <!-- 测试lifecycle -->
-        <activity
-            android:name=".ui.test.activity.TestNoBaseActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" />
 
         <!-- 测试lifecycle和mvp -->
-        <activity
-            android:name=".ui.test.activity.TestNoBaseMvpActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" />
 
         <!-- 测试播放器 -->
         <activity
