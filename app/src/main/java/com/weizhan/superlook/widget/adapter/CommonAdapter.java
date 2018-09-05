@@ -145,8 +145,8 @@ public class CommonAdapter extends DefaultAdapterWrapper<MultiTypeAdapter> {
 
     public void useDefaultLoadFailed() {
         BiliLoadFailedBinder binder = new BiliLoadFailedBinder();
-        binder.setResId(R.drawable.img_tips_error_load_error);
-        binder.setStringId(R.string.tips_load_error);
+        /*binder.setResId(R.drawable.img_tips_error_load_error);
+        binder.setStringId(R.string.tips_load_error);*/
         setLoadFailedBinder(binder);
     }
 

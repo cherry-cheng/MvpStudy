@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 
+import com.common.util.UIAdaptionUtil;
 import com.trello.rxlifecycle2.LifecycleProvider;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.RxLifecycle;
@@ -72,6 +73,7 @@ public class BaseActivity extends AppCompatActivity implements ISupportActivity,
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        UIAdaptionUtil.setCustomDensity(this);
         mDelegate.onCreate(savedInstanceState);
         lifecycleSubject.onNext(ActivityEvent.CREATE);
     }
