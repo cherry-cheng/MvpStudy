@@ -13,10 +13,6 @@
         android:theme="@style/AppTheme">
 
         <!-- 主页 -->
-        <activity
-            android:name=".ui.test.activity.NavigationTestActivity"
-            android:screenOrientation="portrait">
-        </activity>
 
         <!-- 测试mvp结构 -->
         <!-- 测试Fragment TabLayout DrawerLayout 沉浸式布局 -->
@@ -27,10 +23,6 @@
             android:theme="@style/AppTheme" />
 
         <!-- Toolbar随页面滑动收展 -->
-        <activity
-            android:name=".ui.test.activity.ToolbarBehaviorActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" />
 
         <!-- StatusBar同Toolbar同背景 -->
         <activity

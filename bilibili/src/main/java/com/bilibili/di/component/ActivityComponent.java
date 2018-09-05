@@ -11,7 +11,6 @@ import com.bilibili.ui.test.activity.StatusWithPictureActivity;
 import com.bilibili.ui.test.activity.TestApiActivity;
 import com.bilibili.ui.test.activity.TestNoBaseActivity;
 import com.bilibili.ui.test.activity.TestNoBaseMvpActivity;
-import com.bilibili.ui.test.activity.ToolbarBehaviorActivity;
 
 import dagger.Component;
 
@@ -28,7 +27,6 @@ public interface ActivityComponent {
 
     //Test
     void inject(NewsActivity newsActivity);
-    void inject(ToolbarBehaviorActivity toolbarBehaviorActivity);
     void inject(StatusWithPictureActivity statusWithPictureActivity);
     void inject(ScrollGradientActivity scrollGradientActivity);
     void inject(TestApiActivity testApiActivity);

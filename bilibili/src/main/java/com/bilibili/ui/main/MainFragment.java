@@ -42,8 +42,6 @@ public class MainFragment extends BaseFragment {
     ViewPager viewPager;
 
     @Inject
-    LiveFragment mLiveFragmet;
-    @Inject
     RecommendFragment mRecommendFragment;
     @Inject
     BangumiFragment mBangumiFragment;
@@ -69,34 +67,10 @@ public class MainFragment extends BaseFragment {
         adapter = new MainPagerAdapter(getChildFragmentManager());
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
-        tabLayout.getTabAt(1).select();
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.main, menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        switch (id) {
-            case R.id.action_game_center:
-                //TODO
-                break;
-            case R.id.action_download:
-                //TODO
-                break;
-            case R.id.action_search:
-                //TODO
-                break;
-        }
-        return super.onOptionsItemSelected(item);
+        tabLayout.getTabAt(0).select();
     }
 
     private void initChildFragment() {
-        mFragments.add(mLiveFragmet);
         mFragments.add(mRecommendFragment);
         mFragments.add(mBangumiFragment);
         mFragments.add(new PlaceHolderFragment());
