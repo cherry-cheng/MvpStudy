@@ -4,6 +4,7 @@ import com.weizhan.superlook.di.module.ApiModule;
 import com.weizhan.superlook.di.scope.GlobalApis;
 import com.weizhan.superlook.model.api.AppApis;
 import com.weizhan.superlook.model.api.BangumiApis;
+import com.weizhan.superlook.model.api.Recommend1Apis;
 import com.weizhan.superlook.model.api.RecommendApis;
 import com.weizhan.superlook.model.api.RegionApis;
 import com.weizhan.superlook.model.api.WeChatApis;
@@ -27,6 +28,8 @@ public interface ApiComponent {
     BangumiApis biliBiliApis();
 
     RegionApis regionApis();
+
+    Recommend1Apis recommend1Apis();
 
     //Test
     ZhihuApis zhihuApis();

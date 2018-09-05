@@ -11,6 +11,7 @@ import com.weizhan.superlook.R;
 import com.weizhan.superlook.model.event.TabSelectedEvent;
 import com.weizhan.superlook.ui.bangumi.BangumiFragment;
 import com.weizhan.superlook.ui.recommed.RecommendFragment;
+import com.weizhan.superlook.ui.recommend1.Recommend1Fragment;
 import com.weizhan.superlook.ui.test.fragment.PlaceHolderFragment;
 import com.common.base.BaseFragment;
 
@@ -38,7 +39,7 @@ public class MainFragment extends BaseFragment {
     ViewPager viewPager;
 
     @Inject
-    RecommendFragment mRecommendFragment;
+    Recommend1Fragment mRecommendFragment;
     @Inject
     BangumiFragment mBangumiFragment;
 

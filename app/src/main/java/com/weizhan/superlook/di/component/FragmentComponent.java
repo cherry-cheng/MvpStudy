@@ -6,6 +6,7 @@ import com.weizhan.superlook.di.scope.PerFragment;
 import com.weizhan.superlook.ui.bangumi.BangumiFragment;
 import com.weizhan.superlook.ui.main.MainFragment;
 import com.weizhan.superlook.ui.recommed.RecommendFragment;
+import com.weizhan.superlook.ui.recommend1.Recommend1Fragment;
 import com.weizhan.superlook.ui.region.RegionFragment;
 import com.weizhan.superlook.ui.test.fragment.NewsFragment;
 import com.weizhan.superlook.ui.test.fragment.NewsPageFragment;
@@ -32,6 +33,8 @@ public interface FragmentComponent {
     void inject(BangumiFragment bangumiFragment);
 
     void inject(RecommendFragment recommendFragment);
+
+    void inject(Recommend1Fragment recommend1Fragment);
 
     void inject(RegionFragment regionFragment);
 }
