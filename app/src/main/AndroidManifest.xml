@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.weizhan.superlook">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name="com.weizhan.superlook.App"
+        android:allowBackup="true"
+        android:icon="@mipmap/icon"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <!-- 主页 -->
+
+        <!-- 测试mvp结构 -->
+        <!-- 测试Fragment TabLayout DrawerLayout 沉浸式布局 -->
+
+        <!-- Toolbar随页面滑动收展 -->
+
+        <!-- StatusBar同Toolbar同背景 -->
+        <activity
+            android:name="com.weizhan.superlook.ui.test.activity.StatusWithPictureActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+
+        <!-- StatusBar同Toolbar同背景,滑动ToolBar放大缩小渐变 -->
+        <activity
+            android:name="com.weizhan.superlook.ui.test.activity.ScrollGradientActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+
+        <!-- 测试api -->
+
+        <!-- 测试lifecycle -->
+
+        <!-- 测试lifecycle和mvp -->
+
+        <!-- 测试播放器 -->
+        <activity
+            android:name="com.weizhan.superlook.ui.test.activity.TestPlayerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+
+        <!-- 主页 -->
+        <activity
+            android:name="com.weizhan.superlook.ui.main.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
