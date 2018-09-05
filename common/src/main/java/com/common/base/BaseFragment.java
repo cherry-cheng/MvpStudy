@@ -122,12 +122,6 @@ public abstract class BaseFragment extends SupportFragment implements LifecycleP
         mUnbinder.unbind();
     }
 
-    protected void setUpToolBar(Toolbar toolBar){
-        setHasOptionsMenu(true);
-        ((AppCompatActivity) getActivity()).setSupportActionBar(toolBar);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
-    }
-
     /**
      * 设置布局
      *

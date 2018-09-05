@@ -6,6 +6,6 @@ package com.weizhan.superlook.util;
 
 public interface ITask {
 
-    void execute() throws Exception;;
+    void execute() throws Exception;
 
 }
