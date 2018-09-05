@@ -17,10 +17,6 @@ import com.common.base.BaseMvpFragment;
 import butterknife.BindView;
 import me.drakeet.multitype.Items;
 
-/**
- * Created by Android_ZzT on 17/7/6.
- */
-
 public class RegionFragment extends BaseMvpFragment<RegionPresenter> implements RegionContract.View {
 
     public static final String TAG = RegionFragment.class.getSimpleName();
@@ -55,7 +51,7 @@ public class RegionFragment extends BaseMvpFragment<RegionPresenter> implements 
         layoutManager.setSpanSizeLookup(spanSizeLookup);
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.addItemDecoration(new RegionIndexItemDecoration());
-        mRecyclerView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.bg_main));
+        mRecyclerView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.white));
         mAdapter = new CommonAdapter();
 //        mAdapter.register(RegionHeaderItemViewBinder.RegionHeader.class, new RegionHeaderItemViewBinder());
         mAdapter.register(AppRegionShow.Banner.class, new RegionBannerItemViewBinder());

@@ -55,7 +55,7 @@ public class Recommend1Fragment extends BaseMvpFragment<Recommend1Presenter> imp
         layoutManager.setSpanSizeLookup(spanSizeLookup);
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.addItemDecoration(new Recommend1IndexItemDecoration());
-        mRecyclerView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.bg_main));
+        mRecyclerView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.white));
         mAdapter = new CommonAdapter();
 //        mAdapter.register(Recommend1HeaderItemViewBinder.Recommend1Header.class, new Recommend1HeaderItemViewBinder());
         mAdapter.register(AppRecommend1Show.Banner.class, new Recommend1BannerItemViewBinder());
@@ -86,5 +86,4 @@ public class Recommend1Fragment extends BaseMvpFragment<Recommend1Presenter> imp
     public void showLoadFailed() {
         mAdapter.showLoadFailed();
     }
-
 }
