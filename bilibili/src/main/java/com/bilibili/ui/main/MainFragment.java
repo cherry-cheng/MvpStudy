@@ -5,16 +5,13 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.bilibili.App;
 import com.bilibili.R;
 import com.bilibili.model.event.TabSelectedEvent;
-import com.bilibili.model.event.ToggleDrawerEvent;
 import com.bilibili.ui.bangumi.BangumiFragment;
 import com.bilibili.ui.live.LiveFragment;
 import com.bilibili.ui.recommed.RecommendFragment;
@@ -31,7 +28,6 @@ import java.util.List;
 import javax.inject.Inject;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 
 /**
  * 首页主Fragment
@@ -40,8 +36,6 @@ import butterknife.OnClick;
 
 public class MainFragment extends BaseFragment {
 
-    @BindView(R.id.main_toolbar)
-    Toolbar mToolbar;
     @BindView(R.id.tab_layout)
     TabLayout tabLayout;
     @BindView(R.id.viewpager)
@@ -70,22 +64,12 @@ public class MainFragment extends BaseFragment {
 
     @Override
     protected void initViewAndEvent() {
-        setUpToolBar(mToolbar);
         mTitles = getResources().getStringArray(R.array.home_sections);
         initChildFragment();
         adapter = new MainPagerAdapter(getChildFragmentManager());
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.getTabAt(1).select();
-    }
-
-    @OnClick({R.id.ll_top_menu_nav})
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.ll_top_menu_nav:
-                ToggleDrawerEvent event = new ToggleDrawerEvent();
-                EventBus.getDefault().post(event);
-        }
     }
 
     @Override
@@ -156,7 +140,7 @@ public class MainFragment extends BaseFragment {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(TabSelectedEvent event){
         if(event.getPosition() == MainActivity.FIRST){
-            setUpToolBar(mToolbar);
+
         }
     }
 

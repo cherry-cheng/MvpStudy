@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#ff850b</color>
+    <color name="colorPrimaryDark">#ff850b</color>
+    <color name="colorAccent">#ff850b</color>
 
     <color name="comment_notice_background">#fffff1d3</color>
     <color name="comment_notice_text">#ffe78b1f</color>
@@ -279,7 +279,7 @@
     <color name="notification_material_background_media_default_color">#ff424242</color>
     <color name="orange">#ffff7800</color>
     <color name="other_white">#fffffffe</color>
-    <color name="pink">#fffb7299</color>
+    <color name="pink">#ff850b</color>
     <color name="pink_alpha30">#4cfb7299</color>
     <color name="pink_alpha50">#7ffb7299</color>
     <color name="pink_alpha90">#effb7299</color>

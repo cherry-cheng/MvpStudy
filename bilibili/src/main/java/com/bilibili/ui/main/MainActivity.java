@@ -9,23 +9,16 @@ import android.widget.FrameLayout;
 
 import com.bilibili.App;
 import com.bilibili.R;
-import com.bilibili.model.event.TabSelectedEvent;
 import com.bilibili.model.event.ToggleDrawerEvent;
 import com.bilibili.ui.region.RegionFragment;
 import com.bilibili.util.BottomNavigationViewHelper;
-import com.bilibili.widget.bottombar.TabEntity;
 import com.bilibili.ui.test.fragment.PlaceHolderFragment;
-import com.bilibili.widget.bottombar.BottomBar;
-import com.bilibili.widget.bottombar.CustomTabEntity;
 import com.common.base.IBaseMvpActivity;
 import com.common.base.BaseActivity;
 import com.common.util.StatusBarUtil;
-
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-
-import java.util.ArrayList;
 
 import javax.inject.Inject;
 
@@ -51,14 +44,6 @@ public class MainActivity extends BaseActivity implements IBaseMvpActivity<MainP
     FrameLayout mFrameLayout;
 
     private SupportFragment[] mFragments = new SupportFragment[4];
-    private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
-    private String[] mTitles;
-    private int[] mIconSelectIds = {
-            R.drawable.ic_home_selected, R.drawable.ic_category_selected,
-            R.drawable.ic_dynamic_selected, R.drawable.ic_communicate_selected};
-    private int[] mIconUnselectIds = {
-            R.drawable.ic_home_unselected, R.drawable.ic_category_unselected,
-            R.drawable.ic_dynamic_unselected, R.drawable.ic_communicate_unselected};
 
     @Override
     public void initInject() {
@@ -78,34 +63,7 @@ public class MainActivity extends BaseActivity implements IBaseMvpActivity<MainP
     @Override
     public void initViewAndEvent() {
         StatusBarUtil.setColorForDrawerLayout(this, getResources().getColor(R.color.theme_color_primary), mFrameLayout);
-
-/*        mTitles = getResources().getStringArray(R.array.main_sections);
-        for (int i = 0; i < mTitles.length; i++) {
-            mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));
-        }
-        mBottomBar.setTabEntities(mTabEntities);
-
-        mBottomBar.setOnTabSelectedListener(new BottomBar.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(int position, int prePosition) {
-                showHideFragment(mFragments[position], mFragments[prePosition]);
-                TabSelectedEvent event = new TabSelectedEvent(position);
-                EventBus.getDefault().post(event);
-            }
-
-            @Override
-            public void onTabUnselected(int position) {
-
-            }
-
-            @Override
-            public void onTabReselected(int position) {
-
-            }
-        });*/
-
         bottomNavigationView.setItemIconTintList(null);
-
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView
                 .OnNavigationItemSelectedListener() {
