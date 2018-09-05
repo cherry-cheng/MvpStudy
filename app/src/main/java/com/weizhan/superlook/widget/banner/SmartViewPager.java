@@ -24,7 +24,7 @@ import java.lang.ref.WeakReference;
 
 public class SmartViewPager extends FrameLayout {
 
-    private static final int DEFAULT_CIRCULATE_DELAY_TIME = 3000;
+    private static final int DEFAULT_CIRCULATE_DELAY_TIME = 5000;
 
     public static final int MSG_AUTO_CIRCULATE_START = 1000;
 

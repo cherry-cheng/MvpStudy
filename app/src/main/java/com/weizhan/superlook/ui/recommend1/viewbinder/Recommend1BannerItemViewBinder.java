@@ -62,9 +62,9 @@ public class Recommend1BannerItemViewBinder extends ItemViewBinder<AppRecommend1
             banner.setIndicatorGravity(Gravity.BOTTOM | Gravity.RIGHT);
             banner.setIndicatorColor(ContextCompat.getColor(itemView.getContext(), R.color.white),
                     ContextCompat.getColor(itemView.getContext(), R.color.colorPrimary));
-            int height = itemView.getContext().getResources().getDimensionPixelSize(R.dimen.banner_item_height);
+            /*int height = itemView.getContext().getResources().getDimensionPixelSize(R.dimen.banner_item_height);
             ViewGroup.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, height);
-            banner.setLayoutParams(params);
+            banner.setLayoutParams(params);*/
             adapter = new Recommend1BannerItemViewBinder.Recommend1BannerAdapter(itemView.getContext());
         }
 
