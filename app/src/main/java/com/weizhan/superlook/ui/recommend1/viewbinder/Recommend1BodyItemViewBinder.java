@@ -3,11 +3,14 @@ package com.weizhan.superlook.ui.recommend1.viewbinder;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.common.util.StringUtil;
+import com.common.util.ToastUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.weizhan.superlook.R;
 import com.weizhan.superlook.model.bean.recommend1.AppRecommend1Show;
@@ -48,6 +51,12 @@ public class Recommend1BodyItemViewBinder extends ItemViewBinder<AppRecommend1Sh
         }
         holder.tvDanmaku.setCompoundDrawablePadding(SystemUtil.dp2px(holder.tvDanmaku.getContext(), 2));
         holder.tvDanmaku.setCompoundDrawableTintList(ColorStateList.valueOf(0xffa5a5a5));*/
+        holder.item_rl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ToastUtils.showLongToast("点击了影片");
+            }
+        });
     }
 
     static class Recommend1BodyViewHolder extends RecyclerView.ViewHolder {
@@ -56,6 +65,8 @@ public class Recommend1BodyItemViewBinder extends ItemViewBinder<AppRecommend1Sh
         SimpleDraweeView ivCover;
         @BindView(R.id.tv_area_title)
         TextView tvAreaTitle;
+        @BindView(R.id.item_rl)
+        RelativeLayout item_rl;
 
         public Recommend1BodyViewHolder(View itemView) {
             super(itemView);
