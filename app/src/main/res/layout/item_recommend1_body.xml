@@ -51,6 +51,7 @@
             android:layout_marginTop="4dp"
             android:layout_height="wrap_content"
             android:text="媚者无疆"
+            android:textStyle="bold"
             android:textColor="#ff4a4a4a"
             android:textSize="13sp" />
         <TextView
