@@ -138,5 +138,6 @@
     <dimen name="filter_bar_size">40.0dip</dimen>
     <dimen name="recommend_cover_height">102.0dip</dimen>
     <dimen name="recommend1_cover_height">95.0dip</dimen>
+    <dimen name="recommend1_cover_height1">160.0dip</dimen>
 
 </resources>

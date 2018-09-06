@@ -315,4 +315,98 @@ public class AppRecommend1Show {
             this.logo = logo;
         }
     }
+
+    public class BodyMovie {
+
+        private String title;
+
+        private String cover;
+
+        private String uri;
+
+        private String param;
+
+        @SerializedName("goto")
+        private String _goto;
+
+        private int play;
+
+        private int danmaku;
+
+        private int favourite;
+
+        private boolean is_ad;
+
+        public void setTitle(String title) {
+            this.title = title;
+        }
+
+        public String getTitle() {
+            return this.title;
+        }
+
+        public void setCover(String cover) {
+            this.cover = cover;
+        }
+
+        public String getCover() {
+            return this.cover;
+        }
+
+        public void setUri(String uri) {
+            this.uri = uri;
+        }
+
+        public String getUri() {
+            return this.uri;
+        }
+
+        public void setParam(String param) {
+            this.param = param;
+        }
+
+        public String getParam() {
+            return this.param;
+        }
+
+        public void setGoto(String _goto) {
+            this._goto = _goto;
+        }
+
+        public String getGoto() {
+            return this._goto;
+        }
+
+        public void setPlay(int play) {
+            this.play = play;
+        }
+
+        public int getPlay() {
+            return this.play;
+        }
+
+        public void setDanmaku(int danmaku) {
+            this.danmaku = danmaku;
+        }
+
+        public int getDanmaku() {
+            return this.danmaku;
+        }
+
+        public int getFavourite() {
+            return favourite;
+        }
+
+        public void setFavourite(int favourite) {
+            this.favourite = favourite;
+        }
+
+        public void setIs_ad(boolean is_ad) {
+            this.is_ad = is_ad;
+        }
+
+        public boolean getIs_ad() {
+            return this.is_ad;
+        }
+    }
 }

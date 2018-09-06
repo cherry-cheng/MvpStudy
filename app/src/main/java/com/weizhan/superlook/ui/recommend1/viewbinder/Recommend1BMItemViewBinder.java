@@ -9,10 +9,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.common.util.ImageUtil;
-import com.common.util.ScreenUtil;
 import com.common.util.StringUtil;
-import com.common.util.SystemUtil;
 import com.common.util.ToastUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.weizhan.superlook.R;
@@ -23,30 +20,24 @@ import butterknife.ButterKnife;
 import me.drakeet.multitype.ItemViewBinder;
 
 /**
- * Created by Administrator on 2018/9/5.
+ * Created by Administrator on 2018/9/6.
  */
 
-public class Recommend1BodyItemViewBinder extends ItemViewBinder<AppRecommend1Show.Body, Recommend1BodyItemViewBinder.Recommend1BodyViewHolder> {
+public class Recommend1BMItemViewBinder extends ItemViewBinder<AppRecommend1Show.BodyMovie, Recommend1BMItemViewBinder.Recommend1BMViewHolder> {
 
     @NonNull
     @Override
-    protected Recommend1BodyItemViewBinder.Recommend1BodyViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
-        View itemView = inflater.inflate(R.layout.item_recommend1_body, parent, false);
-        return new Recommend1BodyItemViewBinder.Recommend1BodyViewHolder(itemView);
+    protected Recommend1BMItemViewBinder.Recommend1BMViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
+        View itemView = inflater.inflate(R.layout.item_recommend1_bodymovie, parent, false);
+        return new Recommend1BMItemViewBinder.Recommend1BMViewHolder(itemView);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull Recommend1BodyItemViewBinder.Recommend1BodyViewHolder holder, @NonNull AppRecommend1Show.Body item) {
+    protected void onBindViewHolder(@NonNull Recommend1BMItemViewBinder.Recommend1BMViewHolder holder, @NonNull AppRecommend1Show.BodyMovie item) {
         Context context = holder.ivCover.getContext();
-/*        if (holder.getPosition() == 5) {
-            int width = ScreenUtil.getScreenWidth(context) / 3 - SystemUtil.dp2px(context, 8);
-            int height = context.getResources().getDimensionPixelSize(R.dimen.recommend1_cover_height1);
-            ImageUtil.load(holder.ivCover, item.getCover(), width, height);
-        } else {
-            int width = ScreenUtil.getScreenWidth(context) / 2 - SystemUtil.dp2px(context, 8);
-            int height = context.getResources().getDimensionPixelSize(R.dimen.recommend1_cover_height);
-            ImageUtil.load(holder.ivCover, item.getCover(), width, height);
-        }*/
+        /*int width = ScreenUtil.getScreenWidth(context) / 2 - SystemUtil.dp2px(context, 8);
+        int height = context.getResources().getDimensionPixelSize(R.dimen.recommend1_cover_height);
+        ImageUtil.load(holder.ivCover, item.getCover(), width, height);*/
         holder.ivCover.setImageURI(item.getCover());
         holder.tvAreaTitle.setText(item.getTitle());
 //        holder.tvPlay.setText(StringUtil.numberToWord(item.getPlay()));
@@ -68,7 +59,7 @@ public class Recommend1BodyItemViewBinder extends ItemViewBinder<AppRecommend1Sh
         });
     }
 
-    static class Recommend1BodyViewHolder extends RecyclerView.ViewHolder {
+    static class Recommend1BMViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.iv_cover)
         SimpleDraweeView ivCover;
@@ -77,7 +68,7 @@ public class Recommend1BodyItemViewBinder extends ItemViewBinder<AppRecommend1Sh
         @BindView(R.id.item_rl)
         RelativeLayout item_rl;
 
-        public Recommend1BodyViewHolder(View itemView) {
+        public Recommend1BMViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }

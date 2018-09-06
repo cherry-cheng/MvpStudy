@@ -28,16 +28,17 @@ public class Recommend1IndexItemDecoration extends RecyclerView.ItemDecoration {
         int margin_small = view.getContext().getResources().getDimensionPixelOffset(R.dimen.margin_small);
         int margin_4 = view.getContext().getResources().getDimensionPixelOffset(R.dimen.margin_4);
         int margin_10 = view.getContext().getResources().getDimensionPixelOffset(R.dimen.margin_10);
-        if (spanSize == 2) {
+        int margin_2 = view.getContext().getResources().getDimensionPixelOffset(R.dimen.margin_2);
+        if (spanSize == 6) {
             if (position == 0) { //header
                 outRect.bottom = margin_small;
             } else {
                 outRect.bottom = margin_10;
                 outRect.top = margin_10;
             }
-        } else {
+        } else if (spanSize == 3){
             int index = spanSizeLookup.getSpanIndex(position , 2);
-            switch (index) {
+            /*switch (index) {
                 case 0:
                     outRect.left = margin_small;
                     outRect.right = margin_4;
@@ -46,7 +47,29 @@ public class Recommend1IndexItemDecoration extends RecyclerView.ItemDecoration {
                     outRect.left = margin_4;
                     outRect.right = margin_small;
                     break;
-            }
+            }*/
+            outRect.left = margin_4;
+            outRect.right = margin_4;
+            outRect.bottom = margin_4;
+            outRect.top = margin_4;
+        } else {
+            /*int index = spanSizeLookup.getSpanIndex(position, 3);
+            switch (index) {
+                case 0:
+                    outRect.left = margin_small;
+                    outRect.right = margin_2;
+                    break;
+                case 1:
+                    outRect.left = margin_2;
+                    outRect.right = margin_2;
+                    break;
+                case 3:
+                    outRect.left = margin_2;
+                    outRect.right = margin_small;
+                    break;
+            }*/
+            outRect.left = margin_2;
+            outRect.right = margin_2;
             outRect.bottom = margin_4;
             outRect.top = margin_4;
         }
