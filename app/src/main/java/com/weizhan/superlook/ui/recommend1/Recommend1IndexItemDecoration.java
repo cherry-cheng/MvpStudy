@@ -32,8 +32,6 @@ public class Recommend1IndexItemDecoration extends RecyclerView.ItemDecoration {
             if (position == 0) { //header
                 outRect.bottom = margin_small;
             } else {
-                outRect.left = margin_small;
-                outRect.right = margin_small;
                 outRect.bottom = margin_10;
                 outRect.top = margin_10;
             }
