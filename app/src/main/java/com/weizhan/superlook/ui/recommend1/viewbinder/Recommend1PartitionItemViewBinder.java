@@ -30,13 +30,10 @@ public class Recommend1PartitionItemViewBinder extends ItemViewBinder<AppRecomme
 
     @Override
     protected void onBindViewHolder(@NonNull Recommend1PartitionItemViewBinder.PartitionViewHolder holder, @NonNull AppRecommend1Show.Partition item) {
-        holder.ivIcon.setBackgroundResource(item.getLogo());
         holder.tvName.setText(item.getTitle());
     }
 
     static class PartitionViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.iv_icon)
-        ImageView ivIcon;
         @BindView(R.id.tv_name)
         TextView tvName;
 

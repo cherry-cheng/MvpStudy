@@ -26,30 +26,31 @@ public class Recommend1IndexItemDecoration extends RecyclerView.ItemDecoration {
         int spanSize = spanSizeLookup.getSpanSize(position);
         int margin_normal = view.getContext().getResources().getDimensionPixelOffset(R.dimen.margin_normal);
         int margin_small = view.getContext().getResources().getDimensionPixelOffset(R.dimen.margin_small);
-        int margin_tiny = view.getContext().getResources().getDimensionPixelOffset(R.dimen.margin_tiny);
+        int margin_4 = view.getContext().getResources().getDimensionPixelOffset(R.dimen.margin_4);
+        int margin_10 = view.getContext().getResources().getDimensionPixelOffset(R.dimen.margin_10);
         if (spanSize == 2) {
             if (position == 0) { //header
-                outRect.bottom = margin_tiny;
-            } else {
-                outRect.left = margin_normal;
-                outRect.right = margin_normal;
                 outRect.bottom = margin_small;
-                outRect.top = margin_small;
+            } else {
+                outRect.left = margin_small;
+                outRect.right = margin_small;
+                outRect.bottom = margin_10;
+                outRect.top = margin_10;
             }
         } else {
             int index = spanSizeLookup.getSpanIndex(position , 2);
             switch (index) {
                 case 0:
-                    outRect.left = margin_normal;
-                    outRect.right = margin_small;
+                    outRect.left = margin_small;
+                    outRect.right = margin_4;
                     break;
                 case 1:
-                    outRect.left = margin_small;
-                    outRect.right = margin_normal;
+                    outRect.left = margin_4;
+                    outRect.right = margin_small;
                     break;
             }
-            outRect.bottom = margin_small;
-            outRect.top = margin_small;
+            outRect.bottom = margin_4;
+            outRect.top = margin_4;
         }
     }
 }
