@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/back_iv"
+        android:src="@drawable/ic_icon_nav_back"
+        android:layout_width="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_height="24dp" />
+    <RelativeLayout
+        android:layout_toRightOf="@+id/back_iv"
+        android:id="@+id/rl_search"
+        android:background="#f5f5f5"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="8dp"
+        android:layout_height="30dp">
+        <TextView
+            android:textColor="#80000000"
+            android:text="西虹市首富"
+            android:textSize="13dp"
+            android:layout_marginLeft="8dp"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_icon_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <FrameLayout
+        android:id="@+id/search_container"
+        android:layout_below="@+id/rl_search"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</RelativeLayout>

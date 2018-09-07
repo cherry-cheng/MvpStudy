@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.widget.RelativeLayout;
 
 import com.androidkun.xtablayout.XTabLayout;
 import com.weizhan.superlook.App;
@@ -12,8 +13,8 @@ import com.weizhan.superlook.model.event.TabSelectedEvent;
 import com.weizhan.superlook.ui.bangumi.BangumiFragment;
 import com.weizhan.superlook.ui.movie.MovieFragment;
 import com.weizhan.superlook.ui.recommend1.Recommend1Fragment;
+import com.weizhan.superlook.ui.search.SearchActivity;
 import com.weizhan.superlook.ui.series.SeriesFragment;
-import com.weizhan.superlook.ui.test.fragment.PlaceHolderFragment;
 import com.common.base.BaseFragment;
 import com.weizhan.superlook.ui.variety.VarietyFragment;
 
@@ -27,6 +28,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * 首页主Fragment
@@ -39,6 +41,8 @@ public class MainFragment extends BaseFragment {
     XTabLayout tabLayout;
     @BindView(R.id.viewpager)
     ViewPager viewPager;
+    @BindView(R.id.rl_search)
+    RelativeLayout rl_search;
 
     @Inject
     Recommend1Fragment mRecommend1Fragment;
@@ -114,6 +118,11 @@ public class MainFragment extends BaseFragment {
     public void onStop() {
         EventBus.getDefault().unregister(this);
         super.onStop();
+    }
+
+    @OnClick(R.id.rl_search)
+    void goSearch() {
+        SearchActivity.startActivity(getContext());
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

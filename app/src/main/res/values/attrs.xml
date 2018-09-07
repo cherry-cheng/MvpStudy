@@ -13,4 +13,9 @@
             <enum name="Large" value="1" />
         </attr>
     </declare-styleable>
+
+    <declare-styleable name="HotWordListView">
+        <attr name="vertical_gap" format="dimension"></attr>
+        <attr name="horizontal_gap" format="dimension"></attr>
+    </declare-styleable>
 </resources>

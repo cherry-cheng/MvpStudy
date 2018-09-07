@@ -12,23 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!-- 主页 -->
-
-        <!-- 测试mvp结构 -->
-        <!-- 测试Fragment TabLayout DrawerLayout 沉浸式布局 -->
-
-        <!-- Toolbar随页面滑动收展 -->
-
-        <!-- StatusBar同Toolbar同背景 -->
-
-        <!-- StatusBar同Toolbar同背景,滑动ToolBar放大缩小渐变 -->
-
-        <!-- 测试api -->
-
-        <!-- 测试lifecycle -->
-
-        <!-- 测试lifecycle和mvp -->
-
         <!-- 测试播放器 -->
         <activity
             android:name="com.weizhan.superlook.ui.test.activity.TestPlayerActivity"
@@ -45,6 +28,11 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.search.SearchActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
         </activity>
     </application>
 

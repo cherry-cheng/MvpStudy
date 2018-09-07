@@ -4,6 +4,7 @@ import com.weizhan.superlook.di.module.ActivityModule;
 import com.weizhan.superlook.di.module.PageModule;
 import com.weizhan.superlook.di.scope.PerActivity;
 import com.weizhan.superlook.ui.main.MainActivity;
+import com.weizhan.superlook.ui.search.SearchActivity;
 
 import dagger.Component;
 
@@ -14,8 +15,9 @@ import dagger.Component;
 @Component(dependencies = {ApiComponent.class}, modules = {ActivityModule.class, PageModule.class})
 @PerActivity
 public interface ActivityComponent {
-    //Bilibili
+    //superlook
     void inject(MainActivity mainActivity);
+    void inject(SearchActivity searchActivity);
 
     //Test
 

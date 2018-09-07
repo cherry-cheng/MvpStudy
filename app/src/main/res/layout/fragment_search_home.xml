@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout
+        android:id="@+id/searchHistory_rl"
+        android:layout_below="@+id/rl_search"
+        android:layout_marginTop="23dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/title"
+            android:text="搜索历史"
+            android:textColor="#ff4a4a4a"
+            android:textSize="15sp"
+            android:layout_alignParentTop="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_icon_searchstory_del"
+            android:layout_width="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_height="wrap_content" />
+        <com.weizhan.superlook.widget.textview.HotWordListView
+            android:id="@+id/search_history"
+            android:layout_below="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_marginTop="8dp"
+            android:layout_height="90dp"
+            app:horizontal_gap="8dp"
+            app:vertical_gap="8dp">
+        </com.weizhan.superlook.widget.textview.HotWordListView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_hot"
+        android:layout_below="@+id/searchHistory_rl"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/title_hot"
+            android:text="热门搜索"
+            android:textColor="#ff4a4a4a"
+            android:textSize="15sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/hotRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_marginTop="8dp"
+            android:layout_below="@+id/title_hot"
+            android:layout_height="wrap_content">
+        </android.support.v7.widget.RecyclerView>
+    </RelativeLayout>
+</RelativeLayout>
