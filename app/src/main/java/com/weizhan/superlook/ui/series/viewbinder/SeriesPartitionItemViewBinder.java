@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.weizhan.superlook.R;
-import com.weizhan.superlook.model.bean.recommend1.AppRecommend1Show;
+import com.weizhan.superlook.model.bean.series.AppSeriesShow;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -18,7 +18,7 @@ import me.drakeet.multitype.ItemViewBinder;
  * Created by Administrator on 2018/9/5.
  */
 
-public class SeriesPartitionItemViewBinder extends ItemViewBinder<AppRecommend1Show.Partition, SeriesPartitionItemViewBinder.PartitionViewHolder> {
+public class SeriesPartitionItemViewBinder extends ItemViewBinder<AppSeriesShow.Partition, SeriesPartitionItemViewBinder.PartitionViewHolder> {
 
     @NonNull
     @Override
@@ -28,7 +28,7 @@ public class SeriesPartitionItemViewBinder extends ItemViewBinder<AppRecommend1S
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull SeriesPartitionItemViewBinder.PartitionViewHolder holder, @NonNull AppRecommend1Show.Partition item) {
+    protected void onBindViewHolder(@NonNull SeriesPartitionItemViewBinder.PartitionViewHolder holder, @NonNull AppSeriesShow.Partition item) {
         holder.tvName.setText(item.getTitle());
     }
 

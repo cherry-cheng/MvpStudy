@@ -17,41 +17,41 @@ import me.drakeet.multitype.ItemViewBinder;
  * Created by Administrator on 2018/9/5.
  */
 
-public class MovieFooterItemViewBinder extends ItemViewBinder<MovieFooterItemViewBinder.Recommend1Footer, MovieFooterItemViewBinder.Recommend1FooterViewHolder> {
+public class MovieFooterItemViewBinder extends ItemViewBinder<MovieFooterItemViewBinder.MovieFooter, MovieFooterItemViewBinder.MovieFooterViewHolder> {
 
     @NonNull
     @Override
-    protected MovieFooterItemViewBinder.Recommend1FooterViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
+    protected MovieFooterItemViewBinder.MovieFooterViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
         View itemView = inflater.inflate(R.layout.item_more, parent, false);
-        return new MovieFooterItemViewBinder.Recommend1FooterViewHolder(itemView);
+        return new MovieFooterItemViewBinder.MovieFooterViewHolder(itemView);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull MovieFooterItemViewBinder.Recommend1FooterViewHolder holder, @NonNull MovieFooterItemViewBinder.Recommend1Footer item) {
-        String region = holder.tvMore.getContext().getString(R.string.more_format, item.getRecommend1());
+    protected void onBindViewHolder(@NonNull MovieFooterItemViewBinder.MovieFooterViewHolder holder, @NonNull MovieFooterItemViewBinder.MovieFooter item) {
+        String region = holder.tvMore.getContext().getString(R.string.more_format, item.getMovie());
         holder.tvMore.setText(region);
     }
 
-    static class Recommend1FooterViewHolder extends RecyclerView.ViewHolder {
+    static class MovieFooterViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.tv_more)
         TextView tvMore;
 
-        public Recommend1FooterViewHolder(View itemView) {
+        public MovieFooterViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
     }
 
-    public static class Recommend1Footer {
+    public static class MovieFooter {
 
         private String region;
 
-        public String getRecommend1() {
+        public String getMovie() {
             return region;
         }
 
-        public void setRecommend1(String region) {
+        public void setMovie(String region) {
             this.region = region;
         }
     }

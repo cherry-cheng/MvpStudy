@@ -17,41 +17,41 @@ import me.drakeet.multitype.ItemViewBinder;
  * Created by Administrator on 2018/9/5.
  */
 
-public class SeriesFooterItemViewBinder extends ItemViewBinder<SeriesFooterItemViewBinder.Recommend1Footer, SeriesFooterItemViewBinder.Recommend1FooterViewHolder> {
+public class SeriesFooterItemViewBinder extends ItemViewBinder<SeriesFooterItemViewBinder.SeriesFooter, SeriesFooterItemViewBinder.SeriesFooterViewHolder> {
 
     @NonNull
     @Override
-    protected SeriesFooterItemViewBinder.Recommend1FooterViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
+    protected SeriesFooterItemViewBinder.SeriesFooterViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
         View itemView = inflater.inflate(R.layout.item_more, parent, false);
-        return new SeriesFooterItemViewBinder.Recommend1FooterViewHolder(itemView);
+        return new SeriesFooterItemViewBinder.SeriesFooterViewHolder(itemView);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull SeriesFooterItemViewBinder.Recommend1FooterViewHolder holder, @NonNull SeriesFooterItemViewBinder.Recommend1Footer item) {
-        String region = holder.tvMore.getContext().getString(R.string.more_format, item.getRecommend1());
+    protected void onBindViewHolder(@NonNull SeriesFooterItemViewBinder.SeriesFooterViewHolder holder, @NonNull SeriesFooterItemViewBinder.SeriesFooter item) {
+        String region = holder.tvMore.getContext().getString(R.string.more_format, item.getSeries());
         holder.tvMore.setText(region);
     }
 
-    static class Recommend1FooterViewHolder extends RecyclerView.ViewHolder {
+    static class SeriesFooterViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.tv_more)
         TextView tvMore;
 
-        public Recommend1FooterViewHolder(View itemView) {
+        public SeriesFooterViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
     }
 
-    public static class Recommend1Footer {
+    public static class SeriesFooter {
 
         private String region;
 
-        public String getRecommend1() {
+        public String getSeries() {
             return region;
         }
 
-        public void setRecommend1(String region) {
+        public void setSeries(String region) {
             this.region = region;
         }
     }

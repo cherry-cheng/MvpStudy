@@ -1,4 +1,4 @@
-package com.weizhan.superlook.ui.movie.viewbinder;
+package com.weizhan.superlook.ui.variety.viewbinder;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.weizhan.superlook.R;
-import com.weizhan.superlook.model.bean.movie.AppMovieShow;
+import com.weizhan.superlook.model.bean.variety.AppVarietyShow;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -18,17 +18,17 @@ import me.drakeet.multitype.ItemViewBinder;
  * Created by Administrator on 2018/9/5.
  */
 
-public class MoviePartitionItemViewBinder extends ItemViewBinder<AppMovieShow.Partition, MoviePartitionItemViewBinder.PartitionViewHolder> {
+public class VarietyPartitionItemViewBinder extends ItemViewBinder<AppVarietyShow.Partition, VarietyPartitionItemViewBinder.PartitionViewHolder> {
 
     @NonNull
     @Override
-    protected MoviePartitionItemViewBinder.PartitionViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
-        View itemView = inflater.inflate(R.layout.item_movie_partition, parent, false);
-        return new MoviePartitionItemViewBinder.PartitionViewHolder(itemView);
+    protected VarietyPartitionItemViewBinder.PartitionViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
+        View itemView = inflater.inflate(R.layout.item_series_partition, parent, false);
+        return new VarietyPartitionItemViewBinder.PartitionViewHolder(itemView);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull MoviePartitionItemViewBinder.PartitionViewHolder holder, @NonNull AppMovieShow.Partition item) {
+    protected void onBindViewHolder(@NonNull VarietyPartitionItemViewBinder.PartitionViewHolder holder, @NonNull AppVarietyShow.Partition item) {
         holder.tvName.setText(item.getTitle());
     }
 

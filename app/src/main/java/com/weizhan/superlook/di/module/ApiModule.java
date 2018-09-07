@@ -6,9 +6,9 @@ import com.weizhan.superlook.model.api.AppApis;
 import com.weizhan.superlook.model.api.BangumiApis;
 import com.weizhan.superlook.model.api.MovieApis;
 import com.weizhan.superlook.model.api.Recommend1Apis;
-import com.weizhan.superlook.model.api.RecommendApis;
 import com.weizhan.superlook.model.api.RegionApis;
 import com.weizhan.superlook.model.api.SeriesApis;
+import com.weizhan.superlook.model.api.VarietyApis;
 import com.weizhan.superlook.model.api.WeChatApis;
 import com.weizhan.superlook.model.api.ZhihuApis;
 
@@ -34,12 +34,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 @Module
 public class ApiModule {
-
-    @GlobalApis
-    @Provides
-    RecommendApis provideRecommendService(@Named("RecommendApi") Retrofit retrofit) {
-        return retrofit.create(RecommendApis.class);
-    }
 
     @GlobalApis
     @Provides
@@ -73,6 +67,12 @@ public class ApiModule {
 
     @GlobalApis
     @Provides
+    VarietyApis provideVarietyService(@Named("VarietyApi") Retrofit retrofit) {
+        return retrofit.create(VarietyApis.class);
+    }
+
+    @GlobalApis
+    @Provides
     MovieApis provideMovieService(@Named("MovieApi") Retrofit retrofit) {
         return retrofit.create(MovieApis.class);
     }
@@ -88,14 +88,6 @@ public class ApiModule {
     @Provides
     WeChatApis provideWeChatService(@Named("WeChatApi") Retrofit retrofit) {
         return retrofit.create(WeChatApis.class);
-    }
-
-
-    @GlobalApis
-    @Provides
-    @Named("RecommendApi")
-    Retrofit provideRecommendRetrofit(Retrofit.Builder builder, OkHttpClient client) {
-        return createRetrofit(builder, client, RecommendApis.HOST);
     }
 
     @GlobalApis
@@ -131,6 +123,13 @@ public class ApiModule {
     @Named("SeriesApi")
     Retrofit provideSeriesRetrofit(Retrofit.Builder builder, OkHttpClient client) {
         return createRetrofit(builder, client, SeriesApis.HOST);
+    }
+
+    @GlobalApis
+    @Provides
+    @Named("VarietyApi")
+    Retrofit provideVarietyRetrofit(Retrofit.Builder builder, OkHttpClient client) {
+        return createRetrofit(builder, client, VarietyApis.HOST);
     }
 
     @GlobalApis

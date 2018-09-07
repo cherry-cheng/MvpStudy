@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import com.common.base.BaseMvpFragment;
 import com.weizhan.superlook.App;
 import com.weizhan.superlook.R;
-import com.weizhan.superlook.model.bean.recommend1.AppRecommend1Show;
+import com.weizhan.superlook.model.bean.movie.AppMovieShow;
 import com.weizhan.superlook.ui.movie.viewbinder.MovieBodyItemViewBinder;
 import com.weizhan.superlook.ui.movie.viewbinder.MovieFooterItemViewBinder;
 import com.weizhan.superlook.ui.movie.viewbinder.MoviePartitionItemViewBinder;
@@ -48,7 +48,7 @@ public class MovieFragment extends BaseMvpFragment<MoviePresenter> implements Mo
             @Override
             public int getSpanSize(int position) {
                 Object item = mAdapter.getItems().get(position);
-                return item instanceof AppRecommend1Show.Body ? 1 : SPAN_COUNT;
+                return item instanceof AppMovieShow.Body ? 1 : SPAN_COUNT;
             }
         };
         layoutManager.setSpanSizeLookup(spanSizeLookup);
@@ -56,9 +56,9 @@ public class MovieFragment extends BaseMvpFragment<MoviePresenter> implements Mo
         mRecyclerView.addItemDecoration(new MovieIndexItemDecoration());
         mRecyclerView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.white));
         mAdapter = new CommonAdapter();
-        mAdapter.register(AppRecommend1Show.Partition.class, new MoviePartitionItemViewBinder());
-        mAdapter.register(AppRecommend1Show.Body.class, new MovieBodyItemViewBinder());
-        mAdapter.register(MovieFooterItemViewBinder.Recommend1Footer.class, new MovieFooterItemViewBinder());
+        mAdapter.register(AppMovieShow.Partition.class, new MoviePartitionItemViewBinder());
+        mAdapter.register(AppMovieShow.Body.class, new MovieBodyItemViewBinder());
+        mAdapter.register(MovieFooterItemViewBinder.MovieFooter.class, new MovieFooterItemViewBinder());
         mAdapter.setScrollSaveStrategyEnabled(true);
         mRecyclerView.setAdapter(mAdapter);
     }

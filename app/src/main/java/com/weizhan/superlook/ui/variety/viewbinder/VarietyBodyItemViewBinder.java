@@ -1,4 +1,4 @@
-package com.weizhan.superlook.ui.series.viewbinder;
+package com.weizhan.superlook.ui.variety.viewbinder;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -13,7 +13,7 @@ import com.common.util.StringUtil;
 import com.common.util.ToastUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.weizhan.superlook.R;
-import com.weizhan.superlook.model.bean.series.AppSeriesShow;
+import com.weizhan.superlook.model.bean.variety.AppVarietyShow;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,17 +23,17 @@ import me.drakeet.multitype.ItemViewBinder;
  * Created by Administrator on 2018/9/5.
  */
 
-public class SeriesBodyItemViewBinder extends ItemViewBinder<AppSeriesShow.Body, SeriesBodyItemViewBinder.SeriesBodyViewHolder> {
+public class VarietyBodyItemViewBinder extends ItemViewBinder<AppVarietyShow.Body, VarietyBodyItemViewBinder.VarietyBodyViewHolder> {
 
     @NonNull
     @Override
-    protected SeriesBodyItemViewBinder.SeriesBodyViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
+    protected VarietyBodyItemViewBinder.VarietyBodyViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
         View itemView = inflater.inflate(R.layout.item_series_body, parent, false);
-        return new SeriesBodyItemViewBinder.SeriesBodyViewHolder(itemView);
+        return new VarietyBodyItemViewBinder.VarietyBodyViewHolder(itemView);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull SeriesBodyItemViewBinder.SeriesBodyViewHolder holder, @NonNull AppSeriesShow.Body item) {
+    protected void onBindViewHolder(@NonNull VarietyBodyItemViewBinder.VarietyBodyViewHolder holder, @NonNull AppVarietyShow.Body item) {
         Context context = holder.ivCover.getContext();
 /*        if (holder.getPosition() == 5) {
             int width = ScreenUtil.getScreenWidth(context) / 3 - SystemUtil.dp2px(context, 8);
@@ -65,7 +65,7 @@ public class SeriesBodyItemViewBinder extends ItemViewBinder<AppSeriesShow.Body,
         });
     }
 
-    static class SeriesBodyViewHolder extends RecyclerView.ViewHolder {
+    static class VarietyBodyViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.iv_cover)
         SimpleDraweeView ivCover;
@@ -74,7 +74,7 @@ public class SeriesBodyItemViewBinder extends ItemViewBinder<AppSeriesShow.Body,
         @BindView(R.id.item_rl)
         RelativeLayout item_rl;
 
-        public SeriesBodyViewHolder(View itemView) {
+        public VarietyBodyViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }

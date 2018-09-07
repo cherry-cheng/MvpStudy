@@ -13,7 +13,7 @@ import com.common.util.StringUtil;
 import com.common.util.ToastUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.weizhan.superlook.R;
-import com.weizhan.superlook.model.bean.recommend1.AppRecommend1Show;
+import com.weizhan.superlook.model.bean.movie.AppMovieShow;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,17 +23,17 @@ import me.drakeet.multitype.ItemViewBinder;
  * Created by Administrator on 2018/9/5.
  */
 
-public class MovieBodyItemViewBinder extends ItemViewBinder<AppRecommend1Show.Body, MovieBodyItemViewBinder.Recommend1BodyViewHolder> {
+public class MovieBodyItemViewBinder extends ItemViewBinder<AppMovieShow.Body, MovieBodyItemViewBinder.MovieBodyViewHolder> {
 
     @NonNull
     @Override
-    protected MovieBodyItemViewBinder.Recommend1BodyViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
+    protected MovieBodyItemViewBinder.MovieBodyViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
         View itemView = inflater.inflate(R.layout.item_movie_body, parent, false);
-        return new MovieBodyItemViewBinder.Recommend1BodyViewHolder(itemView);
+        return new MovieBodyItemViewBinder.MovieBodyViewHolder(itemView);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull MovieBodyItemViewBinder.Recommend1BodyViewHolder holder, @NonNull AppRecommend1Show.Body item) {
+    protected void onBindViewHolder(@NonNull MovieBodyItemViewBinder.MovieBodyViewHolder holder, @NonNull AppMovieShow.Body item) {
         Context context = holder.ivCover.getContext();
 /*        if (holder.getPosition() == 5) {
             int width = ScreenUtil.getScreenWidth(context) / 3 - SystemUtil.dp2px(context, 8);
@@ -65,7 +65,7 @@ public class MovieBodyItemViewBinder extends ItemViewBinder<AppRecommend1Show.Bo
         });
     }
 
-    static class Recommend1BodyViewHolder extends RecyclerView.ViewHolder {
+    static class MovieBodyViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.iv_cover)
         SimpleDraweeView ivCover;
@@ -74,7 +74,7 @@ public class MovieBodyItemViewBinder extends ItemViewBinder<AppRecommend1Show.Bo
         @BindView(R.id.item_rl)
         RelativeLayout item_rl;
 
-        public Recommend1BodyViewHolder(View itemView) {
+        public MovieBodyViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }

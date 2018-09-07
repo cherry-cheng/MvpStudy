@@ -1,4 +1,4 @@
-package com.weizhan.superlook.ui.series;
+package com.weizhan.superlook.ui.variety;
 
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
@@ -7,11 +7,10 @@ import android.support.v7.widget.RecyclerView;
 import com.common.base.BaseMvpFragment;
 import com.weizhan.superlook.App;
 import com.weizhan.superlook.R;
-import com.weizhan.superlook.model.bean.recommend1.AppRecommend1Show;
-import com.weizhan.superlook.model.bean.series.AppSeriesShow;
-import com.weizhan.superlook.ui.series.viewbinder.SeriesBodyItemViewBinder;
-import com.weizhan.superlook.ui.series.viewbinder.SeriesFooterItemViewBinder;
-import com.weizhan.superlook.ui.series.viewbinder.SeriesPartitionItemViewBinder;
+import com.weizhan.superlook.model.bean.variety.AppVarietyShow;
+import com.weizhan.superlook.ui.variety.viewbinder.VarietyBodyItemViewBinder;
+import com.weizhan.superlook.ui.variety.viewbinder.VarietyFooterItemViewBinder;
+import com.weizhan.superlook.ui.variety.viewbinder.VarietyPartitionItemViewBinder;
 import com.weizhan.superlook.widget.adapter.CommonAdapter;
 
 import butterknife.BindView;
@@ -21,9 +20,9 @@ import me.drakeet.multitype.Items;
  * Created by Administrator on 2018/9/5.
  */
 
-public class SeriesFragment extends BaseMvpFragment<SeriesPresenter> implements SeriesContract.View {
+public class VarietyFragment extends BaseMvpFragment<VarietyPresenter> implements VarietyContract.View {
 
-    public static final String TAG = SeriesFragment.class.getSimpleName();
+    public static final String TAG = VarietyFragment.class.getSimpleName();
 
     private static final int SPAN_COUNT = 2;
 
@@ -49,19 +48,19 @@ public class SeriesFragment extends BaseMvpFragment<SeriesPresenter> implements 
             @Override
             public int getSpanSize(int position) {
                 Object item = mAdapter.getItems().get(position);
-                return item instanceof AppRecommend1Show.Body ? 1 : SPAN_COUNT;
+                return item instanceof AppVarietyShow.Body ? 1 : SPAN_COUNT;
             }
         };
         layoutManager.setSpanSizeLookup(spanSizeLookup);
         mRecyclerView.setLayoutManager(layoutManager);
-        mRecyclerView.addItemDecoration(new SeriesIndexItemDecoration());
+        mRecyclerView.addItemDecoration(new VarietyIndexItemDecoration());
         mRecyclerView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.white));
         mAdapter = new CommonAdapter();
-//        mAdapter.register(SeriesHeaderItemViewBinder.Recommend1Header.class, new SeriesHeaderItemViewBinder());
-//        mAdapter.register(AppRecommend1Show.Banner.class, new SeriesBannerItemViewBinder());
-        mAdapter.register(AppSeriesShow.Partition.class, new SeriesPartitionItemViewBinder());
-        mAdapter.register(AppSeriesShow.Body.class, new SeriesBodyItemViewBinder());
-        mAdapter.register(SeriesFooterItemViewBinder.SeriesFooter.class, new SeriesFooterItemViewBinder());
+//        mAdapter.register(SeriesHeaderItemViewBinder.VarietyHeader.class, new SeriesHeaderItemViewBinder());
+//        mAdapter.register(AppVarietyShow.Banner.class, new SeriesBannerItemViewBinder());
+        mAdapter.register(AppVarietyShow.Partition.class, new VarietyPartitionItemViewBinder());
+        mAdapter.register(AppVarietyShow.Body.class, new VarietyBodyItemViewBinder());
+        mAdapter.register(VarietyFooterItemViewBinder.VarietyFooter.class, new VarietyFooterItemViewBinder());
         mAdapter.setScrollSaveStrategyEnabled(true);
         mRecyclerView.setAdapter(mAdapter);
     }

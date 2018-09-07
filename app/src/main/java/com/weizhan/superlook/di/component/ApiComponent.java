@@ -6,9 +6,9 @@ import com.weizhan.superlook.model.api.AppApis;
 import com.weizhan.superlook.model.api.BangumiApis;
 import com.weizhan.superlook.model.api.MovieApis;
 import com.weizhan.superlook.model.api.Recommend1Apis;
-import com.weizhan.superlook.model.api.RecommendApis;
 import com.weizhan.superlook.model.api.RegionApis;
 import com.weizhan.superlook.model.api.SeriesApis;
+import com.weizhan.superlook.model.api.VarietyApis;
 import com.weizhan.superlook.model.api.WeChatApis;
 import com.weizhan.superlook.model.api.ZhihuApis;
 import com.common.app.AppComponent;
@@ -25,8 +25,6 @@ public interface ApiComponent {
 
     AppApis appApis();
 
-    RecommendApis recommendApis();
-
     BangumiApis biliBiliApis();
 
     RegionApis regionApis();
@@ -36,6 +34,8 @@ public interface ApiComponent {
     SeriesApis seriesApis();
 
     MovieApis movieApis();
+
+    VarietyApis varietyApis();
     //Test
     ZhihuApis zhihuApis();
 

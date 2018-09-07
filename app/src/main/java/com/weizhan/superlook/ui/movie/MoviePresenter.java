@@ -6,9 +6,9 @@ import android.util.Log;
 import com.common.base.AbsBasePresenter;
 import com.common.util.DateUtil;
 import com.weizhan.superlook.model.api.ApiHelper;
-import com.weizhan.superlook.model.api.Recommend1Apis;
+import com.weizhan.superlook.model.api.MovieApis;
 import com.weizhan.superlook.model.bean.DataListResponse;
-import com.weizhan.superlook.model.bean.recommend1.AppRecommend1Show;
+import com.weizhan.superlook.model.bean.movie.AppMovieShow;
 import com.weizhan.superlook.ui.movie.viewbinder.MovieFooterItemViewBinder;
 
 import java.util.List;
@@ -31,28 +31,28 @@ public class MoviePresenter extends AbsBasePresenter<MovieContract.View> {
 
     private static final String TAG = MoviePresenter.class.getSimpleName();
 
-    private Recommend1Apis mRecommend1Apis;
+    private MovieApis mMovieApis;
 
     @Inject
-    public MoviePresenter(Recommend1Apis regionApis) {
-        mRecommend1Apis = regionApis;
+    public MoviePresenter(MovieApis regionApis) {
+        mMovieApis = regionApis;
     }
 
     @Override
     public void loadData() {
         Items items = new Items();
-//        items.add(new SeriesHeaderItemViewBinder.Recommend1Header());
+//        items.add(new SeriesHeaderItemViewBinder.MovieHeader());
         mView.onDataUpdated(items);
-        mRecommend1Apis.getRecommend1Show(
+        mMovieApis.getMovieShow(
                 ApiHelper.APP_KEY,
                 ApiHelper.BUILD,
                 ApiHelper.MOBI_APP,
                 ApiHelper.PLATFORM,
                 DateUtil.getSystemTime())
                 .subscribeOn(Schedulers.newThread())
-                .map(new Function<DataListResponse<AppRecommend1Show>, Items>() {
+                .map(new Function<DataListResponse<AppMovieShow>, Items>() {
                     @Override
-                    public Items apply(@NonNull DataListResponse<AppRecommend1Show> regionShow) throws Exception {
+                    public Items apply(@NonNull DataListResponse<AppMovieShow> regionShow) throws Exception {
                         return regionShow2Items(regionShow);
                     }
                 })
@@ -83,33 +83,33 @@ public class MoviePresenter extends AbsBasePresenter<MovieContract.View> {
                 });
     }
 
-    private Items regionShow2Items(DataListResponse<AppRecommend1Show> regionShow) {
+    private Items regionShow2Items(DataListResponse<AppMovieShow> regionShow) {
         Items items = new Items();
-//        items.add(new SeriesHeaderItemViewBinder.Recommend1Header());
-        List<AppRecommend1Show> regionShowList = regionShow.getData();
-        for (AppRecommend1Show appRecommend1Show : regionShowList) {
+//        items.add(new SeriesHeaderItemViewBinder.MovieHeader());
+        List<AppMovieShow> regionShowList = regionShow.getData();
+        for (AppMovieShow appMovieShow : regionShowList) {
             //banner
-            /*if (appRecommend1Show.getBanner() != null) {
-                items.add(appRecommend1Show.getBanner());
+            /*if (appMovieShow.getBanner() != null) {
+                items.add(appMovieShow.getBanner());
             }*/
             //partition
-            AppRecommend1Show.Partition p = appRecommend1Show.new Partition();
-            p.setTitle(appRecommend1Show.getTitle());
-//            p.setLogo(ResourceManager.getRecommend1IconByTitle(appRecommend1Show.getTitle()));
-//            p.setLogo(ResourceManager.getRecommend1IconByParam(appRecommend1Show.getParam()));
-            appRecommend1Show.setPartition(p);
+            AppMovieShow.Partition p = appMovieShow.new Partition();
+            p.setTitle(appMovieShow.getTitle());
+//            p.setLogo(ResourceManager.getMovieIconByTitle(appMovieShow.getTitle()));
+//            p.setLogo(ResourceManager.getMovieIconByParam(appMovieShow.getParam()));
+            appMovieShow.setPartition(p);
             items.add(p);
 
             //body
-            List<AppRecommend1Show.Body> bodyList = appRecommend1Show.getBody();
-            for (AppRecommend1Show.Body b : bodyList) {
+            List<AppMovieShow.Body> bodyList = appMovieShow.getBody();
+            for (AppMovieShow.Body b : bodyList) {
                 items.add(b);
             }
 
             //footer
-            if (!TextUtils.equals("活动中心", appRecommend1Show.getTitle())) {
-                MovieFooterItemViewBinder.Recommend1Footer footer = new MovieFooterItemViewBinder.Recommend1Footer();
-                footer.setRecommend1(appRecommend1Show.getTitle().substring(0, appRecommend1Show.getTitle().length() - 1));
+            if (!TextUtils.equals("活动中心", appMovieShow.getTitle())) {
+                MovieFooterItemViewBinder.MovieFooter footer = new MovieFooterItemViewBinder.MovieFooter();
+                footer.setMovie(appMovieShow.getTitle().substring(0, appMovieShow.getTitle().length() - 1));
                 items.add(footer);
             }
         }

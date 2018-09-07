@@ -5,11 +5,11 @@ import com.weizhan.superlook.di.scope.PerFragment;
 import com.weizhan.superlook.ui.bangumi.BangumiFragment;
 import com.weizhan.superlook.ui.main.MainFragment;
 import com.weizhan.superlook.ui.movie.MovieFragment;
-import com.weizhan.superlook.ui.recommed.RecommendFragment;
 import com.weizhan.superlook.ui.recommend1.Recommend1Fragment;
 import com.weizhan.superlook.ui.region.RegionFragment;
 import com.weizhan.superlook.ui.series.SeriesFragment;
 import com.weizhan.superlook.ui.test.fragment.NewsFragment;
+import com.weizhan.superlook.ui.variety.VarietyFragment;
 
 import dagger.Module;
 import dagger.Provides;
@@ -37,12 +37,6 @@ public class PageModule {
 
     @Provides
     @PerFragment
-    RecommendFragment provideRecommendFragment() {
-        return new RecommendFragment();
-    }
-
-    @Provides
-    @PerFragment
     BangumiFragment provideBangumiFragment() {
         return new BangumiFragment();
     }
@@ -63,6 +57,12 @@ public class PageModule {
     @PerFragment
     SeriesFragment provideSeriesFragment() {
         return new SeriesFragment();
+    }
+
+    @Provides
+    @PerFragment
+    VarietyFragment provideVarietyFragment() {
+        return new VarietyFragment();
     }
 
     @Provides
