@@ -15,6 +15,7 @@ import com.weizhan.superlook.ui.recommend1.Recommend1Fragment;
 import com.weizhan.superlook.ui.series.SeriesFragment;
 import com.weizhan.superlook.ui.test.fragment.PlaceHolderFragment;
 import com.common.base.BaseFragment;
+import com.weizhan.superlook.ui.variety.VarietyFragment;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -47,6 +48,8 @@ public class MainFragment extends BaseFragment {
     SeriesFragment mSeriesFragment;
     @Inject
     MovieFragment mMovieFragment;
+    @Inject
+    VarietyFragment mVarietyFragment;
 
     private MainPagerAdapter adapter;
     private List<Fragment> mFragments = new ArrayList<>();
@@ -76,7 +79,7 @@ public class MainFragment extends BaseFragment {
         mFragments.add(mRecommend1Fragment);
         mFragments.add(mSeriesFragment);
         mFragments.add(mMovieFragment);
-        mFragments.add(new PlaceHolderFragment());
+        mFragments.add(mVarietyFragment);
     }
 
     private class MainPagerAdapter extends FragmentPagerAdapter {

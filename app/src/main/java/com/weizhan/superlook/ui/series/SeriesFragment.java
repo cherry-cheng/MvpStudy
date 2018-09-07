@@ -7,7 +7,6 @@ import android.support.v7.widget.RecyclerView;
 import com.common.base.BaseMvpFragment;
 import com.weizhan.superlook.App;
 import com.weizhan.superlook.R;
-import com.weizhan.superlook.model.bean.recommend1.AppRecommend1Show;
 import com.weizhan.superlook.model.bean.series.AppSeriesShow;
 import com.weizhan.superlook.ui.series.viewbinder.SeriesBodyItemViewBinder;
 import com.weizhan.superlook.ui.series.viewbinder.SeriesFooterItemViewBinder;
@@ -49,7 +48,7 @@ public class SeriesFragment extends BaseMvpFragment<SeriesPresenter> implements 
             @Override
             public int getSpanSize(int position) {
                 Object item = mAdapter.getItems().get(position);
-                return item instanceof AppRecommend1Show.Body ? 1 : SPAN_COUNT;
+                return item instanceof AppSeriesShow.Body ? 1 : SPAN_COUNT;
             }
         };
         layoutManager.setSpanSizeLookup(spanSizeLookup);
@@ -57,8 +56,8 @@ public class SeriesFragment extends BaseMvpFragment<SeriesPresenter> implements 
         mRecyclerView.addItemDecoration(new SeriesIndexItemDecoration());
         mRecyclerView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.white));
         mAdapter = new CommonAdapter();
-//        mAdapter.register(SeriesHeaderItemViewBinder.Recommend1Header.class, new SeriesHeaderItemViewBinder());
-//        mAdapter.register(AppRecommend1Show.Banner.class, new SeriesBannerItemViewBinder());
+//        mAdapter.register(SeriesHeaderItemViewBinder.SeriesHeader.class, new SeriesHeaderItemViewBinder());
+//        mAdapter.register(AppSeriesShow.Banner.class, new SeriesBannerItemViewBinder());
         mAdapter.register(AppSeriesShow.Partition.class, new SeriesPartitionItemViewBinder());
         mAdapter.register(AppSeriesShow.Body.class, new SeriesBodyItemViewBinder());
         mAdapter.register(SeriesFooterItemViewBinder.SeriesFooter.class, new SeriesFooterItemViewBinder());

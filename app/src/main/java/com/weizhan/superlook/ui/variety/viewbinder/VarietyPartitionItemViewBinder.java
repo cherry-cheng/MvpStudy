@@ -23,7 +23,7 @@ public class VarietyPartitionItemViewBinder extends ItemViewBinder<AppVarietySho
     @NonNull
     @Override
     protected VarietyPartitionItemViewBinder.PartitionViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
-        View itemView = inflater.inflate(R.layout.item_series_partition, parent, false);
+        View itemView = inflater.inflate(R.layout.item_variety_partition, parent, false);
         return new VarietyPartitionItemViewBinder.PartitionViewHolder(itemView);
     }
 

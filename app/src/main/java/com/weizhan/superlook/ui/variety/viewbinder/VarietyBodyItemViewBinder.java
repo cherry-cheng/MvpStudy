@@ -28,7 +28,7 @@ public class VarietyBodyItemViewBinder extends ItemViewBinder<AppVarietyShow.Bod
     @NonNull
     @Override
     protected VarietyBodyItemViewBinder.VarietyBodyViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
-        View itemView = inflater.inflate(R.layout.item_series_body, parent, false);
+        View itemView = inflater.inflate(R.layout.item_variety_body, parent, false);
         return new VarietyBodyItemViewBinder.VarietyBodyViewHolder(itemView);
     }
 

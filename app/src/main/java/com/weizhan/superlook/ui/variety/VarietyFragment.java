@@ -33,7 +33,7 @@ public class VarietyFragment extends BaseMvpFragment<VarietyPresenter> implement
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_series;
+        return R.layout.fragment_variety;
     }
 
     @Override

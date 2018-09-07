@@ -94,7 +94,8 @@ public class VarietyPresenter extends AbsBasePresenter<VarietyContract.View> {
             }*/
             //partition
             AppVarietyShow.Partition p = appVarietyShow.new Partition();
-            p.setTitle(appVarietyShow.getTitle());
+//            p.setTitle(appVarietyShow.getTitle());
+            p.setTitle("近期热门内地综艺");
 //            p.setLogo(ResourceManager.getVarietyIconByTitle(appVarietyShow.getTitle()));
 //            p.setLogo(ResourceManager.getVarietyIconByParam(appVarietyShow.getParam()));
             appVarietyShow.setPartition(p);

@@ -93,7 +93,8 @@ public class SeriesPresenter extends AbsBasePresenter<SeriesContract.View> {
             }*/
             //partition
             AppSeriesShow.Partition p = appSeriesShow.new Partition();
-            p.setTitle(appSeriesShow.getTitle());
+//            p.setTitle(appSeriesShow.getTitle());
+            p.setTitle("近期热门国产剧");
 //            p.setLogo(ResourceManager.getSeriesIconByTitle(appSeriesShow.getTitle()));
 //            p.setLogo(ResourceManager.getSeriesIconByParam(appSeriesShow.getParam()));
             appSeriesShow.setPartition(p);
