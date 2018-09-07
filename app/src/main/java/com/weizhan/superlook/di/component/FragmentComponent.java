@@ -5,6 +5,7 @@ import com.weizhan.superlook.di.module.PageModule;
 import com.weizhan.superlook.di.scope.PerFragment;
 import com.weizhan.superlook.ui.bangumi.BangumiFragment;
 import com.weizhan.superlook.ui.main.MainFragment;
+import com.weizhan.superlook.ui.movie.MovieFragment;
 import com.weizhan.superlook.ui.recommed.RecommendFragment;
 import com.weizhan.superlook.ui.recommend1.Recommend1Fragment;
 import com.weizhan.superlook.ui.region.RegionFragment;
@@ -40,4 +41,6 @@ public interface FragmentComponent {
     void inject(RegionFragment regionFragment);
 
     void inject(SeriesFragment seriesFragment);
+
+    void inject(MovieFragment movieFragment);
 }

@@ -4,6 +4,7 @@ import com.weizhan.superlook.di.scope.GlobalApis;
 import com.weizhan.superlook.model.api.ApiHelper;
 import com.weizhan.superlook.model.api.AppApis;
 import com.weizhan.superlook.model.api.BangumiApis;
+import com.weizhan.superlook.model.api.MovieApis;
 import com.weizhan.superlook.model.api.Recommend1Apis;
 import com.weizhan.superlook.model.api.RecommendApis;
 import com.weizhan.superlook.model.api.RegionApis;
@@ -70,6 +71,12 @@ public class ApiModule {
         return retrofit.create(SeriesApis.class);
     }
 
+    @GlobalApis
+    @Provides
+    MovieApis provideMovieService(@Named("MovieApi") Retrofit retrofit) {
+        return retrofit.create(MovieApis.class);
+    }
+
     //Test Api
     @GlobalApis
     @Provides
@@ -124,6 +131,13 @@ public class ApiModule {
     @Named("SeriesApi")
     Retrofit provideSeriesRetrofit(Retrofit.Builder builder, OkHttpClient client) {
         return createRetrofit(builder, client, SeriesApis.HOST);
+    }
+
+    @GlobalApis
+    @Provides
+    @Named("MovieApi")
+    Retrofit provideMovieRetrofit(Retrofit.Builder builder, OkHttpClient client) {
+        return createRetrofit(builder, client, MovieApis.HOST);
     }
 
     //Test Api

@@ -4,6 +4,7 @@ import com.weizhan.superlook.di.scope.PerActivity;
 import com.weizhan.superlook.di.scope.PerFragment;
 import com.weizhan.superlook.ui.bangumi.BangumiFragment;
 import com.weizhan.superlook.ui.main.MainFragment;
+import com.weizhan.superlook.ui.movie.MovieFragment;
 import com.weizhan.superlook.ui.recommed.RecommendFragment;
 import com.weizhan.superlook.ui.recommend1.Recommend1Fragment;
 import com.weizhan.superlook.ui.region.RegionFragment;
@@ -62,5 +63,11 @@ public class PageModule {
     @PerFragment
     SeriesFragment provideSeriesFragment() {
         return new SeriesFragment();
+    }
+
+    @Provides
+    @PerFragment
+    MovieFragment provideMovieFragment() {
+        return new MovieFragment();
     }
 }
