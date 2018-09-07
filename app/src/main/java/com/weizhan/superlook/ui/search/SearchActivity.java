@@ -10,9 +10,12 @@ import com.common.base.BaseActivity;
 import com.common.base.IBaseMvpActivity;
 import com.weizhan.superlook.App;
 import com.weizhan.superlook.R;
+import com.weizhan.superlook.model.event.ToggleDrawerEvent;
 import com.weizhan.superlook.ui.region.RegionFragment;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import javax.inject.Inject;
 
@@ -56,13 +59,13 @@ public class SearchActivity extends BaseActivity implements IBaseMvpActivity<Sea
 
     @Override
     public void initViewAndEvent() {
-        showHideFragment(searchHomeFragment);
+//        showHideFragment(searchHomeFragment);
     }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        showHideFragment(searchHomeFragment);
+        loadRootFragment(R.id.search_container, searchHomeFragment);
     }
 
     @Override
@@ -84,5 +87,13 @@ public class SearchActivity extends BaseActivity implements IBaseMvpActivity<Sea
         } else {
             finish();
         }
+    }
+
+    /**
+     * DrawerLayout侧滑菜单开关
+     */
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(ToggleDrawerEvent event) {
+
     }
 }
