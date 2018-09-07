@@ -21,8 +21,6 @@ public class Recommend1IndexItemDecoration extends RecyclerView.ItemDecoration {
      */
     @Override
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-
-        int itemPosition = ((RecyclerView.LayoutParams) view.getLayoutParams()).getViewLayoutPosition();
         int position = parent.getChildLayoutPosition(view);
         GridLayoutManager.SpanSizeLookup spanSizeLookup = ((GridLayoutManager) parent.getLayoutManager()).getSpanSizeLookup();
         int spanSize = spanSizeLookup.getSpanSize(position);
@@ -39,32 +37,37 @@ public class Recommend1IndexItemDecoration extends RecyclerView.ItemDecoration {
                 outRect.top = margin_10;
             }
         } else if (spanSize == 3){
+            int index = spanSizeLookup.getSpanIndex(position , 6);
+            switch (index) {
+                case 0:
+                    outRect.left = margin_small;
+                    outRect.right = margin_4;
+                    break;
+                case 3:
+                    outRect.left = margin_4;
+                    outRect.right = margin_small;
+                    break;
+            }
             outRect.bottom = margin_4;
             outRect.top = margin_4;
         } else {
+            int index = spanSizeLookup.getSpanIndex(position, 6);
+            switch (index) {
+                case 0:
+                    outRect.left = margin_small;
+                    outRect.right = margin_2;
+                    break;
+                case 2:
+                    outRect.left = margin_2;
+                    outRect.right = margin_2;
+                    break;
+                case 4:
+                    outRect.left = margin_2;
+                    outRect.right = margin_small;
+                    break;
+            }
             outRect.bottom = margin_4;
             outRect.top = margin_4;
-        }
-
-        if (itemPosition == 2 || itemPosition == 4) {
-            outRect.left = view.getContext().getResources().getDimensionPixelOffset(R.dimen.margin_small);
-            outRect.right = view.getContext().getResources().getDimensionPixelOffset(R.dimen.margin_4);
-        }
-        if (itemPosition == 3 || itemPosition == 5) {
-            outRect.left = view.getContext().getResources().getDimensionPixelOffset(R.dimen.margin_4);
-            outRect.right = view.getContext().getResources().getDimensionPixelOffset(R.dimen.margin_small);
-        }
-        if (itemPosition == 8 || itemPosition == 11) {
-            outRect.left = view.getContext().getResources().getDimensionPixelOffset(R.dimen.margin_small);
-            outRect.right = view.getContext().getResources().getDimensionPixelOffset(R.dimen.margin_2);
-        }
-        if (itemPosition == 9 || itemPosition == 12) {
-            outRect.left = view.getContext().getResources().getDimensionPixelOffset(R.dimen.margin_2);
-            outRect.right = view.getContext().getResources().getDimensionPixelOffset(R.dimen.margin_2);
-        }
-        if (itemPosition == 10 || itemPosition == 13) {
-            outRect.left = view.getContext().getResources().getDimensionPixelOffset(R.dimen.margin_2);
-            outRect.right = view.getContext().getResources().getDimensionPixelOffset(R.dimen.margin_small);
         }
     }
 }
