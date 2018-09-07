@@ -11,7 +11,7 @@ import com.common.base.IBaseMvpActivity;
 import com.weizhan.superlook.App;
 import com.weizhan.superlook.R;
 import com.weizhan.superlook.model.event.ToggleDrawerEvent;
-import com.weizhan.superlook.ui.region.RegionFragment;
+import com.weizhan.superlook.ui.search.home.SearchHomeFragment;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -31,7 +31,7 @@ public class SearchActivity extends BaseActivity implements IBaseMvpActivity<Sea
     @Inject
     SearchPresenter mPresenter;
     @Inject
-    RegionFragment searchHomeFragment;
+    SearchHomeFragment searchHomeFragment;
     @BindView(R.id.search_container)
     FrameLayout mFrameLayout;
 

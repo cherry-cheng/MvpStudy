@@ -16,11 +16,11 @@
             android:text="搜索历史"
             android:textColor="#ff4a4a4a"
             android:textSize="15sp"
+            android:textStyle="bold"
             android:layout_alignParentTop="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <ImageView
-            android:layout_centerVertical="true"
             android:src="@drawable/ic_icon_searchstory_del"
             android:layout_width="wrap_content"
             android:layout_alignParentRight="true"
@@ -48,6 +48,7 @@
             android:id="@+id/title_hot"
             android:text="热门搜索"
             android:textColor="#ff4a4a4a"
+            android:textStyle="bold"
             android:textSize="15sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
