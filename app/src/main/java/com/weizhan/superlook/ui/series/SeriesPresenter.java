@@ -1,4 +1,4 @@
-package com.weizhan.superlook.ui.recommend1;
+package com.weizhan.superlook.ui.series;
 
 import android.text.TextUtils;
 import android.util.Log;
@@ -9,7 +9,7 @@ import com.weizhan.superlook.model.api.ApiHelper;
 import com.weizhan.superlook.model.api.Recommend1Apis;
 import com.weizhan.superlook.model.bean.DataListResponse;
 import com.weizhan.superlook.model.bean.recommend1.AppRecommend1Show;
-import com.weizhan.superlook.ui.recommend1.viewbinder.Recommend1FooterItemViewBinder;
+import com.weizhan.superlook.ui.series.viewbinder.SeriesFooterItemViewBinder;
 
 import java.util.List;
 
@@ -27,14 +27,14 @@ import me.drakeet.multitype.Items;
  * Created by Administrator on 2018/9/5.
  */
 
-public class Recommend1Presenter extends AbsBasePresenter<Recommend1Contract.View> {
+public class SeriesPresenter extends AbsBasePresenter<SeriesContract.View> {
 
-    private static final String TAG = Recommend1Presenter.class.getSimpleName();
+    private static final String TAG = SeriesPresenter.class.getSimpleName();
 
     private Recommend1Apis mRecommend1Apis;
 
     @Inject
-    public Recommend1Presenter(Recommend1Apis regionApis) {
+    public SeriesPresenter(Recommend1Apis regionApis) {
         mRecommend1Apis = regionApis;
     }
 
@@ -87,12 +87,11 @@ public class Recommend1Presenter extends AbsBasePresenter<Recommend1Contract.Vie
         Items items = new Items();
 //        items.add(new SeriesHeaderItemViewBinder.Recommend1Header());
         List<AppRecommend1Show> regionShowList = regionShow.getData();
-        int uu = 1;
         for (AppRecommend1Show appRecommend1Show : regionShowList) {
             //banner
-            if (appRecommend1Show.getBanner() != null) {
+            /*if (appRecommend1Show.getBanner() != null) {
                 items.add(appRecommend1Show.getBanner());
-            }
+            }*/
             //partition
             AppRecommend1Show.Partition p = appRecommend1Show.new Partition();
             p.setTitle(appRecommend1Show.getTitle());
@@ -109,41 +108,9 @@ public class Recommend1Presenter extends AbsBasePresenter<Recommend1Contract.Vie
 
             //footer
             if (!TextUtils.equals("活动中心", appRecommend1Show.getTitle())) {
-                Recommend1FooterItemViewBinder.Recommend1Footer footer = new Recommend1FooterItemViewBinder.Recommend1Footer();
+                SeriesFooterItemViewBinder.Recommend1Footer footer = new SeriesFooterItemViewBinder.Recommend1Footer();
                 footer.setRecommend1(appRecommend1Show.getTitle().substring(0, appRecommend1Show.getTitle().length() - 1));
                 items.add(footer);
-            }
-
-            if (uu == 1) {
-
-                AppRecommend1Show.Partition p1 = appRecommend1Show.new Partition();
-                p1.setTitle("电影区");
-//            p.setLogo(ResourceManager.getRecommend1IconByTitle(appRecommend1Show.getTitle()));
-//            p.setLogo(ResourceManager.getRecommend1IconByParam(appRecommend1Show.getParam()));
-                appRecommend1Show.setPartition(p1);
-                items.add(p1);
-                //bodymovie
-                AppRecommend1Show.BodyMovie bodyMovie = appRecommend1Show.new BodyMovie();
-                bodyMovie.setCover(bodyList.get(0).getCover());
-                bodyMovie.setDanmaku(bodyList.get(0).getDanmaku());
-                bodyMovie.setFavourite(bodyList.get(0).getFavourite());
-                bodyMovie.setGoto(bodyList.get(0).getGoto());
-                bodyMovie.setIs_ad(bodyList.get(0).getIs_ad());
-                bodyMovie.setParam(bodyList.get(0).getParam());
-                bodyMovie.setTitle(bodyList.get(0).getTitle());
-                bodyMovie.setPlay(bodyList.get(0).getPlay());
-                bodyMovie.setUri(bodyList.get(0).getUri());
-                items.add(bodyMovie);
-                items.add(bodyMovie);
-                items.add(bodyMovie);
-                items.add(bodyMovie);
-                items.add(bodyMovie);
-                items.add(bodyMovie);
-                uu = uu + 1;
-                Recommend1FooterItemViewBinder.Recommend1Footer footer = new Recommend1FooterItemViewBinder.Recommend1Footer();
-                footer.setRecommend1("更多电影");
-                items.add(footer);
-
             }
         }
         return items;

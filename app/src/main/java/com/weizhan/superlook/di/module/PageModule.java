@@ -7,6 +7,7 @@ import com.weizhan.superlook.ui.main.MainFragment;
 import com.weizhan.superlook.ui.recommed.RecommendFragment;
 import com.weizhan.superlook.ui.recommend1.Recommend1Fragment;
 import com.weizhan.superlook.ui.region.RegionFragment;
+import com.weizhan.superlook.ui.series.SeriesFragment;
 import com.weizhan.superlook.ui.test.fragment.NewsFragment;
 
 import dagger.Module;
@@ -55,5 +56,11 @@ public class PageModule {
     @PerFragment
     Recommend1Fragment provideRecommend1Fragment() {
         return new Recommend1Fragment();
+    }
+
+    @Provides
+    @PerFragment
+    SeriesFragment provideSeriesFragment() {
+        return new SeriesFragment();
     }
 }

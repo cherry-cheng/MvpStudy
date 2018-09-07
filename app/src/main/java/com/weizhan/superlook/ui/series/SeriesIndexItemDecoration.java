@@ -1,4 +1,4 @@
-package com.weizhan.superlook.ui.recommend1;
+package com.weizhan.superlook.ui.series;
 
 import android.graphics.Rect;
 import android.support.v7.widget.GridLayoutManager;
@@ -12,7 +12,7 @@ import com.weizhan.superlook.R;
  * Created by Administrator on 2018/9/5.
  */
 
-public class Recommend1IndexItemDecoration extends RecyclerView.ItemDecoration {
+public class SeriesIndexItemDecoration extends RecyclerView.ItemDecoration {
 
     /**
      * 注意因为Adapter的封装，外部构造的spanSizeLookup在Adapter中的
@@ -29,45 +29,23 @@ public class Recommend1IndexItemDecoration extends RecyclerView.ItemDecoration {
         int margin_4 = view.getContext().getResources().getDimensionPixelOffset(R.dimen.margin_4);
         int margin_10 = view.getContext().getResources().getDimensionPixelOffset(R.dimen.margin_10);
         int margin_2 = view.getContext().getResources().getDimensionPixelOffset(R.dimen.margin_2);
-        if (spanSize == 6) {
-            if (position == 0) { //header
-                outRect.bottom = margin_small;
-                outRect.top = margin_small;
-            } else {
-                outRect.bottom = margin_10;
-                outRect.top = margin_10;
-            }
-        } else if (spanSize == 3){
-            int index = spanSizeLookup.getSpanIndex(position , 6);
+        if (spanSize == 2) {
+//            outRect.left = margin_small;
+            outRect.bottom = margin_10;
+            outRect.top = margin_10;
+        } else {
+            int index = spanSizeLookup.getSpanIndex(position , 2);
             switch (index) {
                 case 0:
                     outRect.left = margin_small;
                     outRect.right = margin_4;
                     break;
-                case 3:
+                case 1:
                     outRect.left = margin_4;
                     outRect.right = margin_small;
                     break;
             }
-            outRect.bottom = margin_4;
-            outRect.top = margin_4;
-        } else {
-            int index = spanSizeLookup.getSpanIndex(position, 6);
-            switch (index) {
-                case 0:
-                    outRect.left = margin_small;
-                    outRect.right = margin_2;
-                    break;
-                case 2:
-                    outRect.left = margin_2;
-                    outRect.right = margin_2;
-                    break;
-                case 4:
-                    outRect.left = margin_2;
-                    outRect.right = margin_small;
-                    break;
-            }
-            outRect.bottom = margin_4;
+            outRect.bottom = margin_small;
             outRect.top = margin_4;
         }
     }

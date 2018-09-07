@@ -7,6 +7,7 @@ import com.weizhan.superlook.model.api.BangumiApis;
 import com.weizhan.superlook.model.api.Recommend1Apis;
 import com.weizhan.superlook.model.api.RecommendApis;
 import com.weizhan.superlook.model.api.RegionApis;
+import com.weizhan.superlook.model.api.SeriesApis;
 import com.weizhan.superlook.model.api.WeChatApis;
 import com.weizhan.superlook.model.api.ZhihuApis;
 import com.common.app.AppComponent;
@@ -31,6 +32,7 @@ public interface ApiComponent {
 
     Recommend1Apis recommend1Apis();
 
+    SeriesApis seriesApis();
     //Test
     ZhihuApis zhihuApis();
 

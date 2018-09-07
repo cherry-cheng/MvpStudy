@@ -7,6 +7,7 @@ import com.weizhan.superlook.model.api.BangumiApis;
 import com.weizhan.superlook.model.api.Recommend1Apis;
 import com.weizhan.superlook.model.api.RecommendApis;
 import com.weizhan.superlook.model.api.RegionApis;
+import com.weizhan.superlook.model.api.SeriesApis;
 import com.weizhan.superlook.model.api.WeChatApis;
 import com.weizhan.superlook.model.api.ZhihuApis;
 
@@ -63,6 +64,12 @@ public class ApiModule {
         return retrofit.create(Recommend1Apis.class);
     }
 
+    @GlobalApis
+    @Provides
+    SeriesApis provideSeriesService(@Named("SeriesApi") Retrofit retrofit) {
+        return retrofit.create(SeriesApis.class);
+    }
+
     //Test Api
     @GlobalApis
     @Provides
@@ -110,6 +117,13 @@ public class ApiModule {
     @Named("Recommend1Api")
     Retrofit provideRecommend1Retrofit(Retrofit.Builder builder, OkHttpClient client) {
         return createRetrofit(builder, client, Recommend1Apis.HOST);
+    }
+
+    @GlobalApis
+    @Provides
+    @Named("SeriesApi")
+    Retrofit provideSeriesRetrofit(Retrofit.Builder builder, OkHttpClient client) {
+        return createRetrofit(builder, client, SeriesApis.HOST);
     }
 
     //Test Api
