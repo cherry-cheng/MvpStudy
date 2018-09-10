@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="40dp">
+
+    <TextView
+        android:id="@+id/tv_number"
+        android:text="1"
+        android:textColor="#ffffffff"
+        android:textSize="9sp"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:background="@drawable/bg_hotsearchword"
+        android:layout_width="15dp"
+        android:layout_height="15dp" />
+
+    <TextView
+        android:id="@+id/hotTv"
+        android:layout_width="wrap_content"
+        android:text="西虹市首富"
+        android:textColor="#ff4a4a4a"
+        android:layout_centerVertical="true"
+        android:textSize="13sp"
+        android:layout_marginLeft="9dp"
+        android:layout_toRightOf="@+id/tv_number"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

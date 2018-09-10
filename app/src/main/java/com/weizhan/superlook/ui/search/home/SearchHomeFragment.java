@@ -8,12 +8,15 @@ import com.common.base.BaseMvpFragment;
 import com.weizhan.superlook.App;
 import com.weizhan.superlook.R;
 import com.weizhan.superlook.model.bean.region.AppRegionShow;
+import com.weizhan.superlook.model.bean.search.HotWord;
 import com.weizhan.superlook.ui.region.RegionIndexItemDecoration;
 import com.weizhan.superlook.ui.region.viewbinder.RegionBannerItemViewBinder;
 import com.weizhan.superlook.ui.region.viewbinder.RegionBodyItemViewBinder;
 import com.weizhan.superlook.ui.region.viewbinder.RegionFooterItemViewBinder;
 import com.weizhan.superlook.ui.region.viewbinder.RegionPartitionItemViewBinder;
+import com.weizhan.superlook.ui.search.viewbinder.HotSearchViewBinder;
 import com.weizhan.superlook.widget.adapter.CommonAdapter;
+import com.weizhan.superlook.widget.textview.HotWordListView;
 
 import butterknife.BindView;
 import me.drakeet.multitype.Items;
@@ -22,12 +25,13 @@ public class SearchHomeFragment extends BaseMvpFragment<SearchHomePresenter> imp
 
     public static final String TAG = SearchHomeFragment.class.getSimpleName();
 
-/*    private static final int SPAN_COUNT = 2;
+    @BindView(R.id.search_history)
+    HotWordListView search_history;
+    @BindView(R.id.hotRecyclerView)
+    RecyclerView hotRecyclerView;
 
-    @BindView(R.id.rv_region)
-    RecyclerView mRecyclerView;
-
-    private CommonAdapter mAdapter;*/
+    private CommonAdapter mAdapter;
+    private static final int SPAN_COUNT = 1;
 
     @Override
     protected int getLayoutId() {
@@ -41,26 +45,14 @@ public class SearchHomeFragment extends BaseMvpFragment<SearchHomePresenter> imp
 
     @Override
     protected void initViewAndEvent() {
-/*        GridLayoutManager layoutManager = new GridLayoutManager(getContext(), SPAN_COUNT);
-        GridLayoutManager.SpanSizeLookup spanSizeLookup = new GridLayoutManager.SpanSizeLookup() {
-            @Override
-            public int getSpanSize(int position) {
-                Object item = mAdapter.getItems().get(position);
-                return item instanceof AppRegionShow.Body ? 1 : SPAN_COUNT;
-            }
-        };
-        layoutManager.setSpanSizeLookup(spanSizeLookup);
-        mRecyclerView.setLayoutManager(layoutManager);
-        mRecyclerView.addItemDecoration(new RegionIndexItemDecoration());
-        mRecyclerView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.white));
+        GridLayoutManager layoutManager = new GridLayoutManager(getContext(), SPAN_COUNT);
+        hotRecyclerView.setLayoutManager(layoutManager);
+        hotRecyclerView.addItemDecoration(new SearchIndexItemDecoration());
+        hotRecyclerView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.white));
         mAdapter = new CommonAdapter();
-//        mAdapter.register(RegionHeaderItemViewBinder.RegionHeader.class, new RegionHeaderItemViewBinder());
-        mAdapter.register(AppRegionShow.Banner.class, new RegionBannerItemViewBinder());
-        mAdapter.register(AppRegionShow.Partition.class, new RegionPartitionItemViewBinder());
-        mAdapter.register(AppRegionShow.Body.class, new RegionBodyItemViewBinder());
-        mAdapter.register(RegionFooterItemViewBinder.RegionFooter.class, new RegionFooterItemViewBinder());
+        mAdapter.register(HotWord.class, new HotSearchViewBinder());
         mAdapter.setScrollSaveStrategyEnabled(true);
-        mRecyclerView.setAdapter(mAdapter);*/
+        hotRecyclerView.setAdapter(mAdapter);
     }
 
     @Override
@@ -75,13 +67,12 @@ public class SearchHomeFragment extends BaseMvpFragment<SearchHomePresenter> imp
 
     @Override
     public void onDataUpdated(Items items) {
-        /*mAdapter.setItems(items);
-        mAdapter.notifyDataSetChanged();*/
+        mAdapter.setItems(items);
+        mAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void showLoadFailed() {
-        /*mAdapter.showLoadFailed();*/
+        mAdapter.showLoadFailed();
     }
-
 }

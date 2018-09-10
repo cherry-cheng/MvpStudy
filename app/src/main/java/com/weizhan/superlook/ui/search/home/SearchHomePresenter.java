@@ -9,8 +9,10 @@ import com.weizhan.superlook.model.api.ApiHelper;
 import com.weizhan.superlook.model.api.RegionApis;
 import com.weizhan.superlook.model.bean.DataListResponse;
 import com.weizhan.superlook.model.bean.region.AppRegionShow;
+import com.weizhan.superlook.model.bean.search.HotWord;
 import com.weizhan.superlook.ui.region.viewbinder.RegionFooterItemViewBinder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -81,6 +83,13 @@ public class SearchHomePresenter extends AbsBasePresenter<SearchHomeContract.Vie
 
                     }
                 });*/
+        Items items = new Items();
+        HotWord hotWord = new HotWord();
+        hotWord.setKeyword("西红柿首富");
+        for (int i = 1; i < 9; i++) {
+            items.add(hotWord);
+        }
+        mView.onDataUpdated(items);
     }
 
     private Items regionShow2Items(DataListResponse<AppRegionShow> regionShow) {
