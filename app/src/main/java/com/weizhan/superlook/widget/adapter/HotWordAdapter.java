@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.weizhan.superlook.R;
 import com.weizhan.superlook.model.bean.search.HotWord;
+import com.weizhan.superlook.model.bean.search.SearchKey;
 
 import java.util.List;
 
@@ -22,15 +23,15 @@ import static com.weizhan.superlook.model.bean.search.HotWordBean.RED;
 public class HotWordAdapter extends BaseAdapter {
 
     private Context mContext;
-    private List<HotWord> mList;
+    private List<SearchKey> mList;
 
-    public HotWordAdapter(Context context, List<HotWord> list) {
+    public HotWordAdapter(Context context, List<SearchKey> list) {
         mContext = context;
         mList = list;
     }
 
 
-    public void setData(List<HotWord> lists) {
+    public void setData(List<SearchKey> lists) {
         if (lists == null) {
             return;
         }
@@ -77,8 +78,8 @@ public class HotWordAdapter extends BaseAdapter {
                 textView = (TextView) LayoutInflater.from(mContext).inflate(R.layout.item_hot_word, null);
                 break;
         }
-        HotWord bean = mList.get(position);
-        textView.setText(bean.getKeyword());
+        SearchKey bean = mList.get(position);
+        textView.setText(bean.getSearchKey());
         return textView;
     }
 }

@@ -14,6 +14,7 @@ import com.weizhan.superlook.di.component.DaggerFragmentComponent;
 import com.weizhan.superlook.di.component.FragmentComponent;
 import com.weizhan.superlook.di.module.ApiModule;
 import com.weizhan.superlook.di.module.FragmentModule;
+import com.weizhan.superlook.util.RealmHelper;
 import com.weizhan.superlook.widget.CustomBitmapMemoryCacheParamsSupplier;
 import com.common.app.ActivityLifecycleManager;
 import com.common.app.AppComponent;
@@ -25,6 +26,9 @@ import com.facebook.common.memory.NoOpMemoryTrimmableRegistry;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
 
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
+import io.realm.rx.RealmObservableFactory;
 import me.yokeyword.fragmentation.BuildConfig;
 import me.yokeyword.fragmentation.Fragmentation;
 import me.yokeyword.fragmentation.helper.ExceptionHandler;
@@ -66,6 +70,20 @@ public class App extends Application {
         }
         //初始化工具类
         Utils.init(this);
+
+        initRealm();
+//        Realm.init(getApplicationContext());
+    }
+
+    private void initRealm() {
+        Realm.init(this);
+        RealmConfiguration realmConfiguration = new RealmConfiguration.Builder()
+                .name(RealmHelper.DB_NAME)
+                .schemaVersion(1)
+                .rxFactory(new RealmObservableFactory())
+                .deleteRealmIfMigrationNeeded()
+                .build();
+        Realm.setDefaultConfiguration(realmConfiguration);
     }
 
     public void initFresco() {

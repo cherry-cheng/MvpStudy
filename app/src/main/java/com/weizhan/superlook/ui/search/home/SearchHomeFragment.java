@@ -3,32 +3,32 @@ package com.weizhan.superlook.ui.search.home;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.view.View;
 
 import com.common.base.BaseMvpFragment;
 import com.common.util.ToastUtils;
 import com.weizhan.superlook.App;
 import com.weizhan.superlook.R;
-import com.weizhan.superlook.model.bean.region.AppRegionShow;
 import com.weizhan.superlook.model.bean.search.HotWord;
+import com.weizhan.superlook.model.bean.search.SearchKey;
 import com.weizhan.superlook.model.event.ClickMessage;
-import com.weizhan.superlook.ui.region.RegionIndexItemDecoration;
-import com.weizhan.superlook.ui.region.viewbinder.RegionBannerItemViewBinder;
-import com.weizhan.superlook.ui.region.viewbinder.RegionBodyItemViewBinder;
-import com.weizhan.superlook.ui.region.viewbinder.RegionFooterItemViewBinder;
-import com.weizhan.superlook.ui.region.viewbinder.RegionPartitionItemViewBinder;
 import com.weizhan.superlook.ui.search.viewbinder.HotSearchViewBinder;
+import com.weizhan.superlook.util.RealmHelper;
 import com.weizhan.superlook.widget.adapter.CommonAdapter;
+import com.weizhan.superlook.widget.adapter.HotWordAdapter;
 import com.weizhan.superlook.widget.textview.HotWordListView;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
 import me.drakeet.multitype.Items;
 
-public class SearchHomeFragment extends BaseMvpFragment<SearchHomePresenter> implements SearchHomeContract.View {
+public class SearchHomeFragment extends BaseMvpFragment<SearchHomePresenter> implements SearchHomeContract.View, HotWordListView.OnItemClickListener {
 
     public static final String TAG = SearchHomeFragment.class.getSimpleName();
 
@@ -38,6 +38,7 @@ public class SearchHomeFragment extends BaseMvpFragment<SearchHomePresenter> imp
     RecyclerView hotRecyclerView;
 
     private CommonAdapter mAdapter;
+    private HotWordAdapter historyAdapter;
     private static final int SPAN_COUNT = 1;
 
     @Override
@@ -60,6 +61,24 @@ public class SearchHomeFragment extends BaseMvpFragment<SearchHomePresenter> imp
         mAdapter.register(HotWord.class, new HotSearchViewBinder());
         mAdapter.setScrollSaveStrategyEnabled(true);
         hotRecyclerView.setAdapter(mAdapter);
+
+        //装入假数据
+        List<SearchKey> historySearch = new ArrayList<SearchKey>();
+        for (int i = 0; i < 6; i++) {
+            SearchKey searchKey = new SearchKey();
+            searchKey.setSearchKey("西红柿首富");
+            searchKey.setInsertTime(System.currentTimeMillis());
+            historySearch.add(searchKey);
+        }
+        historyAdapter = new HotWordAdapter(getContext(), historySearch);
+
+        search_history.setAdapter(historyAdapter);
+        search_history.setOnItemClickListener(this);
+    }
+
+    private void setHistory() {
+        final List<SearchKey> searchHistory = RealmHelper.getInstance().getSearchHistoryListAll();
+
     }
 
     @Override
@@ -88,5 +107,10 @@ public class SearchHomeFragment extends BaseMvpFragment<SearchHomePresenter> imp
     @Subscribe(threadMode = ThreadMode.BACKGROUND)
     public void onEvent(ClickMessage event) {
         ToastUtils.showLongToast("abccc");
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+        ToastUtils.showLongToast("点击了历史记录");
     }
 }

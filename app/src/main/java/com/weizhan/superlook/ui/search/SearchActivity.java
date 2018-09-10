@@ -4,15 +4,25 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.common.base.BaseActivity;
 import com.common.base.IBaseMvpActivity;
 import com.weizhan.superlook.App;
 import com.weizhan.superlook.R;
+import com.weizhan.superlook.model.bean.search.SearchKey;
 import com.weizhan.superlook.model.event.ToggleDrawerEvent;
 import com.weizhan.superlook.ui.search.home.SearchHomeFragment;
+import com.weizhan.superlook.ui.search.result.SearchResultFragment;
+import com.weizhan.superlook.util.RealmHelper;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -34,10 +44,19 @@ public class SearchActivity extends BaseActivity implements IBaseMvpActivity<Sea
     SearchPresenter mPresenter;
     @Inject
     SearchHomeFragment searchHomeFragment;
+    @Inject
+    SearchResultFragment searchResultFragment;
+
     @BindView(R.id.search_container)
     FrameLayout mFrameLayout;
     @BindView(R.id.back_iv)
     ImageView back_iv;
+    @BindView(R.id.icon_search)
+    ImageView icon_search;
+    @BindView(R.id.et_input)
+    EditText et_input;
+    @BindView(R.id.cancel_tv)
+    TextView cancel_tv;
 
     private SupportFragment[] mFragments = new SupportFragment[4];
 
@@ -49,6 +68,54 @@ public class SearchActivity extends BaseActivity implements IBaseMvpActivity<Sea
     @OnClick(R.id.back_iv)
     void onBack() {
         finish();
+    }
+
+    @OnClick(R.id.cancel_tv)
+    void Cancel() {
+        cancel_tv.setVisibility(View.GONE);
+        icon_search.setVisibility(View.VISIBLE);
+//        showHideFragment(searchHomeFragment, searchResultFragment);
+//        replaceFragment(searchHomeFragment, false);
+        if (searchHomeFragment.isHidden()) {
+            showHideFragment(searchHomeFragment);
+        } else {
+            start(searchHomeFragment);
+        }
+    }
+
+    @OnClick(R.id.icon_search)
+    void onSearch() {
+        icon_search.setVisibility(View.GONE);
+        cancel_tv.setVisibility(View.VISIBLE);
+        String keyword = et_input.getText().toString();
+        keyword = TextUtils.isEmpty(keyword) ? et_input.getHint().toString() : keyword;
+        //hint赋值到内容
+        et_input.setText(keyword);
+        et_input.setSelection(et_input.getText().length());
+        //收起软键盘
+        hideKeyboard(et_input);
+        //跳入搜索结果界面
+//        replaceFragment(searchResultFragment, false);
+//        showHideFragment(searchResultFragment, searchHomeFragment);
+        if (searchResultFragment.isHidden()) {
+            showHideFragment(searchResultFragment);
+        } else {
+            start(searchResultFragment);
+        }
+        if (TextUtils.isEmpty(keyword.trim())) {
+            //如果输入空，不去请求服务器,直接显示缺省
+//            replaceFragment(searchResultFragment, false);
+//            showHideFragment(searchResultFragment, searchHomeFragment);
+            start(searchResultFragment);
+        } else {
+            getSearchResult(keyword);
+        }
+    }
+
+    private void getSearchResult(String keyword) {
+        //保存搜索记录到本地
+        SearchKey search = new SearchKey(keyword, System.currentTimeMillis());
+        RealmHelper.getInstance().insertSearchHistory(search);
     }
 
     @Override
@@ -69,6 +136,25 @@ public class SearchActivity extends BaseActivity implements IBaseMvpActivity<Sea
     @Override
     public void initViewAndEvent() {
 //        showHideFragment(searchHomeFragment);
+        et_input.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                if (i == EditorInfo.IME_ACTION_SEARCH) {
+                    hideKeyboard(et_input);
+                    onSearch();
+                    return true;
+                }
+                return false;
+            }
+        });
+    }
+
+    public void hideKeyboard(View view) {
+        InputMethodManager imm = (InputMethodManager) view.getContext()
+                .getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (imm != null) {
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
     }
 
     @Override

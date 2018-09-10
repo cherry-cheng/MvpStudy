@@ -19,6 +19,7 @@
         android:layout_marginRight="8dp"
         android:layout_height="30dp">
         <EditText
+            android:id="@+id/et_input"
             android:textColor="#000000"
             android:textColorHint="#80000000"
             android:hint="西虹市首富"
@@ -28,7 +29,7 @@
             android:background="@null"
             android:layout_centerVertical="true"
             android:gravity="center_vertical"
-            android:layout_toLeftOf="@+id/icon_search"
+            android:layout_marginRight="30dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
         <ImageView
@@ -37,6 +38,15 @@
             android:layout_centerVertical="true"
             android:padding="2dp"
             android:src="@drawable/ic_icon_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/cancel_tv"
+            android:text="取消"
+            android:visibility="gone"
+            android:layout_alignParentRight="true"
+            android:padding="2dp"
+            android:layout_centerVertical="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </RelativeLayout>

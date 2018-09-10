@@ -30,7 +30,7 @@
             android:id="@+id/search_history"
             android:layout_below="@+id/title"
             android:layout_width="match_parent"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="17dp"
             android:layout_height="90dp"
             app:horizontal_gap="8dp"
             app:vertical_gap="8dp">
