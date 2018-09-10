@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -55,8 +57,8 @@ public class SearchActivity extends BaseActivity implements IBaseMvpActivity<Sea
     ImageView icon_search;
     @BindView(R.id.et_input)
     EditText et_input;
-    @BindView(R.id.cancel_tv)
-    TextView cancel_tv;
+    @BindView(R.id.cancel_iv)
+    ImageView cancel_iv;
 
     private SupportFragment[] mFragments = new SupportFragment[4];
 
@@ -70,23 +72,23 @@ public class SearchActivity extends BaseActivity implements IBaseMvpActivity<Sea
         finish();
     }
 
-    @OnClick(R.id.cancel_tv)
+    @OnClick(R.id.cancel_iv)
     void Cancel() {
-        cancel_tv.setVisibility(View.GONE);
+        cancel_iv.setVisibility(View.GONE);
         icon_search.setVisibility(View.VISIBLE);
 //        showHideFragment(searchHomeFragment, searchResultFragment);
 //        replaceFragment(searchHomeFragment, false);
-        if (searchHomeFragment.isHidden()) {
+/*        if (searchHomeFragment.isHidden()) {
             showHideFragment(searchHomeFragment);
         } else {
             start(searchHomeFragment);
-        }
+        }*/
+        et_input.setText("");
+
     }
 
     @OnClick(R.id.icon_search)
     void onSearch() {
-        icon_search.setVisibility(View.GONE);
-        cancel_tv.setVisibility(View.VISIBLE);
         String keyword = et_input.getText().toString();
         keyword = TextUtils.isEmpty(keyword) ? et_input.getHint().toString() : keyword;
         //hint赋值到内容
@@ -97,8 +99,10 @@ public class SearchActivity extends BaseActivity implements IBaseMvpActivity<Sea
         //跳入搜索结果界面
 //        replaceFragment(searchResultFragment, false);
 //        showHideFragment(searchResultFragment, searchHomeFragment);
-        if (searchResultFragment.isHidden()) {
-            showHideFragment(searchResultFragment);
+        if (searchResultFragment.isVisible()) {
+//            showHideFragment(searchResultFragment);
+            //刷新当前的fragment
+            searchResultFragment.onAttach(this);
         } else {
             start(searchResultFragment);
         }
@@ -106,7 +110,7 @@ public class SearchActivity extends BaseActivity implements IBaseMvpActivity<Sea
             //如果输入空，不去请求服务器,直接显示缺省
 //            replaceFragment(searchResultFragment, false);
 //            showHideFragment(searchResultFragment, searchHomeFragment);
-            start(searchResultFragment);
+//            start(searchResultFragment);
         } else {
             getSearchResult(keyword);
         }
@@ -145,6 +149,30 @@ public class SearchActivity extends BaseActivity implements IBaseMvpActivity<Sea
                     return true;
                 }
                 return false;
+            }
+        });
+
+        et_input.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                //输入过程的监听
+                if (!TextUtils.isEmpty(charSequence)) {
+                    cancel_iv.setVisibility(View.VISIBLE);
+                    icon_search.setVisibility(View.GONE);
+                } else {
+                    cancel_iv.setVisibility(View.GONE);
+                    icon_search.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
             }
         });
     }

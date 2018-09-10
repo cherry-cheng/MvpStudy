@@ -4,6 +4,8 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.common.base.BaseMvpFragment;
 import com.common.util.ToastUtils;
@@ -26,6 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import me.drakeet.multitype.Items;
 
 public class SearchHomeFragment extends BaseMvpFragment<SearchHomePresenter> implements SearchHomeContract.View, HotWordListView.OnItemClickListener {
@@ -36,6 +39,10 @@ public class SearchHomeFragment extends BaseMvpFragment<SearchHomePresenter> imp
     HotWordListView search_history;
     @BindView(R.id.hotRecyclerView)
     RecyclerView hotRecyclerView;
+    @BindView(R.id.searchHistory_rl)
+    RelativeLayout searchHistory_rl;
+    @BindView(R.id.clearAll)
+    ImageView clearAll;
 
     private CommonAdapter mAdapter;
     private HotWordAdapter historyAdapter;
@@ -61,24 +68,35 @@ public class SearchHomeFragment extends BaseMvpFragment<SearchHomePresenter> imp
         mAdapter.register(HotWord.class, new HotSearchViewBinder());
         mAdapter.setScrollSaveStrategyEnabled(true);
         hotRecyclerView.setAdapter(mAdapter);
+        setHistory();
+    }
 
-        //装入假数据
+    private void setHistory() {
+        final List<SearchKey> searchHistory = RealmHelper.getInstance().getSearchHistoryListAll();
+        if (searchHistory != null && searchHistory.size() > 0) {
+            searchHistory_rl.setVisibility(View.VISIBLE);
+            historyAdapter = new HotWordAdapter(getContext(), searchHistory);
+            search_history.setAdapter(historyAdapter);
+            search_history.setOnItemClickListener(this);
+        } else {
+            searchHistory_rl.setVisibility(View.GONE);
+        }
+
+/*        //装入假数据
         List<SearchKey> historySearch = new ArrayList<SearchKey>();
         for (int i = 0; i < 6; i++) {
             SearchKey searchKey = new SearchKey();
             searchKey.setSearchKey("西红柿首富");
             searchKey.setInsertTime(System.currentTimeMillis());
             historySearch.add(searchKey);
-        }
-        historyAdapter = new HotWordAdapter(getContext(), historySearch);
+        }*/
 
-        search_history.setAdapter(historyAdapter);
-        search_history.setOnItemClickListener(this);
     }
 
-    private void setHistory() {
-        final List<SearchKey> searchHistory = RealmHelper.getInstance().getSearchHistoryListAll();
-
+    @OnClick(R.id.clearAll)
+    void onClearAll() {
+        RealmHelper.getInstance().deleteSearchHistoryAll();
+        searchHistory_rl.setVisibility(View.GONE);
     }
 
     @Override
