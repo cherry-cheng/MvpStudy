@@ -1,7 +1,6 @@
 package com.weizhan.superlook.ui.search.home;
 
 import android.graphics.Rect;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -23,7 +22,7 @@ public class SearchIndexItemDecoration extends RecyclerView.ItemDecoration {
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
         int margin_normal = view.getContext().getResources().getDimensionPixelOffset(R.dimen.margin_medium);
         int margin_small = view.getContext().getResources().getDimensionPixelOffset(R.dimen.margin_small);
-        outRect.left = margin_normal;
+        outRect.left = margin_small;
         /*outRect.bottom = margin_small;
         outRect.top = margin_small;*/
     }
