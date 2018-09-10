@@ -2,13 +2,19 @@ package com.weizhan.superlook.ui.search.viewbinder;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.common.util.ToastUtils;
 import com.weizhan.superlook.R;
 import com.weizhan.superlook.model.bean.search.HotWord;
+import com.weizhan.superlook.model.event.ClickMessage;
+
+import org.greenrobot.eventbus.EventBus;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -40,6 +46,13 @@ public class HotSearchViewBinder extends ItemViewBinder<HotWord, HotSearchViewBi
         }
         holder.tv_number.setText((holder.getPosition() + 1) + "");
         holder.hotTv.setText(item.getKeyword());
+        holder.hot_rl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ToastUtils.showLongToast("点击了热词");
+                EventBus.getDefault().post(new ClickMessage());
+            }
+        });
     }
 
     static class HotSearchViewHolder extends RecyclerView.ViewHolder {
@@ -47,6 +60,8 @@ public class HotSearchViewBinder extends ItemViewBinder<HotWord, HotSearchViewBi
         TextView tv_number;
         @BindView(R.id.hotTv)
         TextView hotTv;
+        @BindView(R.id.hot_rl)
+        RelativeLayout hot_rl;
 
         public HotSearchViewHolder(View itemView) {
             super(itemView);

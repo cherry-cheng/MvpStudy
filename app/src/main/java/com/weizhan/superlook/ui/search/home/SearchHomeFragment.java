@@ -3,12 +3,15 @@ package com.weizhan.superlook.ui.search.home;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.common.base.BaseMvpFragment;
+import com.common.util.ToastUtils;
 import com.weizhan.superlook.App;
 import com.weizhan.superlook.R;
 import com.weizhan.superlook.model.bean.region.AppRegionShow;
 import com.weizhan.superlook.model.bean.search.HotWord;
+import com.weizhan.superlook.model.event.ClickMessage;
 import com.weizhan.superlook.ui.region.RegionIndexItemDecoration;
 import com.weizhan.superlook.ui.region.viewbinder.RegionBannerItemViewBinder;
 import com.weizhan.superlook.ui.region.viewbinder.RegionBodyItemViewBinder;
@@ -17,6 +20,10 @@ import com.weizhan.superlook.ui.region.viewbinder.RegionPartitionItemViewBinder;
 import com.weizhan.superlook.ui.search.viewbinder.HotSearchViewBinder;
 import com.weizhan.superlook.widget.adapter.CommonAdapter;
 import com.weizhan.superlook.widget.textview.HotWordListView;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import me.drakeet.multitype.Items;
@@ -58,10 +65,12 @@ public class SearchHomeFragment extends BaseMvpFragment<SearchHomePresenter> imp
     @Override
     public void onStart() {
         super.onStart();
+        EventBus.getDefault().register(this);
     }
 
     @Override
     public void onStop() {
+        EventBus.getDefault().unregister(this);
         super.onStop();
     }
 
@@ -74,5 +83,10 @@ public class SearchHomeFragment extends BaseMvpFragment<SearchHomePresenter> imp
     @Override
     public void showLoadFailed() {
         mAdapter.showLoadFailed();
+    }
+
+    @Subscribe(threadMode = ThreadMode.BACKGROUND)
+    public void onEvent(ClickMessage event) {
+        ToastUtils.showLongToast("abccc");
     }
 }
