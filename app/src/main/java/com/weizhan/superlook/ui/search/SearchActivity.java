@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 
 import com.common.base.BaseActivity;
 import com.common.base.IBaseMvpActivity;
@@ -20,6 +21,7 @@ import org.greenrobot.eventbus.ThreadMode;
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import me.yokeyword.fragmentation.SupportFragment;
 
 /**
@@ -34,12 +36,19 @@ public class SearchActivity extends BaseActivity implements IBaseMvpActivity<Sea
     SearchHomeFragment searchHomeFragment;
     @BindView(R.id.search_container)
     FrameLayout mFrameLayout;
+    @BindView(R.id.back_iv)
+    ImageView back_iv;
 
     private SupportFragment[] mFragments = new SupportFragment[4];
 
     public static void startActivity(Context context) {
         Intent intent = new Intent(context, SearchActivity.class);
         context.startActivity(intent);
+    }
+
+    @OnClick(R.id.back_iv)
+    void onBack() {
+        finish();
     }
 
     @Override
