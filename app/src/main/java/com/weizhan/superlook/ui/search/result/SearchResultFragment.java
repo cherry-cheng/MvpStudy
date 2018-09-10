@@ -11,6 +11,7 @@ import com.weizhan.superlook.App;
 import com.weizhan.superlook.R;
 import com.weizhan.superlook.model.event.TabSelectedEvent;
 import com.weizhan.superlook.ui.main.MainActivity;
+import com.weizhan.superlook.ui.search.result.all.AllSearchFragment;
 import com.weizhan.superlook.ui.test.fragment.PlaceHolderFragment;
 
 import org.greenrobot.eventbus.EventBus;
@@ -19,6 +20,8 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 
@@ -35,6 +38,9 @@ public class SearchResultFragment extends BaseFragment {
     XTabLayout tabLayout;
     @BindView(R.id.viewpager)
     ViewPager viewPager;
+    @Inject
+    AllSearchFragment allSearchFragment;
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_searchresult;
@@ -76,7 +82,7 @@ public class SearchResultFragment extends BaseFragment {
     }
 
     private void initChildFragment() {
-        mFragments.add(new PlaceHolderFragment());
+        mFragments.add(allSearchFragment);
         mFragments.add(new PlaceHolderFragment());
         mFragments.add(new PlaceHolderFragment());
         mFragments.add(new PlaceHolderFragment());

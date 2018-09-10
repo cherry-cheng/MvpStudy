@@ -7,7 +7,6 @@ import android.support.v7.widget.RecyclerView;
 import com.common.base.BaseMvpFragment;
 import com.weizhan.superlook.App;
 import com.weizhan.superlook.R;
-import com.weizhan.superlook.model.bean.recommend1.AppRecommend1;
 import com.weizhan.superlook.model.bean.recommend1.AppRecommend1Show;
 import com.weizhan.superlook.ui.recommend1.viewbinder.Recommend1BMItemViewBinder;
 import com.weizhan.superlook.ui.recommend1.viewbinder.Recommend1BannerItemViewBinder;

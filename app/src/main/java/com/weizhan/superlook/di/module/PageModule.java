@@ -9,6 +9,7 @@ import com.weizhan.superlook.ui.recommend1.Recommend1Fragment;
 import com.weizhan.superlook.ui.region.RegionFragment;
 import com.weizhan.superlook.ui.search.home.SearchHomeFragment;
 import com.weizhan.superlook.ui.search.result.SearchResultFragment;
+import com.weizhan.superlook.ui.search.result.all.AllSearchFragment;
 import com.weizhan.superlook.ui.series.SeriesFragment;
 import com.weizhan.superlook.ui.test.fragment.NewsFragment;
 import com.weizhan.superlook.ui.variety.VarietyFragment;
@@ -66,6 +67,12 @@ public class PageModule {
     @PerFragment
     Recommend1Fragment provideRecommend1Fragment() {
         return new Recommend1Fragment();
+    }
+
+    @Provides
+    @PerFragment
+    AllSearchFragment provideAllSearchFragmentFragment() {
+        return new AllSearchFragment();
     }
 
     @Provides
