@@ -5,11 +5,14 @@ import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
 import android.support.v7.widget.RecyclerView;
 
+import com.common.widget.adapter.BaseLoadFailedBinder;
 import com.weizhan.superlook.R;
 import com.weizhan.superlook.widget.adapter.binder.BiliLoadFailedBinder;
 import com.weizhan.superlook.widget.adapter.binder.BiliLoadMoreBinder;
 import com.common.widget.adapter.DefaultAdapterWrapper;
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.weizhan.superlook.widget.adapter.binder.SearchFailedBinder;
+import com.weizhan.superlook.widget.adapter.binder.SearchNormalFailedBinder;
 
 import java.util.List;
 
@@ -28,6 +31,7 @@ import me.drakeet.multitype.TypePool;
 public class CommonAdapter extends DefaultAdapterWrapper<MultiTypeAdapter> {
 
     private boolean mSaveStrategyEnabled = false;
+    private int failType = 0; //0为默认type, 1为搜索带求片结果， 2为搜索普通结果
 
     private RecyclerView.OnScrollListener mOnScrollListener = new RecyclerView.OnScrollListener() {
 
@@ -44,8 +48,9 @@ public class CommonAdapter extends DefaultAdapterWrapper<MultiTypeAdapter> {
         }
     };
 
-    public CommonAdapter() {
+    public CommonAdapter(int failType) {
         super(new MultiTypeAdapter(new Items()));
+        this.failType = failType;
         useDefaultLoadMore();
         useDefaultLoadFailed();
     }
@@ -144,7 +149,14 @@ public class CommonAdapter extends DefaultAdapterWrapper<MultiTypeAdapter> {
     }
 
     public void useDefaultLoadFailed() {
-        BiliLoadFailedBinder binder = new BiliLoadFailedBinder();
+        BaseLoadFailedBinder binder;
+        if (failType == 2) {
+            binder = new SearchNormalFailedBinder();
+        } else if (failType == 1) {
+            binder = new SearchFailedBinder();
+        } else {
+            binder = new BiliLoadFailedBinder();
+        }
         /*binder.setResId(R.drawable.img_tips_error_load_error);
         binder.setStringId(R.string.tips_load_error);*/
         setLoadFailedBinder(binder);

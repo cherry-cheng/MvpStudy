@@ -12,6 +12,9 @@ import com.weizhan.superlook.R;
 import com.weizhan.superlook.model.event.TabSelectedEvent;
 import com.weizhan.superlook.ui.main.MainActivity;
 import com.weizhan.superlook.ui.search.result.all.AllSearchFragment;
+import com.weizhan.superlook.ui.search.result.movie.MovieSFragment;
+import com.weizhan.superlook.ui.search.result.series.SeriesSFragment;
+import com.weizhan.superlook.ui.search.result.variety.VarietySFragment;
 import com.weizhan.superlook.ui.test.fragment.PlaceHolderFragment;
 
 import org.greenrobot.eventbus.EventBus;
@@ -40,6 +43,12 @@ public class SearchResultFragment extends BaseFragment {
     ViewPager viewPager;
     @Inject
     AllSearchFragment allSearchFragment;
+    @Inject
+    MovieSFragment movieSFragment;
+    @Inject
+    SeriesSFragment seriesSFragment;
+    @Inject
+    VarietySFragment varietySFragment;
 
     @Override
     protected int getLayoutId() {
@@ -83,9 +92,9 @@ public class SearchResultFragment extends BaseFragment {
 
     private void initChildFragment() {
         mFragments.add(allSearchFragment);
-        mFragments.add(new PlaceHolderFragment());
-        mFragments.add(new PlaceHolderFragment());
-        mFragments.add(new PlaceHolderFragment());
+        mFragments.add(movieSFragment);
+        mFragments.add(seriesSFragment);
+        mFragments.add(varietySFragment);
     }
 
     private class ResultPagerAdapter extends FragmentPagerAdapter {

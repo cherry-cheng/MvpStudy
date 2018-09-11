@@ -52,7 +52,7 @@ public class RegionFragment extends BaseMvpFragment<RegionPresenter> implements 
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.addItemDecoration(new RegionIndexItemDecoration());
         mRecyclerView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.white));
-        mAdapter = new CommonAdapter();
+        mAdapter = new CommonAdapter(0);
 //        mAdapter.register(RegionHeaderItemViewBinder.RegionHeader.class, new RegionHeaderItemViewBinder());
         mAdapter.register(AppRegionShow.Banner.class, new RegionBannerItemViewBinder());
         mAdapter.register(AppRegionShow.Partition.class, new RegionPartitionItemViewBinder());

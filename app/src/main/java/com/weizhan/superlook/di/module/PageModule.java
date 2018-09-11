@@ -10,6 +10,9 @@ import com.weizhan.superlook.ui.region.RegionFragment;
 import com.weizhan.superlook.ui.search.home.SearchHomeFragment;
 import com.weizhan.superlook.ui.search.result.SearchResultFragment;
 import com.weizhan.superlook.ui.search.result.all.AllSearchFragment;
+import com.weizhan.superlook.ui.search.result.movie.MovieSFragment;
+import com.weizhan.superlook.ui.search.result.series.SeriesSFragment;
+import com.weizhan.superlook.ui.search.result.variety.VarietySFragment;
 import com.weizhan.superlook.ui.series.SeriesFragment;
 import com.weizhan.superlook.ui.test.fragment.NewsFragment;
 import com.weizhan.superlook.ui.variety.VarietyFragment;
@@ -73,6 +76,24 @@ public class PageModule {
     @PerFragment
     AllSearchFragment provideAllSearchFragmentFragment() {
         return new AllSearchFragment();
+    }
+
+    @Provides
+    @PerFragment
+    MovieSFragment provideMovieSFragment() {
+        return new MovieSFragment();
+    }
+
+    @Provides
+    @PerFragment
+    SeriesSFragment provideSeriesSFragment() {
+        return new SeriesSFragment();
+    }
+
+    @Provides
+    @PerFragment
+    VarietySFragment provideVarietySFragment() {
+        return new VarietySFragment();
     }
 
     @Provides

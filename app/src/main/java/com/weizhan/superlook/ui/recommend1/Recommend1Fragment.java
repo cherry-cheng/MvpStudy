@@ -61,7 +61,7 @@ public class Recommend1Fragment extends BaseMvpFragment<Recommend1Presenter> imp
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.addItemDecoration(new Recommend1IndexItemDecoration());
         mRecyclerView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.white));
-        mAdapter = new CommonAdapter();
+        mAdapter = new CommonAdapter(0);
 //        mAdapter.register(SeriesHeaderItemViewBinder.Recommend1Header.class, new SeriesHeaderItemViewBinder());
         mAdapter.register(AppRecommend1Show.Banner.class, new Recommend1BannerItemViewBinder());
         mAdapter.register(AppRecommend1Show.Partition.class, new Recommend1PartitionItemViewBinder());

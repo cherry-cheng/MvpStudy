@@ -55,7 +55,7 @@ public class VarietyFragment extends BaseMvpFragment<VarietyPresenter> implement
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.addItemDecoration(new VarietyIndexItemDecoration());
         mRecyclerView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.white));
-        mAdapter = new CommonAdapter();
+        mAdapter = new CommonAdapter(0);
 //        mAdapter.register(SeriesHeaderItemViewBinder.VarietyHeader.class, new SeriesHeaderItemViewBinder());
 //        mAdapter.register(AppVarietyShow.Banner.class, new SeriesBannerItemViewBinder());
         mAdapter.register(AppVarietyShow.Partition.class, new VarietyPartitionItemViewBinder());

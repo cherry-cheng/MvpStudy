@@ -55,7 +55,7 @@ public class SeriesFragment extends BaseMvpFragment<SeriesPresenter> implements 
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.addItemDecoration(new SeriesIndexItemDecoration());
         mRecyclerView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.white));
-        mAdapter = new CommonAdapter();
+        mAdapter = new CommonAdapter(0);
 //        mAdapter.register(SeriesHeaderItemViewBinder.SeriesHeader.class, new SeriesHeaderItemViewBinder());
 //        mAdapter.register(AppSeriesShow.Banner.class, new SeriesBannerItemViewBinder());
         mAdapter.register(AppSeriesShow.Partition.class, new SeriesPartitionItemViewBinder());

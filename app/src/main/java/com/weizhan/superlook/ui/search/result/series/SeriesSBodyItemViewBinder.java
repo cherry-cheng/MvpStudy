@@ -1,4 +1,4 @@
-package com.weizhan.superlook.ui.search.result.all;
+package com.weizhan.superlook.ui.search.result.series;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -6,11 +6,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.common.util.StringUtil;
-import com.common.util.ToastUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.weizhan.superlook.R;
 import com.weizhan.superlook.model.bean.recommend1.AppRecommend1Show;
@@ -23,25 +20,20 @@ import me.drakeet.multitype.ItemViewBinder;
  * Created by Administrator on 2018/9/5.
  */
 
-public class AllSearchBodyItemViewBinder extends ItemViewBinder<AppRecommend1Show.Body, AllSearchBodyItemViewBinder.Recommend1BodyViewHolder> {
+public class SeriesSBodyItemViewBinder extends ItemViewBinder<AppRecommend1Show.Body, SeriesSBodyItemViewBinder.Recommend1BodyViewHolder> {
 
     @NonNull
     @Override
-    protected AllSearchBodyItemViewBinder.Recommend1BodyViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
+    protected SeriesSBodyItemViewBinder.Recommend1BodyViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
         View itemView = inflater.inflate(R.layout.item_allsearch_body, parent, false);
-        return new AllSearchBodyItemViewBinder.Recommend1BodyViewHolder(itemView);
+        return new SeriesSBodyItemViewBinder.Recommend1BodyViewHolder(itemView);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull AllSearchBodyItemViewBinder.Recommend1BodyViewHolder holder, @NonNull AppRecommend1Show.Body item) {
+    protected void onBindViewHolder(@NonNull SeriesSBodyItemViewBinder.Recommend1BodyViewHolder holder, @NonNull AppRecommend1Show.Body item) {
         Context context = holder.ivCover.getContext();
         holder.ivCover.setImageURI(item.getCover());
         holder.big_tv.setText(item.getTitle());
-        if (item.getIs_ad()) {
-            holder.update_tv.setVisibility(View.GONE);
-        } else {
-            holder.update_tv.setVisibility(View.VISIBLE);
-        }
     }
 
     static class Recommend1BodyViewHolder extends RecyclerView.ViewHolder {
