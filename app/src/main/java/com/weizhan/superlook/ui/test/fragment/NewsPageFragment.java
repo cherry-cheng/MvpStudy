@@ -54,7 +54,7 @@ public class NewsPageFragment extends BaseMvpFragment<NewsPresenter> implements 
                 StaggeredGridLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(mLayoutManager);
 //        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        mAdapter = new CommonAdapter(0);
+        mAdapter = new CommonAdapter(0, 99);
         mAdapter.register(WeiXinJingXuanBean.NewsList.class, new NewsItemViewBinder(getContext()));
         mAdapter.setOnLoadMoreListener(new DefaultAdapterWrapper.OnLoadMoreListener() {
             @Override

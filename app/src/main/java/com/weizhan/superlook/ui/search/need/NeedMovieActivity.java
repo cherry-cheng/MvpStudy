@@ -1,44 +1,28 @@
 package com.weizhan.superlook.ui.search.need;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.common.base.BaseActivity;
 import com.common.base.IBaseMvpActivity;
 import com.common.util.ToastUtils;
 import com.weizhan.superlook.App;
 import com.weizhan.superlook.R;
-import com.weizhan.superlook.model.bean.search.SearchKey;
 import com.weizhan.superlook.model.event.ClickMessage;
 import com.weizhan.superlook.ui.main.MainActivity;
-import com.weizhan.superlook.ui.search.home.SearchHomeFragment;
-import com.weizhan.superlook.ui.search.result.SearchResultFragment;
-import com.weizhan.superlook.util.RealmHelper;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-
 import javax.inject.Inject;
-
 import butterknife.BindView;
 import butterknife.OnClick;
-import me.yokeyword.fragmentation.SupportFragment;
 
 /**
  * Created by Administrator on 2018/9/7.
@@ -52,11 +36,6 @@ public class NeedMovieActivity extends BaseActivity implements IBaseMvpActivity<
     Button upload_bt;
     @BindView(R.id.et_name)
     EditText et_name;
-
-    public static void startActivity(Context context) {
-        Intent intent = new Intent(context, NeedMovieActivity.class);
-        context.startActivity(intent);
-    }
 
     @OnClick(R.id.iv_back)
     void Back() {

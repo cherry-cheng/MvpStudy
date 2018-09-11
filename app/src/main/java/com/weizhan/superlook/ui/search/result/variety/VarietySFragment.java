@@ -43,7 +43,7 @@ public class VarietySFragment extends BaseMvpFragment<VarietySPresenter> impleme
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.addItemDecoration(new VarietySIndexItemDecoration());
         mRecyclerView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.white));
-        mAdapter = new CommonAdapter(2);
+        mAdapter = new CommonAdapter(2, 99);
         mAdapter.register(AppRecommend1Show.Body.class, new VarietySBodyItemViewBinder());
         mAdapter.setScrollSaveStrategyEnabled(true);
         mRecyclerView.setAdapter(mAdapter);

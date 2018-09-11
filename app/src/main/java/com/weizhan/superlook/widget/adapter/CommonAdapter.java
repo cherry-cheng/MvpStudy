@@ -48,11 +48,11 @@ public class CommonAdapter extends DefaultAdapterWrapper<MultiTypeAdapter> {
         }
     };
 
-    public CommonAdapter(int failType) {
+    public CommonAdapter(int failType, int refreshType) {
         super(new MultiTypeAdapter(new Items()));
         this.failType = failType;
         useDefaultLoadMore();
-        useDefaultLoadFailed();
+        useDefaultLoadFailed(refreshType);
     }
 
     @Override
@@ -148,14 +148,14 @@ public class CommonAdapter extends DefaultAdapterWrapper<MultiTypeAdapter> {
         setLoadMoreBinder(new BiliLoadMoreBinder());
     }
 
-    public void useDefaultLoadFailed() {
+    public void useDefaultLoadFailed(int refreshType) {
         BaseLoadFailedBinder binder;
         if (failType == 2) {
             binder = new SearchNormalFailedBinder();
         } else if (failType == 1) {
             binder = new SearchFailedBinder();
         } else {
-            binder = new BiliLoadFailedBinder();
+            binder = new BiliLoadFailedBinder(refreshType);
         }
         /*binder.setResId(R.drawable.img_tips_error_load_error);
         binder.setStringId(R.string.tips_load_error);*/

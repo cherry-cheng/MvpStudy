@@ -3,17 +3,25 @@ package com.weizhan.superlook.ui.recommend1;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.common.base.BaseMvpFragment;
 import com.weizhan.superlook.App;
 import com.weizhan.superlook.R;
 import com.weizhan.superlook.model.bean.recommend1.AppRecommend1Show;
+import com.weizhan.superlook.model.event.RefreshEvent;
 import com.weizhan.superlook.ui.recommend1.viewbinder.Recommend1BMItemViewBinder;
 import com.weizhan.superlook.ui.recommend1.viewbinder.Recommend1BannerItemViewBinder;
 import com.weizhan.superlook.ui.recommend1.viewbinder.Recommend1BodyItemViewBinder;
 import com.weizhan.superlook.ui.recommend1.viewbinder.Recommend1FooterItemViewBinder;
 import com.weizhan.superlook.ui.recommend1.viewbinder.Recommend1PartitionItemViewBinder;
 import com.weizhan.superlook.widget.adapter.CommonAdapter;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
+import java.util.List;
 
 import butterknife.BindView;
 import me.drakeet.multitype.Items;
@@ -61,7 +69,7 @@ public class Recommend1Fragment extends BaseMvpFragment<Recommend1Presenter> imp
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.addItemDecoration(new Recommend1IndexItemDecoration());
         mRecyclerView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.white));
-        mAdapter = new CommonAdapter(0);
+        mAdapter = new CommonAdapter(0, 0);
 //        mAdapter.register(SeriesHeaderItemViewBinder.Recommend1Header.class, new SeriesHeaderItemViewBinder());
         mAdapter.register(AppRecommend1Show.Banner.class, new Recommend1BannerItemViewBinder());
         mAdapter.register(AppRecommend1Show.Partition.class, new Recommend1PartitionItemViewBinder());
@@ -75,10 +83,12 @@ public class Recommend1Fragment extends BaseMvpFragment<Recommend1Presenter> imp
     @Override
     public void onStart() {
         super.onStart();
+        EventBus.getDefault().register(this);
     }
 
     @Override
     public void onStop() {
+        EventBus.getDefault().unregister(this);
         super.onStop();
     }
 
@@ -91,5 +101,10 @@ public class Recommend1Fragment extends BaseMvpFragment<Recommend1Presenter> imp
     @Override
     public void showLoadFailed() {
         mAdapter.showLoadFailed();
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(RefreshEvent refreshEvent) {
+        mPresenter.loadData();
     }
 }

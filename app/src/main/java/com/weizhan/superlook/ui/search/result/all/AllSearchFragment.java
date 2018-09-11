@@ -43,7 +43,7 @@ public class AllSearchFragment extends BaseMvpFragment<AllSearchPresenter> imple
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.addItemDecoration(new AllSearchIndexItemDecoration());
         mRecyclerView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.white));
-        mAdapter = new CommonAdapter(1);
+        mAdapter = new CommonAdapter(1, 99);
         mAdapter.register(AppRecommend1Show.Body.class, new AllSearchBodyItemViewBinder());
         mAdapter.setScrollSaveStrategyEnabled(true);
         mRecyclerView.setAdapter(mAdapter);

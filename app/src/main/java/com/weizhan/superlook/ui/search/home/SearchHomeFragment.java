@@ -65,7 +65,7 @@ public class SearchHomeFragment extends BaseMvpFragment<SearchHomePresenter> imp
         hotRecyclerView.setLayoutManager(layoutManager);
         hotRecyclerView.addItemDecoration(new SearchIndexItemDecoration());
         hotRecyclerView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.white));
-        mAdapter = new CommonAdapter(0);
+        mAdapter = new CommonAdapter(0, 99);
         mAdapter.register(HotWord.class, new HotSearchViewBinder());
         mAdapter.setScrollSaveStrategyEnabled(true);
         hotRecyclerView.setAdapter(mAdapter);

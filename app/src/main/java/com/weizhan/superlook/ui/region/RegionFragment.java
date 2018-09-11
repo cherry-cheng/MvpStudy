@@ -7,12 +7,17 @@ import android.support.v7.widget.RecyclerView;
 import com.weizhan.superlook.App;
 import com.weizhan.superlook.R;
 import com.weizhan.superlook.model.bean.region.AppRegionShow;
+import com.weizhan.superlook.model.event.RefreshEvent;
 import com.weizhan.superlook.ui.region.viewbinder.RegionBannerItemViewBinder;
 import com.weizhan.superlook.ui.region.viewbinder.RegionBodyItemViewBinder;
 import com.weizhan.superlook.ui.region.viewbinder.RegionFooterItemViewBinder;
 import com.weizhan.superlook.ui.region.viewbinder.RegionPartitionItemViewBinder;
 import com.weizhan.superlook.widget.adapter.CommonAdapter;
 import com.common.base.BaseMvpFragment;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import me.drakeet.multitype.Items;
@@ -52,7 +57,7 @@ public class RegionFragment extends BaseMvpFragment<RegionPresenter> implements 
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.addItemDecoration(new RegionIndexItemDecoration());
         mRecyclerView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.white));
-        mAdapter = new CommonAdapter(0);
+        mAdapter = new CommonAdapter(0, 4);
 //        mAdapter.register(RegionHeaderItemViewBinder.RegionHeader.class, new RegionHeaderItemViewBinder());
         mAdapter.register(AppRegionShow.Banner.class, new RegionBannerItemViewBinder());
         mAdapter.register(AppRegionShow.Partition.class, new RegionPartitionItemViewBinder());
@@ -65,10 +70,12 @@ public class RegionFragment extends BaseMvpFragment<RegionPresenter> implements 
     @Override
     public void onStart() {
         super.onStart();
+        EventBus.getDefault().register(this);
     }
 
     @Override
     public void onStop() {
+        EventBus.getDefault().unregister(this);
         super.onStop();
     }
 
@@ -81,6 +88,11 @@ public class RegionFragment extends BaseMvpFragment<RegionPresenter> implements 
     @Override
     public void showLoadFailed() {
         mAdapter.showLoadFailed();
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(RefreshEvent refreshEvent) {
+        mPresenter.loadData();
     }
 
 }

@@ -43,7 +43,7 @@ public class MovieSFragment extends BaseMvpFragment<MovieSPresenter> implements 
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.addItemDecoration(new MovieSIndexItemDecoration());
         mRecyclerView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.white));
-        mAdapter = new CommonAdapter(2);
+        mAdapter = new CommonAdapter(2, 99);
         mAdapter.register(AppRecommend1Show.Body.class, new MovieSBodyItemViewBinder());
         mAdapter.setScrollSaveStrategyEnabled(true);
         mRecyclerView.setAdapter(mAdapter);

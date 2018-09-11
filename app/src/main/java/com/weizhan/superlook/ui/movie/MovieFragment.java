@@ -8,10 +8,15 @@ import com.common.base.BaseMvpFragment;
 import com.weizhan.superlook.App;
 import com.weizhan.superlook.R;
 import com.weizhan.superlook.model.bean.movie.AppMovieShow;
+import com.weizhan.superlook.model.event.RefreshEvent;
 import com.weizhan.superlook.ui.movie.viewbinder.MovieBodyItemViewBinder;
 import com.weizhan.superlook.ui.movie.viewbinder.MovieFooterItemViewBinder;
 import com.weizhan.superlook.ui.movie.viewbinder.MoviePartitionItemViewBinder;
 import com.weizhan.superlook.widget.adapter.CommonAdapter;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import me.drakeet.multitype.Items;
@@ -55,7 +60,7 @@ public class MovieFragment extends BaseMvpFragment<MoviePresenter> implements Mo
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.addItemDecoration(new MovieIndexItemDecoration());
         mRecyclerView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.white));
-        mAdapter = new CommonAdapter(0);
+        mAdapter = new CommonAdapter(0, 2);
         mAdapter.register(AppMovieShow.Partition.class, new MoviePartitionItemViewBinder());
         mAdapter.register(AppMovieShow.Body.class, new MovieBodyItemViewBinder());
         mAdapter.register(MovieFooterItemViewBinder.MovieFooter.class, new MovieFooterItemViewBinder());
@@ -66,10 +71,12 @@ public class MovieFragment extends BaseMvpFragment<MoviePresenter> implements Mo
     @Override
     public void onStart() {
         super.onStart();
+        EventBus.getDefault().register(this);
     }
 
     @Override
     public void onStop() {
+        EventBus.getDefault().unregister(this);
         super.onStop();
     }
 
@@ -82,5 +89,10 @@ public class MovieFragment extends BaseMvpFragment<MoviePresenter> implements Mo
     @Override
     public void showLoadFailed() {
         mAdapter.showLoadFailed();
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(RefreshEvent refreshEvent) {
+        mPresenter.loadData();
     }
 }

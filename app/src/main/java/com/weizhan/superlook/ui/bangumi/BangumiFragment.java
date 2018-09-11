@@ -77,7 +77,7 @@ public class BangumiFragment extends BaseMvpFragment<BangumiPresenter> implement
         mRecyclerView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.white));
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.addItemDecoration(new BangumiIndexItemDecoration());
-        mAdapter = new CommonAdapter(0);
+        mAdapter = new CommonAdapter(0, 10);
         //register item
         mAdapter.register(BangumiIndexFollowBinder.BangumiIndexFollow.class, new BangumiIndexFollowBinder());
         mAdapter.register(BangumiHomeBinder.BangumiHome.class, new BangumiHomeBinder());

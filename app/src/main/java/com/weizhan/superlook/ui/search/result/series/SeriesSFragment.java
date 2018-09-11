@@ -43,7 +43,7 @@ public class SeriesSFragment extends BaseMvpFragment<SeriesSPresenter> implement
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.addItemDecoration(new SeriesSIndexItemDecoration());
         mRecyclerView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.white));
-        mAdapter = new CommonAdapter(2);
+        mAdapter = new CommonAdapter(2, 99);
         mAdapter.register(AppRecommend1Show.Body.class, new SeriesSBodyItemViewBinder());
         mAdapter.setScrollSaveStrategyEnabled(true);
         mRecyclerView.setAdapter(mAdapter);
