@@ -5,6 +5,7 @@ import com.weizhan.superlook.di.module.PageModule;
 import com.weizhan.superlook.di.scope.PerActivity;
 import com.weizhan.superlook.ui.main.MainActivity;
 import com.weizhan.superlook.ui.search.SearchActivity;
+import com.weizhan.superlook.ui.search.need.NeedMovieActivity;
 
 import dagger.Component;
 
@@ -18,6 +19,7 @@ public interface ActivityComponent {
     //superlook
     void inject(MainActivity mainActivity);
     void inject(SearchActivity searchActivity);
+    void inject(NeedMovieActivity needMovieActivity);
 
     //Test
 

@@ -19,13 +19,13 @@ import android.widget.TextView;
 
 import com.common.base.BaseActivity;
 import com.common.base.IBaseMvpActivity;
-import com.common.util.ToastUtils;
 import com.weizhan.superlook.App;
 import com.weizhan.superlook.R;
 import com.weizhan.superlook.model.bean.search.SearchKey;
 import com.weizhan.superlook.model.event.ClickMessage;
-import com.weizhan.superlook.model.event.ToggleDrawerEvent;
+import com.weizhan.superlook.model.event.JumpActivity;
 import com.weizhan.superlook.ui.search.home.SearchHomeFragment;
+import com.weizhan.superlook.ui.search.need.NeedMovieActivity;
 import com.weizhan.superlook.ui.search.result.SearchResultFragment;
 import com.weizhan.superlook.util.RealmHelper;
 
@@ -234,5 +234,10 @@ public class SearchActivity extends BaseActivity implements IBaseMvpActivity<Sea
     public void onEvent(ClickMessage clickMessage) {
         Log.i("cyh11", "clickMessage = " + clickMessage.getSearchString());
         GoSearchAction(clickMessage.getSearchString());
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent1(JumpActivity jumpActivity) {
+        startActivity(new Intent(this, NeedMovieActivity.class));
     }
 }

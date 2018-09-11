@@ -1,5 +1,4 @@
 package com.weizhan.superlook.widget.adapter.binder;
-
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
@@ -13,6 +12,9 @@ import com.common.util.ToastUtils;
 import com.common.widget.adapter.BaseLoadFailedBinder;
 import com.common.widget.adapter.BaseViewHolder;
 import com.weizhan.superlook.R;
+import com.weizhan.superlook.model.event.JumpActivity;
+
+import org.greenrobot.eventbus.EventBus;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -45,7 +47,7 @@ public class SearchFailedBinder extends BaseLoadFailedBinder<SearchFailedBinder.
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull SearchFailedBinder.LoadFailedHolder holder) {
+    protected void onBindViewHolder(@NonNull final SearchFailedBinder.LoadFailedHolder holder) {
         if (resId != NO_ID) {
             holder.ivLoadFailed.setImageResource(resId);
         }
@@ -56,6 +58,7 @@ public class SearchFailedBinder extends BaseLoadFailedBinder<SearchFailedBinder.
             @Override
             public void onClick(View view) {
                 ToastUtils.showLongToast("点击了我要求片");
+                EventBus.getDefault().post(new JumpActivity());
             }
         });
     }
