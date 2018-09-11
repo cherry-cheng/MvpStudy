@@ -1,7 +1,9 @@
 package com.weizhan.superlook.ui.region.viewbinder;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,7 @@ import com.common.util.ImageUtil;
 import com.common.util.ScreenUtil;
 import com.common.util.SystemUtil;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.weizhan.superlook.ui.region.series.SeriesRActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,12 +37,18 @@ public class RegionBodyItemViewBinder extends ItemViewBinder<AppRegionShow.Body,
 
     @Override
     protected void onBindViewHolder(@NonNull RegionBodyViewHolder holder, @NonNull AppRegionShow.Body item) {
-        Context context = holder.ivCover.getContext();
+        final Context context = holder.ivCover.getContext();
         /*int width = ScreenUtil.getScreenWidth(context) / 2 - SystemUtil.dp2px(context, 24);
         int height = context.getResources().getDimensionPixelSize(R.dimen.recommend_cover_height);
         ImageUtil.load(holder.ivCover, item.getCover(), width, height);*/
         holder.ivCover.setImageURI(item.getCover());
         holder.tvAreaTitle.setText(item.getTitle().substring(0, 3));
+        holder.card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                context.startActivity(new Intent(context, SeriesRActivity.class));
+            }
+        });
     }
 
     static class RegionBodyViewHolder extends RecyclerView.ViewHolder {
@@ -48,6 +57,8 @@ public class RegionBodyItemViewBinder extends ItemViewBinder<AppRegionShow.Body,
         SimpleDraweeView ivCover;
         @BindView(R.id.tv_area_title)
         TextView tvAreaTitle;
+        @BindView(R.id.card)
+        CardView card;
 
         public RegionBodyViewHolder(View itemView) {
             super(itemView);

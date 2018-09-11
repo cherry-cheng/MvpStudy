@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/title"
+        android:text="电视剧"
+        android:textColor="#ff4a4a4a"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp" />
+    <ImageView
+        android:id="@+id/back_iv"
+        android:src="@drawable/ic_icon_nav_back"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:layout_below="@+id/title"
+        android:id="@+id/title_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView1"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="32dp">
+        </android.support.v7.widget.RecyclerView>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView2"
+            android:layout_below="@+id/recyclerView1"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="32dp">
+        </android.support.v7.widget.RecyclerView>
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerViewContent"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/title_rl"
+        android:layout_height="match_parent">
+    </android.support.v7.widget.RecyclerView>
+
+</RelativeLayout>

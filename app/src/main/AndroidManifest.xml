@@ -38,6 +38,10 @@
         <activity android:name=".ui.search.need.NeedMovieActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"/>
+
+        <activity android:name=".ui.region.series.SeriesRActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>
