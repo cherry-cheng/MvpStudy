@@ -47,6 +47,7 @@ public class SearchHomeFragment extends BaseMvpFragment<SearchHomePresenter> imp
     private CommonAdapter mAdapter;
     private HotWordAdapter historyAdapter;
     private static final int SPAN_COUNT = 1;
+    List<SearchKey> searchHistory;
 
     @Override
     protected int getLayoutId() {
@@ -72,7 +73,7 @@ public class SearchHomeFragment extends BaseMvpFragment<SearchHomePresenter> imp
     }
 
     private void setHistory() {
-        final List<SearchKey> searchHistory = RealmHelper.getInstance().getSearchHistoryListAll();
+        searchHistory = RealmHelper.getInstance().getSearchHistoryListAll();
         if (searchHistory != null && searchHistory.size() > 0) {
             searchHistory_rl.setVisibility(View.VISIBLE);
             historyAdapter = new HotWordAdapter(getContext(), searchHistory);
@@ -102,12 +103,12 @@ public class SearchHomeFragment extends BaseMvpFragment<SearchHomePresenter> imp
     @Override
     public void onStart() {
         super.onStart();
-        EventBus.getDefault().register(this);
+//        EventBus.getDefault().register(this);
     }
 
     @Override
     public void onStop() {
-        EventBus.getDefault().unregister(this);
+//        EventBus.getDefault().unregister(this);
         super.onStop();
     }
 
@@ -122,13 +123,13 @@ public class SearchHomeFragment extends BaseMvpFragment<SearchHomePresenter> imp
         mAdapter.showLoadFailed();
     }
 
-    @Subscribe(threadMode = ThreadMode.BACKGROUND)
-    public void onEvent(ClickMessage event) {
-        ToastUtils.showLongToast("abccc");
-    }
-
     @Override
     public void onItemClick(View view, int position) {
         ToastUtils.showLongToast("点击了历史记录");
+        ClickMessage clickMessage = new ClickMessage();
+        if (searchHistory != null && searchHistory.size() > 0) {
+            clickMessage.setSearchString(searchHistory.get(position).getSearchKey());
+            EventBus.getDefault().post(clickMessage);
+        }
     }
 }

@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -18,9 +19,11 @@ import android.widget.TextView;
 
 import com.common.base.BaseActivity;
 import com.common.base.IBaseMvpActivity;
+import com.common.util.ToastUtils;
 import com.weizhan.superlook.App;
 import com.weizhan.superlook.R;
 import com.weizhan.superlook.model.bean.search.SearchKey;
+import com.weizhan.superlook.model.event.ClickMessage;
 import com.weizhan.superlook.model.event.ToggleDrawerEvent;
 import com.weizhan.superlook.ui.search.home.SearchHomeFragment;
 import com.weizhan.superlook.ui.search.result.SearchResultFragment;
@@ -114,6 +117,21 @@ public class SearchActivity extends BaseActivity implements IBaseMvpActivity<Sea
         } else {
             getSearchResult(keyword);
         }
+    }
+
+    private void GoSearchAction(String hotword) {
+        et_input.setText(hotword);
+        et_input.setSelection(et_input.getText().length());
+        //收起软键盘
+        hideKeyboard(et_input);
+        //跳入搜索结果界面
+        if (searchResultFragment.isVisible()) {
+            //刷新当前的fragment
+            searchResultFragment.onAttach(this);
+        } else {
+            start(searchResultFragment);
+        }
+        getSearchResult(hotword);
     }
 
     private void getSearchResult(String keyword) {
@@ -212,11 +230,9 @@ public class SearchActivity extends BaseActivity implements IBaseMvpActivity<Sea
         }
     }
 
-    /**
-     * DrawerLayout侧滑菜单开关
-     */
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onEvent(ToggleDrawerEvent event) {
-
+    public void onEvent(ClickMessage clickMessage) {
+        Log.i("cyh11", "clickMessage = " + clickMessage.getSearchString());
+        GoSearchAction(clickMessage.getSearchString());
     }
 }

@@ -34,7 +34,7 @@ public class HotSearchViewBinder extends ItemViewBinder<HotWord, HotSearchViewBi
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull HotSearchViewBinder.HotSearchViewHolder holder, @NonNull HotWord item) {
+    protected void onBindViewHolder(@NonNull HotSearchViewBinder.HotSearchViewHolder holder, @NonNull final HotWord item) {
         if (holder.getPosition() == 0) {
             holder.tv_number.setBackgroundResource(R.drawable.bg_hotsearch);
         } else if (holder.getPosition() == 1) {
@@ -50,7 +50,9 @@ public class HotSearchViewBinder extends ItemViewBinder<HotWord, HotSearchViewBi
             @Override
             public void onClick(View view) {
                 ToastUtils.showLongToast("点击了热词");
-                EventBus.getDefault().post(new ClickMessage());
+                ClickMessage clickMessage = new ClickMessage();
+                clickMessage.setSearchString(item.getKeyword());
+                EventBus.getDefault().post(clickMessage);
             }
         });
     }
