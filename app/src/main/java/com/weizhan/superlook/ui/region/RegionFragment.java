@@ -8,9 +8,7 @@ import com.weizhan.superlook.App;
 import com.weizhan.superlook.R;
 import com.weizhan.superlook.model.bean.region.AppRegionShow;
 import com.weizhan.superlook.model.event.RefreshEvent;
-import com.weizhan.superlook.ui.region.viewbinder.RegionBannerItemViewBinder;
 import com.weizhan.superlook.ui.region.viewbinder.RegionBodyItemViewBinder;
-import com.weizhan.superlook.ui.region.viewbinder.RegionFooterItemViewBinder;
 import com.weizhan.superlook.ui.region.viewbinder.RegionPartitionItemViewBinder;
 import com.weizhan.superlook.widget.adapter.CommonAdapter;
 import com.common.base.BaseMvpFragment;
@@ -58,11 +56,8 @@ public class RegionFragment extends BaseMvpFragment<RegionPresenter> implements 
         mRecyclerView.addItemDecoration(new RegionIndexItemDecoration());
         mRecyclerView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.white));
         mAdapter = new CommonAdapter(0, 4);
-//        mAdapter.register(RegionHeaderItemViewBinder.RegionHeader.class, new RegionHeaderItemViewBinder());
-        mAdapter.register(AppRegionShow.Banner.class, new RegionBannerItemViewBinder());
         mAdapter.register(AppRegionShow.Partition.class, new RegionPartitionItemViewBinder());
         mAdapter.register(AppRegionShow.Body.class, new RegionBodyItemViewBinder());
-        mAdapter.register(RegionFooterItemViewBinder.RegionFooter.class, new RegionFooterItemViewBinder());
         mAdapter.setScrollSaveStrategyEnabled(true);
         mRecyclerView.setAdapter(mAdapter);
     }

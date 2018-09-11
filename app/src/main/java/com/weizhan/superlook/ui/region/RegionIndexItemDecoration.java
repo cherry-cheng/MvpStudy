@@ -25,29 +25,29 @@ public class RegionIndexItemDecoration extends RecyclerView.ItemDecoration {
         int spanSize = spanSizeLookup.getSpanSize(position);
         int margin_normal = view.getContext().getResources().getDimensionPixelOffset(R.dimen.margin_normal);
         int margin_small = view.getContext().getResources().getDimensionPixelOffset(R.dimen.margin_small);
-        int margin_tiny = view.getContext().getResources().getDimensionPixelOffset(R.dimen.margin_tiny);
+        int margin_tiny = view.getContext().getResources().getDimensionPixelOffset(R.dimen.margin_4);
         if (spanSize == 2) {
             if (position == 0) { //header
-                outRect.bottom = margin_tiny;
-            } else {
-                outRect.left = margin_normal;
-                outRect.right = margin_normal;
-                outRect.bottom = margin_small;
                 outRect.top = margin_small;
+                outRect.left = margin_small;
+                outRect.bottom = margin_small;
+            } else {
+                outRect.top = margin_normal;
+                outRect.left = margin_small;
+                outRect.bottom = margin_small;
             }
         } else {
             int index = spanSizeLookup.getSpanIndex(position , 2);
             switch (index) {
                 case 0:
-                    outRect.left = margin_normal;
-                    outRect.right = margin_small;
+                    outRect.left = margin_small;
+                    outRect.right = margin_tiny;
                     break;
                 case 1:
-                    outRect.left = margin_small;
-                    outRect.right = margin_normal;
+                    outRect.left = margin_tiny;
+                    outRect.right = margin_small;
                     break;
             }
-            outRect.bottom = margin_small;
             outRect.top = margin_small;
         }
     }

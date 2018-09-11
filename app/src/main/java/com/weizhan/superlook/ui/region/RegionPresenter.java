@@ -88,10 +88,6 @@ public class RegionPresenter extends AbsBasePresenter<RegionContract.View> {
 //        items.add(new RegionHeaderItemViewBinder.RegionHeader());
         List<AppRegionShow> regionShowList = regionShow.getData();
         for (AppRegionShow appRegionShow : regionShowList) {
-            //banner
-            if (appRegionShow.getBanner() != null) {
-                items.add(appRegionShow.getBanner());
-            }
             //partition
             AppRegionShow.Partition p = appRegionShow.new Partition();
             p.setTitle(appRegionShow.getTitle());
@@ -104,13 +100,6 @@ public class RegionPresenter extends AbsBasePresenter<RegionContract.View> {
             List<AppRegionShow.Body> bodyList = appRegionShow.getBody();
             for (AppRegionShow.Body b : bodyList) {
                 items.add(b);
-            }
-
-            //footer
-            if (!TextUtils.equals("活动中心", appRegionShow.getTitle())) {
-                RegionFooterItemViewBinder.RegionFooter footer = new RegionFooterItemViewBinder.RegionFooter();
-                footer.setRegion(appRegionShow.getTitle().substring(0, appRegionShow.getTitle().length() - 1));
-                items.add(footer);
             }
         }
         return items;
