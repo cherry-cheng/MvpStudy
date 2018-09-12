@@ -93,6 +93,21 @@ public class EasyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
     //=========API=========
 
     /**
+     * 设置默认选中项
+     *
+     * @param itemPositions
+     */
+
+    public void setSelected(int... itemPositions) {
+        singleSelected = itemPositions[0];
+        if (onItemSingleSelectListener != null) {
+            onItemSingleSelectListener.onSelected(singleSelected, true);
+        }
+        notifyDataSetChanged();
+    }
+
+
+    /**
      * 获取单选模式选中Item位置
      *
      * @return

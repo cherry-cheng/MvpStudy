@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.common.base.BaseActivity;
@@ -44,6 +45,8 @@ public class SeriesRActivity extends BaseActivity implements IBaseMvpActivity<Se
     RecyclerView recyclerView2;
     @BindView(R.id.recyclerView3)
     RecyclerView recyclerView3;
+    @BindView(R.id.rl_re)
+    RelativeLayout rl_re;
     private CommonAdapter commonAdapter;
     private static final int SPAN_COUNT = 2;
 
@@ -146,6 +149,24 @@ public class SeriesRActivity extends BaseActivity implements IBaseMvpActivity<Se
             }
         });
 
+        recyclerViewContent.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                int firstVisibleItem = ((LinearLayoutManager) recyclerView.getLayoutManager()).findFirstVisibleItemPosition();
+                if (firstVisibleItem == 0) {
+                    rl_re.setVisibility(View.VISIBLE);
+                } else {
+                    rl_re.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+            }
+        });
+        easyAdapter1.setSelected(1);
         mPresenter.LoadAccordParams(type);
 
     }
