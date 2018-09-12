@@ -4,6 +4,10 @@ import com.weizhan.superlook.di.module.FragmentModule;
 import com.weizhan.superlook.di.module.PageModule;
 import com.weizhan.superlook.di.scope.PerFragment;
 import com.weizhan.superlook.ui.bangumi.BangumiFragment;
+import com.weizhan.superlook.ui.history.MainHistoryFragment;
+import com.weizhan.superlook.ui.history.collect.CollectFragment;
+import com.weizhan.superlook.ui.history.off.OffFragment;
+import com.weizhan.superlook.ui.history.past.PastFragment;
 import com.weizhan.superlook.ui.main.MainFragment;
 import com.weizhan.superlook.ui.movie.MovieFragment;
 import com.weizhan.superlook.ui.recommend1.Recommend1Fragment;
@@ -38,11 +42,19 @@ public interface FragmentComponent {
 
     void inject(MainFragment mainFragment);
 
+    void inject(MainHistoryFragment mainHistoryFragment);
+
     void inject(SearchResultFragment searchResultFragment);
 
     void inject(BangumiFragment bangumiFragment);
 
     void inject(Recommend1Fragment recommend1Fragment);
+
+    void inject(CollectFragment collectFragment);
+
+    void inject(OffFragment offFragment);
+
+    void inject(PastFragment pastFragment);
 
     void inject(AllSearchFragment allSearchFragment);
 

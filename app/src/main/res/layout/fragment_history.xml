@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+    <com.androidkun.xtablayout.XTabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="182dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/rl_search"
+        app:xTabMode="fixed"
+        app:xTabIndicatorHeight="0dp"
+        app:xTabSelectedTextColor="@color/black"
+        app:xTabTextColor="@android:color/black"
+        app:xTabTextSize="17dp"
+        app:xTabDisplayNum="3"
+        app:xTabSelectedTextSize="17dp"
+        app:xTabTextSelectedBold="true"
+        app:xTabTextBold="false"
+        app:xTabBackgroundColor="@color/white"/>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_below="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+</RelativeLayout>
+
+

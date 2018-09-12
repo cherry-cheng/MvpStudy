@@ -3,6 +3,10 @@ package com.weizhan.superlook.di.module;
 import com.weizhan.superlook.di.scope.PerActivity;
 import com.weizhan.superlook.di.scope.PerFragment;
 import com.weizhan.superlook.ui.bangumi.BangumiFragment;
+import com.weizhan.superlook.ui.history.MainHistoryFragment;
+import com.weizhan.superlook.ui.history.collect.CollectFragment;
+import com.weizhan.superlook.ui.history.off.OffFragment;
+import com.weizhan.superlook.ui.history.past.PastFragment;
 import com.weizhan.superlook.ui.main.MainFragment;
 import com.weizhan.superlook.ui.movie.MovieFragment;
 import com.weizhan.superlook.ui.recommend1.Recommend1Fragment;
@@ -41,6 +45,13 @@ public class PageModule {
         return new MainFragment();
     }
 
+    //history
+    @Provides
+    @PerActivity
+    MainHistoryFragment provideMainHistoryFragment() {
+        return new MainHistoryFragment();
+    }
+
     //main
     @Provides
     @PerActivity
@@ -70,6 +81,24 @@ public class PageModule {
     @PerFragment
     Recommend1Fragment provideRecommend1Fragment() {
         return new Recommend1Fragment();
+    }
+
+    @Provides
+    @PerFragment
+    CollectFragment provideCollectFragment() {
+        return new CollectFragment();
+    }
+
+    @Provides
+    @PerFragment
+    OffFragment provideOffFragment() {
+        return new OffFragment();
+    }
+
+    @Provides
+    @PerFragment
+    PastFragment providePastFragment() {
+        return new PastFragment();
     }
 
     @Provides

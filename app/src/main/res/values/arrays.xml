@@ -6,6 +6,11 @@
         <item>@string/section_movie</item>
         <item>@string/section_special_column</item>
     </string-array>
+    <string-array name="history_section">
+        <item>@string/history_c</item>
+        <item>@string/history_off</item>
+        <item>@string/history_h</item>
+    </string-array>
     <string-array name="search_sections">
         <item>@string/search_all</item>
         <item>@string/section_movie</item>

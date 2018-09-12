@@ -106,4 +106,12 @@
     <string name="tv_play">电视剧</string>
     <string name="game_center">游戏中心</string>
     <string name="more_format">更多好看%s</string>
+
+    <string name="history_c">收藏</string>
+    <string name="history_off">离线</string>
+    <string name="history_h">历史</string>
+
+    <string name="history_cFail">暂无收藏的视频</string>
+    <string name="history_offFail">暂无离线视频</string>
+    <string name="history_hFail">暂无观看历史</string>
 </resources>

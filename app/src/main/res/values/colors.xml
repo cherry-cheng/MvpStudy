@@ -100,7 +100,7 @@
     <color name="bangumi_pay_1">#ffffa726</color>
     <color name="bangumi_pay_2">#ffffb500</color>
     <color name="bg_main">#fff1f1f1</color>
-    <color name="black">#ff000000</color>
+    <color name="black">#000000</color>
     <color name="black_alpha10">#16000000</color>
     <color name="black_alpha15">#26000000</color>
     <color name="black_alpha20">#33000000</color>

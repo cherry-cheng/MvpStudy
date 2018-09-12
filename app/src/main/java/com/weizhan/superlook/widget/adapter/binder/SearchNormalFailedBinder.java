@@ -37,6 +37,15 @@ public class SearchNormalFailedBinder extends BaseLoadFailedBinder<SearchNormalF
         this.stringId = stringId;
     }
 
+    public SearchNormalFailedBinder() {
+
+    }
+
+    public SearchNormalFailedBinder(@DrawableRes int resId, @StringRes int stringId) {
+        setResId(resId);
+        setStringId(stringId);
+    }
+
     @NonNull
     @Override
     protected SearchNormalFailedBinder.LoadFailedHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
