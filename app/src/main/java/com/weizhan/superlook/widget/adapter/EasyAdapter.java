@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.weizhan.superlook.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,10 +23,17 @@ public class EasyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
     private OnItemClickListener onItemClickListener;
     private OnItemSingleSelectListener onItemSingleSelectListener;
 
-    private List<String> list;
+    private List<String> list = new ArrayList<String>();
     private Context mContext;
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
+    }
+
+    public void setData(List<String> newList) {
+        if (newList != null && newList.size() > 0)
+        this.list.clear();
+        this.list = newList;
+        notifyDataSetChanged();
     }
 
     public EasyAdapter(List<String> list, Context context) {

@@ -12,9 +12,6 @@ import android.widget.TextView;
 
 import com.weizhan.superlook.R;
 import com.weizhan.superlook.model.bean.region.AppRegionShow;
-import com.common.util.ImageUtil;
-import com.common.util.ScreenUtil;
-import com.common.util.SystemUtil;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.weizhan.superlook.ui.region.series.SeriesRActivity;
 
@@ -46,7 +43,9 @@ public class RegionBodyItemViewBinder extends ItemViewBinder<AppRegionShow.Body,
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                context.startActivity(new Intent(context, SeriesRActivity.class));
+                Intent intent = new Intent(context, SeriesRActivity.class);
+                intent.putExtra("which", 1);
+                context.startActivity(intent);
             }
         });
     }

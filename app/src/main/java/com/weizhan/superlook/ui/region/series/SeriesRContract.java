@@ -15,6 +15,8 @@ public interface SeriesRContract {
         void onDataUpdated(Items items);
 
         void showLoadFailed();
+
+        void onDataResponse(int type);
     }
 
     interface Presenter extends BasePresenter {

@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.common.base.AbsBasePresenter;
 import com.common.util.DateUtil;
+import com.common.util.ToastUtils;
 import com.weizhan.superlook.model.api.ApiHelper;
 import com.weizhan.superlook.model.api.SeriesApis;
 import com.weizhan.superlook.model.bean.DataListResponse;
@@ -78,9 +79,15 @@ public class SeriesRPresenter extends AbsBasePresenter<SeriesRContract.View> {
                     @Override
                     public void onComplete() {
                         Log.d(TAG, "onComplete");
-
                     }
                 });
+    }
+
+    public void LoadAccordParams(int ee) {
+        ToastUtils.showLongToast("测试111");
+        if (ee == 1) {
+            mView.onDataResponse(1);
+        }
     }
 
     private Items regionShow2Items(DataListResponse<AppSeriesShow> regionShow) {
