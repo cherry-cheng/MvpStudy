@@ -45,8 +45,8 @@ public class SeriesIndexItemDecoration extends RecyclerView.ItemDecoration {
                     outRect.right = margin_small;
                     break;
             }
-            outRect.bottom = margin_small;
-            outRect.top = margin_4;
+            outRect.bottom = margin_4;
+            outRect.top = margin_small;
         }
     }
 }

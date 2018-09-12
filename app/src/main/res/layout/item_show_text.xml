@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="32dp"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/txt_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="全部地区"
+        android:gravity="center"
+        android:paddingRight="12dp"
+        android:paddingLeft="12dp"
+        android:textColor="#ffff850b"
+        android:textSize="14sp" />
+</LinearLayout>
