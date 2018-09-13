@@ -94,4 +94,9 @@ public class UpdateDialog extends Dialog {
             }
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        return;
+    }
 }
