@@ -39,6 +39,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"/>
 
+        <activity android:name=".ui.mine.DeclareActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+
         <activity android:name=".ui.region.series.SeriesRActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"/>

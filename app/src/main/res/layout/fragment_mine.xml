@@ -7,6 +7,7 @@
 
     <RelativeLayout
         android:id="@+id/rl_title"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="124dp">
 
@@ -22,6 +23,7 @@
             android:layout_height="wrap_content" />
 
         <ImageView
+            android:id="@+id/weixin_iv"
             android:src="@drawable/ic_icon_login_weichat"
             android:layout_width="42dp"
             android:layout_marginTop="16dp"
@@ -31,6 +33,7 @@
             android:layout_height="42dp" />
 
         <ImageView
+            android:id="@+id/weibo_iv"
             android:src="@drawable/ic_icon_login_weibo"
             android:layout_width="42dp"
             android:layout_below="@+id/title_tv"
@@ -44,7 +47,7 @@
 
     <RelativeLayout
         android:id="@+id/rl_login"
-        android:visibility="gone"
+        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="92dp">
         <de.hdodenhof.circleimageview.CircleImageView
@@ -167,6 +170,7 @@
             android:layout_width="match_parent"
             android:layout_height="51dp" />
         <View
+            android:id="@+id/view6"
             android:layout_below="@+id/tv_update"
             android:background="#f5f5f5"
             android:layout_marginLeft="16dp"

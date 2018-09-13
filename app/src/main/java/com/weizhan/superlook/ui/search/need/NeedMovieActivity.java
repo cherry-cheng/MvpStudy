@@ -45,7 +45,11 @@ public class NeedMovieActivity extends BaseActivity implements IBaseMvpActivity<
     @OnClick(R.id.upload_bt)
     void goHome() {
         //上传信息,如果上传成功给toast
-        startActivity(new Intent(this, MainActivity.class));
+        if (getIntent().getBooleanExtra("isMine", false)) {
+            finish();
+        } else {
+            startActivity(new Intent(this, MainActivity.class));
+        }
         ToastUtils.showLongToast("提交成功，我们尽快搜找片源");
     }
 
