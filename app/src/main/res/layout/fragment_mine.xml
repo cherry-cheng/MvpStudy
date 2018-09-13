@@ -7,7 +7,6 @@
 
     <RelativeLayout
         android:id="@+id/rl_title"
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="124dp">
 
@@ -45,6 +44,7 @@
 
     <RelativeLayout
         android:id="@+id/rl_login"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="92dp">
         <de.hdodenhof.circleimageview.CircleImageView
@@ -68,9 +68,6 @@
             android:layout_height="wrap_content" />
     </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
         <TextView
             android:id="@+id/tv_need"
             android:text="我要求片"
@@ -83,7 +80,6 @@
             android:layout_height="51dp" />
         <View
             android:id="@+id/view1"
-            android:layout_below="@+id/tv_need"
             android:background="#f5f5f5"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
@@ -96,13 +92,11 @@
             android:textSize="14sp"
             android:paddingLeft="16dp"
             android:textStyle="bold"
-            android:layout_below="@+id/view1"
             android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="51dp" />
         <View
             android:id="@+id/view2"
-            android:layout_below="@+id/tv_share"
             android:background="#f5f5f5"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
@@ -116,13 +110,11 @@
             android:textSize="14sp"
             android:textStyle="bold"
             android:paddingLeft="16dp"
-            android:layout_below="@+id/view2"
             android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="51dp" />
         <View
             android:id="@+id/view3"
-            android:layout_below="@+id/tv_clean"
             android:background="#f5f5f5"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
@@ -136,13 +128,11 @@
             android:textSize="14sp"
             android:textStyle="bold"
             android:paddingLeft="16dp"
-            android:layout_below="@+id/view3"
             android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="51dp" />
         <View
             android:id="@+id/view4"
-            android:layout_below="@+id/tv_declare"
             android:background="#f5f5f5"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
@@ -156,7 +146,23 @@
             android:textSize="14sp"
             android:paddingLeft="16dp"
             android:textStyle="bold"
-            android:layout_below="@+id/view4"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="51dp" />
+        <View
+            android:id="@+id/view5"
+            android:background="#f5f5f5"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <TextView
+            android:id="@+id/tv_loggout"
+            android:text="退出登录"
+            android:textColor="#ff000000"
+            android:textSize="14sp"
+            android:paddingLeft="16dp"
+            android:textStyle="bold"
             android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="51dp" />
@@ -167,6 +173,5 @@
             android:layout_marginRight="16dp"
             android:layout_width="match_parent"
             android:layout_height="1dp"/>
-    </RelativeLayout>
 
 </LinearLayout>
