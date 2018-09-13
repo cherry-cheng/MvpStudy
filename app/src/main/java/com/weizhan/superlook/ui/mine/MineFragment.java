@@ -12,6 +12,7 @@ import com.weizhan.superlook.R;
 import com.weizhan.superlook.model.event.RefreshEvent;
 import com.weizhan.superlook.ui.search.need.NeedMovieActivity;
 import com.weizhan.superlook.util.FileUtils;
+import com.weizhan.superlook.widget.dialog.UpdateDialog;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -88,6 +89,21 @@ public class MineFragment extends BaseMvpFragment<MinePresenter> implements Mine
     @OnClick(R.id.tv_update)
     void updateCheck() {
         //检查更新
+        final UpdateDialog updateDialog = new UpdateDialog(getActivity(), "发现新版本",
+                "现在更新", getResources().getString(R.string.update_content), true);
+        updateDialog.show();
+        updateDialog.setClickListener(new UpdateDialog.ClickListenerInterface() {
+            @Override
+            public void doConfirm() {
+                updateDialog.dismiss();
+                ToastUtils.showLongToast("正在下载");
+            }
+
+            @Override
+            public void doCancel() {
+                updateDialog.dismiss();
+            }
+        });
     }
 
     @OnClick(R.id.tv_loggout)

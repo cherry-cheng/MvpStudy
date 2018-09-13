@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:background="@android:color/transparent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/rl_title"
+        android:layout_width="match_parent"
+        android:background="@drawable/bg_dialog"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/title"
+            android:text="发现新版本"
+            android:textColor="#000000"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="20dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/content"
+            android:layout_below="@+id/title"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:text="@string/update_content"
+            android:layout_marginTop="12dp"
+            android:textColor="#8a000000"
+            android:lineSpacingExtra="6dp"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/update_bt"
+            android:text="现在更新"
+            android:background="@drawable/bg_update_now"
+            android:textColor="#ffffffff"
+            android:layout_below="@+id/content"
+            android:textSize="15sp"
+            android:layout_width="match_parent"
+            android:textStyle="bold"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv_close"
+        android:src="@drawable/ic_icon_alert_close"
+        android:layout_width="44dp"
+        android:layout_below="@+id/rl_title"
+        android:layout_marginTop="24dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="44dp" />
+
+</RelativeLayout>
