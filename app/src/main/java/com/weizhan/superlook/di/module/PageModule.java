@@ -8,6 +8,7 @@ import com.weizhan.superlook.ui.history.collect.CollectFragment;
 import com.weizhan.superlook.ui.history.off.OffFragment;
 import com.weizhan.superlook.ui.history.past.PastFragment;
 import com.weizhan.superlook.ui.main.MainFragment;
+import com.weizhan.superlook.ui.mine.MineFragment;
 import com.weizhan.superlook.ui.movie.MovieFragment;
 import com.weizhan.superlook.ui.recommend1.Recommend1Fragment;
 import com.weizhan.superlook.ui.region.RegionFragment;
@@ -69,6 +70,12 @@ public class PageModule {
     @PerActivity
     RegionFragment provideRegionFragment() {
         return new RegionFragment();
+    }
+
+    @Provides
+    @PerActivity
+    MineFragment provideMineFragment() {
+        return new MineFragment();
     }
 
     @Provides

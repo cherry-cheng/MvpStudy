@@ -9,6 +9,7 @@ import com.weizhan.superlook.ui.history.collect.CollectFragment;
 import com.weizhan.superlook.ui.history.off.OffFragment;
 import com.weizhan.superlook.ui.history.past.PastFragment;
 import com.weizhan.superlook.ui.main.MainFragment;
+import com.weizhan.superlook.ui.mine.MineFragment;
 import com.weizhan.superlook.ui.movie.MovieFragment;
 import com.weizhan.superlook.ui.recommend1.Recommend1Fragment;
 import com.weizhan.superlook.ui.region.RegionFragment;
@@ -65,6 +66,8 @@ public interface FragmentComponent {
     void inject(SeriesSFragment seriesSFragment);
 
     void inject(RegionFragment regionFragment);
+
+    void inject(MineFragment mineFragment);
 
     void inject(SearchHomeFragment searchHomeFragment);
 

@@ -11,6 +11,7 @@ import com.weizhan.superlook.App;
 import com.weizhan.superlook.R;
 import com.weizhan.superlook.model.event.ToggleDrawerEvent;
 import com.weizhan.superlook.ui.history.MainHistoryFragment;
+import com.weizhan.superlook.ui.mine.MineFragment;
 import com.weizhan.superlook.ui.region.RegionFragment;
 import com.weizhan.superlook.util.BottomNavigationViewHelper;
 import com.weizhan.superlook.ui.test.fragment.PlaceHolderFragment;
@@ -41,6 +42,8 @@ public class MainActivity extends BaseActivity implements IBaseMvpActivity<MainP
     RegionFragment regionFragment;
     @Inject
     MainHistoryFragment mainHistoryFragment;
+    @Inject
+    MineFragment mineFragment;
     @BindView(R.id.entrance_bar)
     BottomNavigationView bottomNavigationView;
     @BindView(R.id.main_container)
@@ -97,7 +100,7 @@ public class MainActivity extends BaseActivity implements IBaseMvpActivity<MainP
         mFragments[FIRST] = mainFragment;
         mFragments[SECOND] = regionFragment;
         mFragments[THIRD] = mainHistoryFragment;
-        mFragments[FOURTH] = new PlaceHolderFragment();
+        mFragments[FOURTH] = mineFragment;
         loadMultipleRootFragment(R.id.main_container, 0,
                 mFragments[FIRST],
                 mFragments[SECOND],
