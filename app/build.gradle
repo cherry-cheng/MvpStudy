@@ -31,7 +31,7 @@ dependencies {
     })
     testCompile 'junit:junit:4.12'
     compile project(':common')
-    compile project(':ijkplayer')
+//    compile project(':ijkplayer')
     compile project(':xtablayoutlibrary')
     compile "com.google.dagger:dagger:$dagger_version"
     compile("com.jakewharton:butterknife:$butterknife_version") {

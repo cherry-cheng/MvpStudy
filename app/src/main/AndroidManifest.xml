@@ -13,10 +13,6 @@
         android:theme="@style/AppTheme">
 
         <!-- 测试播放器 -->
-        <activity
-            android:name="com.weizhan.superlook.ui.test.activity.TestPlayerActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" />
 
         <!-- 主页 -->
         <activity
