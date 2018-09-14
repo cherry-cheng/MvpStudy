@@ -1,5 +1,6 @@
 package com.weizhan.superlook.ui.mine;
 import android.content.Intent;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -12,6 +13,7 @@ import com.weizhan.superlook.R;
 import com.weizhan.superlook.model.event.RefreshEvent;
 import com.weizhan.superlook.ui.search.need.NeedMovieActivity;
 import com.weizhan.superlook.util.FileUtils;
+import com.weizhan.superlook.widget.dialog.SharePopWindow;
 import com.weizhan.superlook.widget.dialog.UpdateDialog;
 
 import org.greenrobot.eventbus.EventBus;
@@ -44,6 +46,8 @@ public class MineFragment extends BaseMvpFragment<MinePresenter> implements Mine
     @BindView(R.id.view6)
     View view6;
 
+    private SharePopWindow sharePopWindow;
+
 
     @Override
     protected int getLayoutId() {
@@ -69,9 +73,31 @@ public class MineFragment extends BaseMvpFragment<MinePresenter> implements Mine
     }
 
     @OnClick(R.id.tv_share)
-    void shareApp() {
+    void shareApp(View view) {
         //分享应用
+        sharePopWindow = new SharePopWindow(getActivity(), itemsOnClick);
+        sharePopWindow.showAtLocation(view, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
     }
+
+    private View.OnClickListener itemsOnClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            sharePopWindow.dismiss();
+            sharePopWindow.backgroundAlpha(getActivity(), 1f);
+            switch (view.getId()) {
+                case R.id.weixinf:
+                    break;
+                case R.id.wechatc:
+                    break;
+                case R.id.qqFriend:
+                    break;
+                case R.id.sina:
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
 
     @OnClick(R.id.tv_clean)
     void cleanCache() {
