@@ -13,7 +13,7 @@ android {
         versionName "1.2.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         ndk {
-            abiFilters "armeabi", "armeabi-v7a", "x86"
+            abiFilters "armeabi-v7a", "x86"
         }
     }
     buildTypes {
@@ -40,9 +40,15 @@ dependencies {
     }
     compile 'com.alibaba:fastjson:1.2.14'
     compile 'org.jsoup:jsoup:1.10.2'
-    //弹幕烈焰使
-    compile 'com.github.ctiao:DanmakuFlameMaster:0.9.12'
     compile "com.android.support:recyclerview-v7:27.1.1"
+
+    implementation project(':dkplayer-java')
+    implementation project(':dkplayer-ui')
+    implementation project(':dkplayer-armv7a')
+    implementation project(':dkplayer-arm64')
+    implementation project(':dkplayer-armv5')
+    implementation project(':dkplayer-x86')
+    implementation project(':dkplayer-x86_64')
 
     annotationProcessor "com.google.dagger:dagger-compiler:$dagger_version"
     annotationProcessor "com.jakewharton:butterknife-compiler:$butterknife_version"

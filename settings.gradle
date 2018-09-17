@@ -1,1 +1,1 @@
-include ':app', ':common', ':xtablayoutlibrary'
+include ':app', ':common', ':xtablayoutlibrary', ':dkplayer-arm64', ':dkplayer-armv5', ':dkplayer-armv7a', ':dkplayer-java', ':dkplayer-ui', ':dkplayer-x86', ':dkplayer-x86_64'

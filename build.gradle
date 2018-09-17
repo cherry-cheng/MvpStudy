@@ -14,6 +14,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'
         classpath "io.realm:realm-gradle-plugin:3.1.1"
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
     }
 }
 
@@ -29,7 +30,10 @@ task clean(type: Delete) {
 }
 
 ext {
-    compileSdkVersion = 25       // depending on your sdk version
-    buildToolsVersion = "25.0.2" // depending on your build tools version
-    targetSdkVersion = 25       // depending on your sdk version
+    compileSdkVersion = 26       // depending on your sdk version
+    buildToolsVersion = "26.0.2" // depending on your build tools version
+    targetSdkVersion = 26       // depending on your sdk version
+
+    supportLibraryVersion = '27.0.2'
+    ijkPlayerVersion = '0.8.8'
 }
