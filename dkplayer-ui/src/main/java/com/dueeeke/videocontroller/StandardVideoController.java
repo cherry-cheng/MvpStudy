@@ -1,14 +1,19 @@
 package com.dueeeke.videocontroller;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.media.AudioManager;
 import android.support.annotation.AttrRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -36,7 +41,7 @@ public class StandardVideoController extends GestureVideoController implements V
     protected ImageView fullScreenButton;
     protected LinearLayout bottomContainer, topContainer;
     protected SeekBar videoProgress;
-    protected ImageView backButton;
+    protected ImageView backButton, backSmall, vol_control;
     protected ImageView lock;
     protected MarqueeTextView title;
     private boolean isLive;
@@ -54,10 +59,14 @@ public class StandardVideoController extends GestureVideoController implements V
     private Animation hideAnim = AnimationUtils.loadAnimation(getContext(), R.anim.dkplayer_anim_alpha_out);
     private BatteryReceiver mBatteryReceiver;
     protected ImageView refresh;
+    private Context mContext;
+    SharedPreferences preference = null;
+    SharedPreferences.Editor editor;
 
 
     public StandardVideoController(@NonNull Context context) {
         this(context, null);
+        this.mContext = context;
     }
 
     public StandardVideoController(@NonNull Context context, @Nullable AttributeSet attrs) {
@@ -85,7 +94,11 @@ public class StandardVideoController extends GestureVideoController implements V
         totalTime = controllerView.findViewById(R.id.total_time);
         currTime = controllerView.findViewById(R.id.curr_time);
         backButton = controllerView.findViewById(R.id.back);
+        backSmall = controllerView.findViewById(R.id.backSmall);
+        vol_control = controllerView.findViewById(R.id.vol_control);
+        vol_control.setOnClickListener(this);
         backButton.setOnClickListener(this);
+        backSmall.setOnClickListener(this);
         lock = controllerView.findViewById(R.id.lock);
         lock.setOnClickListener(this);
         thumb = controllerView.findViewById(R.id.thumb);
@@ -105,6 +118,18 @@ public class StandardVideoController extends GestureVideoController implements V
         mBatteryReceiver = new BatteryReceiver(batteryLevel);
         refresh = controllerView.findViewById(R.id.iv_refresh);
         refresh.setOnClickListener(this);
+
+        preference = getContext().getSharedPreferences("text", 0);
+        editor = preference.edit();
+
+        if (preference != null) {
+            Log.i("cyh111", "sharedpreference = " + preference.getBoolean("mute", false));
+            if (preference.getBoolean("mute", false)) {
+                vol_control.setSelected(true);
+            } else {
+                vol_control.setSelected(false);
+            }
+        }
     }
 
     @Override
@@ -122,16 +147,43 @@ public class StandardVideoController extends GestureVideoController implements V
     @Override
     public void onClick(View v) {
         int i = v.getId();
+        Log.i("cyh111", "controller click = " + i);
         if (i == R.id.fullscreen || i == R.id.back) {
             doStartStopFullScreen();
+            Log.i("cyh111", "controller click = 11");
         } else if (i == R.id.lock) {
             doLockUnlock();
+            Log.i("cyh111", "controller click = 22");
         } else if (i == R.id.iv_play || i == R.id.thumb) {
             doPauseResume();
+            Log.i("cyh111", "controller click = 33");
         } else if (i == R.id.iv_replay) {
             mediaPlayer.retry();
+            Log.i("cyh111", "controller click = 44");
         } else if (i == R.id.iv_refresh) {
             mediaPlayer.refresh();
+            Log.i("cyh111", "controller click = 55");
+        } else if (i == R.id.backSmall) {
+            ((AppCompatActivity)mContext).finish();
+            Log.i("cyh111", "controller click = 66");
+        } else if (i == R.id.vol_control) {
+            if (preference == null) {
+                preference = getContext().getSharedPreferences("text", 0);
+                editor = preference.edit();
+            }
+            if (vol_control.isSelected()) {
+                vol_control.setSelected(false);
+                mediaPlayer.setMute(false);
+                editor.putBoolean("mute",false);
+                editor.commit();
+                Log.i("cyh111", "unselected = " + preference.getBoolean("mute", false));
+            } else {
+                vol_control.setSelected(true);
+                mediaPlayer.setMute(true);
+                editor.putBoolean("mute",true);
+                editor.commit();
+                Log.i("cyh111", "selected = " + preference.getBoolean("mute", false));
+            }
         }
     }
 
@@ -156,6 +208,7 @@ public class StandardVideoController extends GestureVideoController implements V
                 sysTime.setVisibility(View.GONE);
                 batteryLevel.setVisibility(View.GONE);
                 topContainer.setVisibility(View.GONE);
+                backSmall.setVisibility(View.GONE);
                 break;
             case IjkVideoView.PLAYER_FULL_SCREEN:
                 L.e("PLAYER_FULL_SCREEN");
@@ -163,6 +216,7 @@ public class StandardVideoController extends GestureVideoController implements V
                 gestureEnabled = true;
                 fullScreenButton.setSelected(true);
                 backButton.setVisibility(View.VISIBLE);
+                backSmall.setVisibility(View.GONE);
                 title.setVisibility(View.VISIBLE);
                 sysTime.setVisibility(View.VISIBLE);
                 batteryLevel.setVisibility(View.VISIBLE);
@@ -204,6 +258,15 @@ public class StandardVideoController extends GestureVideoController implements V
                 completeContainer.setVisibility(View.GONE);
                 thumb.setVisibility(View.GONE);
                 startPlayButton.setVisibility(View.GONE);
+                if (preference == null) {
+                    preference = getContext().getSharedPreferences("text", 0);
+                    editor = preference.edit();
+                }
+                if (preference.getBoolean("mute", false)) {
+                    mediaPlayer.setMute(true);
+                } else {
+                    mediaPlayer.setMute(false);
+                }
                 break;
             case IjkVideoView.STATE_PAUSED:
                 L.e("STATE_PAUSED");
@@ -328,6 +391,9 @@ public class StandardVideoController extends GestureVideoController implements V
             } else {
                 bottomContainer.setVisibility(View.GONE);
                 bottomContainer.startAnimation(hideAnim);
+
+                backSmall.setVisibility(View.GONE);
+                backSmall.startAnimation(hideAnim);
             }
             if (!isLive && !isLocked) {
                 bottomProgress.setVisibility(View.VISIBLE);
@@ -339,6 +405,8 @@ public class StandardVideoController extends GestureVideoController implements V
 
     private void hideAllViews() {
         topContainer.setVisibility(View.GONE);
+        backSmall.setVisibility(View.GONE);
+        backSmall.startAnimation(hideAnim);
         topContainer.startAnimation(hideAnim);
         bottomContainer.setVisibility(View.GONE);
         bottomContainer.startAnimation(hideAnim);
@@ -356,6 +424,8 @@ public class StandardVideoController extends GestureVideoController implements V
             } else {
                 bottomContainer.setVisibility(View.VISIBLE);
                 bottomContainer.startAnimation(showAnim);
+                backSmall.setVisibility(View.VISIBLE);
+                backSmall.startAnimation(showAnim);
             }
             if (!isLocked && !isLive) {
                 bottomProgress.setVisibility(View.GONE);
@@ -373,6 +443,8 @@ public class StandardVideoController extends GestureVideoController implements V
         bottomContainer.setVisibility(View.VISIBLE);
         bottomContainer.startAnimation(showAnim);
         topContainer.setVisibility(View.VISIBLE);
+        backSmall.setVisibility(View.VISIBLE);
+        backSmall.startAnimation(showAnim);
         topContainer.startAnimation(showAnim);
     }
 

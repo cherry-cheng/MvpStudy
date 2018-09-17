@@ -33,6 +33,7 @@ public class PlayerActivity extends AppCompatActivity {
         ijkVideoView = findViewById(R.id.player);
 
         Intent intent = getIntent();
+
         if (intent != null) {
             StandardVideoController controller = new StandardVideoController(this);
             ijkVideoView.setPlayerConfig(new PlayerConfig.Builder()
@@ -46,6 +47,7 @@ public class PlayerActivity extends AppCompatActivity {
 //            ijkVideoView.setScreenScale(IjkVideoView.SCREEN_SCALE_CENTER_CROP);
             ijkVideoView.setUrl(intent.getStringExtra("url"));
             ijkVideoView.setVideoController(controller);
+
             ijkVideoView.start();
         }
     }
