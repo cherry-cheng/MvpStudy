@@ -13,6 +13,10 @@
         android:theme="@style/AppTheme">
 
         <!-- 测试播放器 -->
+        <activity
+            android:name=".ui.play.PlayerActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait" />
 
         <!-- 主页 -->
         <activity
