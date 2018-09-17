@@ -12,6 +12,8 @@
         <!-- 底部导航栏的颜色 -->
         <!--<item name="android:navigationBarColor" tools:targetApi="lollipop">@color/navigationBarColor</item>-->
         <!--<item name="android:windowBackground">@color/windowBackground</item>-->
+        <item name="android:selectableItemBackground">@null</item>
+        <item name="android:selectableItemBackgroundBorderless">@null</item>
     </style>
 
     <!--<style name="AppTheme.SwipeBack">-->
