@@ -18,6 +18,16 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".ui.play.Play1Activity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.play.Play2Activity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait" />
+
         <!-- 主页 -->
         <activity
             android:name="com.weizhan.superlook.ui.main.MainActivity"

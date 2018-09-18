@@ -1,6 +1,7 @@
 package com.weizhan.superlook.ui.variety.viewbinder;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,6 +15,9 @@ import com.common.util.ToastUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.weizhan.superlook.R;
 import com.weizhan.superlook.model.bean.variety.AppVarietyShow;
+import com.weizhan.superlook.ui.play.Play1Activity;
+import com.weizhan.superlook.ui.play.Play2Activity;
+import com.weizhan.superlook.util.Constants;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,7 +38,7 @@ public class VarietyBodyItemViewBinder extends ItemViewBinder<AppVarietyShow.Bod
 
     @Override
     protected void onBindViewHolder(@NonNull VarietyBodyItemViewBinder.VarietyBodyViewHolder holder, @NonNull AppVarietyShow.Body item) {
-        Context context = holder.ivCover.getContext();
+        final Context context = holder.ivCover.getContext();
 /*        if (holder.getPosition() == 5) {
             int width = ScreenUtil.getScreenWidth(context) / 3 - SystemUtil.dp2px(context, 8);
             int height = context.getResources().getDimensionPixelSize(R.dimen.recommend1_cover_height1);
@@ -60,7 +64,11 @@ public class VarietyBodyItemViewBinder extends ItemViewBinder<AppVarietyShow.Bod
         holder.item_rl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ToastUtils.showLongToast("点击了影片");
+                ToastUtils.showLongToast("点击了综艺");
+                Intent intent = new Intent(context, Play2Activity.class);
+                intent.putExtra("url", Constants.PLAY_URL);
+                intent.putExtra("isLive", true);
+                context.startActivity(intent);
             }
         });
     }

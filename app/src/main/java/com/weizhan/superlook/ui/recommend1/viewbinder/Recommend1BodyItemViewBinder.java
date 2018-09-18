@@ -18,6 +18,7 @@ import com.common.util.ToastUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.weizhan.superlook.R;
 import com.weizhan.superlook.model.bean.recommend1.AppRecommend1Show;
+import com.weizhan.superlook.ui.play.Play1Activity;
 import com.weizhan.superlook.ui.play.PlayerActivity;
 import com.weizhan.superlook.util.Constants;
 
@@ -66,8 +67,8 @@ public class Recommend1BodyItemViewBinder extends ItemViewBinder<AppRecommend1Sh
         holder.item_rl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ToastUtils.showLongToast("点击了影片");
-                Intent intent = new Intent(context, PlayerActivity.class);
+                ToastUtils.showLongToast("点击了电视剧");
+                Intent intent = new Intent(context, Play1Activity.class);
                 intent.putExtra("url", Constants.PLAY_URL);
                 intent.putExtra("isLive", true);
                 context.startActivity(intent);
