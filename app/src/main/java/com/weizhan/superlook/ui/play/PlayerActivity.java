@@ -1,8 +1,8 @@
 package com.weizhan.superlook.ui.play;
 
 import android.content.Intent;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.Window;
@@ -17,12 +17,15 @@ import com.dueeeke.videoplayer.player.IjkVideoView;
 import com.dueeeke.videoplayer.player.PlayerConfig;
 import com.weizhan.superlook.App;
 import com.weizhan.superlook.R;
+import com.weizhan.superlook.model.bean.recommend1.AppRecommend1Show;
+import com.weizhan.superlook.ui.series.SeriesIndexItemDecoration;
 import com.weizhan.superlook.widget.adapter.CommonAdapter;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import me.drakeet.multitype.Items;
 
 public class PlayerActivity extends BaseActivity implements IBaseMvpActivity<PlayPresenter>, PlayContract.View {
 
@@ -38,6 +41,7 @@ public class PlayerActivity extends BaseActivity implements IBaseMvpActivity<Pla
     LinearLayout ll_display;
 
     private CommonAdapter mAdapter;
+    private static final int SPAN_COUNT = 3;
 
     @Override
     protected void onPause() {
@@ -110,10 +114,30 @@ public class PlayerActivity extends BaseActivity implements IBaseMvpActivity<Pla
             ijkVideoView.setVideoController(controller);
             ijkVideoView.start();
         }
+
+        GridLayoutManager layoutManager = new GridLayoutManager(this, SPAN_COUNT);
+        guessLike_recyclerView.setLayoutManager(layoutManager);
+        guessLike_recyclerView.addItemDecoration(new GuessLikeItemDecoration());
+        guessLike_recyclerView.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
+        mAdapter = new CommonAdapter(0, 99);
+        mAdapter.register(AppRecommend1Show.Body.class, new GueLikeBodyItemViewBinder());
+        mAdapter.setScrollSaveStrategyEnabled(true);
+        guessLike_recyclerView.setAdapter(mAdapter);
     }
 
     @Override
     public PlayPresenter getPresenter() {
         return mPresenter;
+    }
+
+    @Override
+    public void onDataUpdated(Items items) {
+        mAdapter.setItems(items);
+        mAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void showLoadFailed() {
+        mAdapter.showLoadFailed();
     }
 }
