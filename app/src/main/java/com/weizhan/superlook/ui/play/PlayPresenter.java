@@ -7,6 +7,7 @@ import com.common.util.DateUtil;
 import com.weizhan.superlook.model.api.ApiHelper;
 import com.weizhan.superlook.model.api.Recommend1Apis;
 import com.weizhan.superlook.model.bean.DataListResponse;
+import com.weizhan.superlook.model.bean.play.TestBean;
 import com.weizhan.superlook.model.bean.recommend1.AppRecommend1Show;
 
 import java.util.List;
@@ -83,6 +84,10 @@ public class PlayPresenter extends AbsBasePresenter<PlayContract.View> implement
     private Items regionShow2Items(DataListResponse<AppRecommend1Show> regionShow) {
         Items items = new Items();
         List<AppRecommend1Show> regionShowList = regionShow.getData();
+        AppRecommend1Show.Partition p = new AppRecommend1Show().new Partition();
+        items.add(p);
+        TestBean testBean = new TestBean();
+        items.add(testBean);
         for (AppRecommend1Show appRecommend1Show : regionShowList) {
             //body
             List<AppRecommend1Show.Body> bodyList = appRecommend1Show.getBody();

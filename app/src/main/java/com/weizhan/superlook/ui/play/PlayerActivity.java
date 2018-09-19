@@ -3,14 +3,9 @@ package com.weizhan.superlook.ui.play;
 import android.content.Intent;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.common.base.BaseActivity;
 import com.common.base.IBaseMvpActivity;
@@ -19,6 +14,7 @@ import com.dueeeke.videoplayer.player.IjkVideoView;
 import com.dueeeke.videoplayer.player.PlayerConfig;
 import com.weizhan.superlook.App;
 import com.weizhan.superlook.R;
+import com.weizhan.superlook.model.bean.play.TestBean;
 import com.weizhan.superlook.model.bean.recommend1.AppRecommend1Show;
 import com.weizhan.superlook.widget.adapter.CommonAdapter;
 import java.util.ArrayList;
@@ -27,7 +23,6 @@ import java.util.List;
 import javax.inject.Inject;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 import me.drakeet.multitype.Items;
 
 public class PlayerActivity extends BaseActivity implements IBaseMvpActivity<PlayPresenter>, PlayContract.View {
@@ -38,10 +33,6 @@ public class PlayerActivity extends BaseActivity implements IBaseMvpActivity<Pla
     PlayPresenter mPresenter;
     @BindView(R.id.guessLike_recyclerView)
     RecyclerView guessLike_recyclerView;
-    @BindView(R.id.iv_displayIntro)
-    ImageView iv_displayIntro;
-    @BindView(R.id.ll_display)
-    LinearLayout ll_display;
 
     private CommonAdapter mAdapter;
     private static final int SPAN_COUNT = 3;
@@ -53,17 +44,6 @@ public class PlayerActivity extends BaseActivity implements IBaseMvpActivity<Pla
     protected void onPause() {
         super.onPause();
         ijkVideoView.pause();
-    }
-
-    @OnClick(R.id.iv_displayIntro)
-    void onDisplayClick() {
-        if (iv_displayIntro.isSelected()) {
-            iv_displayIntro.setSelected(false);
-            ll_display.setVisibility(View.GONE);
-        } else {
-            iv_displayIntro.setSelected(true);
-            ll_display.setVisibility(View.VISIBLE);
-        }
     }
 
     @Override
@@ -121,12 +101,23 @@ public class PlayerActivity extends BaseActivity implements IBaseMvpActivity<Pla
             ijkVideoView.start();
         }
 
+
         GridLayoutManager layoutManager = new GridLayoutManager(this, SPAN_COUNT);
+        GridLayoutManager.SpanSizeLookup spanSizeLookup = new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                Object item = mAdapter.getItems().get(position);
+                return item instanceof AppRecommend1Show.Body ? 1 : SPAN_COUNT;
+            }
+        };
+        layoutManager.setSpanSizeLookup(spanSizeLookup);
         guessLike_recyclerView.setLayoutManager(layoutManager);
         guessLike_recyclerView.addItemDecoration(new GuessLikeItemDecoration());
         guessLike_recyclerView.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
         mAdapter = new CommonAdapter(0, 99);
+        mAdapter.register(AppRecommend1Show.Partition.class, new PlayTitleItemViewBinder());
         mAdapter.register(AppRecommend1Show.Body.class, new GueLikeBodyItemViewBinder());
+        mAdapter.register(TestBean.class, new GuessTitleViewBinder());
         mAdapter.setScrollSaveStrategyEnabled(true);
         guessLike_recyclerView.setAdapter(mAdapter);
     }

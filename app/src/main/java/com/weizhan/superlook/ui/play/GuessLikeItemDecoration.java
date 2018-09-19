@@ -29,22 +29,26 @@ public class GuessLikeItemDecoration extends RecyclerView.ItemDecoration {
         int margin_4 = view.getContext().getResources().getDimensionPixelOffset(R.dimen.margin_4);
         int margin_10 = view.getContext().getResources().getDimensionPixelOffset(R.dimen.margin_10);
         int margin_2 = view.getContext().getResources().getDimensionPixelOffset(R.dimen.margin_2);
-        int index = spanSizeLookup.getSpanIndex(position , 3);
-        switch (index) {
-            case 0:
-                outRect.left = margin_small;
-                outRect.right = margin_2;
-                break;
-            case 1:
-                outRect.left = margin_2;
-                outRect.right = margin_2;
-                break;
-            case 2:
-                outRect.left = margin_2;
-                outRect.right = margin_small;
-                break;
+        if (spanSize == 3) {
+
+        } else {
+            int index = spanSizeLookup.getSpanIndex(position , 3);
+            switch (index) {
+                case 0:
+                    outRect.left = margin_small;
+                    outRect.right = margin_2;
+                    break;
+                case 1:
+                    outRect.left = margin_2;
+                    outRect.right = margin_2;
+                    break;
+                case 2:
+                    outRect.left = margin_2;
+                    outRect.right = margin_small;
+                    break;
+            }
+            outRect.bottom = margin_2;
+            outRect.top = margin_small;
         }
-        outRect.bottom = margin_2;
-        outRect.top = margin_small;
     }
 }

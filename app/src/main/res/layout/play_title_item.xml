@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:text="西虹市首富"
+            android:textStyle="bold"
+            android:layout_centerVertical="true"
+            android:textColor="#ff4a4a4a"
+            android:textSize="17sp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_toLeftOf="@+id/iv_displayIntro"
+            android:text="简介"
+            android:layout_centerVertical="true"
+            android:textColor="#ff9b9b9b"
+            android:textSize="13sp"
+            android:typeface="monospace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/iv_displayIntro"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:src="@drawable/selector_display_intro"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="24dp">
+
+        <TextView
+            android:id="@+id/tv_score"
+            android:textStyle="bold"
+            android:text="8.3"
+            android:layout_centerVertical="true"
+            android:textColor="#ffff850b"
+            android:textSize="12sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <View
+            android:id="@+id/divider1"
+            android:layout_toRightOf="@+id/tv_score"
+            android:layout_marginLeft="8dp"
+            android:layout_width="1dp"
+            android:layout_centerVertical="true"
+            android:background="#d8d8d8"
+            android:layout_height="8dp"/>
+        <TextView
+            android:id="@+id/tv_type"
+            android:text="喜剧"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/divider1"
+            android:layout_marginLeft="8dp"
+            android:textColor="#ff9b9b9b"
+            android:textSize="12sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <View
+            android:id="@+id/divider2"
+            android:layout_toRightOf="@+id/tv_type"
+            android:layout_marginLeft="8dp"
+            android:layout_width="1dp"
+            android:layout_centerVertical="true"
+            android:background="#d8d8d8"
+            android:layout_height="8dp"/>
+        <TextView
+            android:id="@+id/tv_year"
+            android:layout_centerVertical="true"
+            android:text="2018"
+            android:layout_toRightOf="@+id/divider2"
+            android:layout_marginLeft="8dp"
+            android:textColor="#ff9b9b9b"
+            android:textSize="12sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/share_iv"
+            android:layout_toLeftOf="@+id/like_iv"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            android:src="@drawable/ic_icon_display_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/download_iv"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_icon_display_download"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/like_iv"
+            android:layout_toLeftOf="@+id/download_iv"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            android:src="@drawable/ic_icon_display_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_display"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_actor"
+            android:text="主演：沈腾 宋芸桦 张一鸣 张晨光"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:textColor="#ff9b9b9b"
+            android:textSize="12sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/des_tv"
+            android:text="剧情简介：《西虹市首富》的故事发生在《夏洛特烦恼》中的“特烦恼”之城“西虹市”。混迹于丙级业余足球队的守门员王多鱼（沈腾饰演），因比赛失利被开除离队。正处于人生最低谷的他接受了神秘台湾财团“一个月花光十亿资金”的挑战。本以为快乐生活就此开始，王多鱼却第一次感到“花钱特烦恼”！想要人生反转走上巅峰，真的没有那么简单。"
+            android:textColor="#ff9b9b9b"
+            android:textSize="12sp"
+            android:lineSpacingExtra="5dp"
+            android:layout_marginTop="4dp"
+            android:typeface="monospace"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>
